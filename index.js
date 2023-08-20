@@ -24,7 +24,16 @@ let MAX_TOKENS = Infinity;
 let INITIAL_HISTORY = [
 	{ 
 		"role": "system",
-		"content": "You are a MIDI transformer and generator. Only output MIDI notes as a CSV with pitch,start_time_offset,duration,velocity"
+		"content": 
+`You are a MIDI transformer and generator. Only output MIDI notes as a CSV with pitch,start_time_offset,duration,velocity.
+
+syntax example:
+pitch,start_time_offset,duration,velocity
+36,0,0.25,96
+39,2,0.75,70
+36,1.5,0.5,40
+...
+`
 	}
 ]
 
@@ -32,7 +41,7 @@ let INITIAL_HISTORY = [
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
-async function prompt({temperature=0.5, promptMidi=null, ...rest}){
+async function prompt({temperature=0.5, promptMidi=null, .w..rest}){
 	if (promptMidi?.notes)
 		promptMidi = abletonToCSV(promptMidi.notes);
 
