@@ -19,7 +19,7 @@ const openai = new OpenAIApi(config);
 
 // Settings
 let ROLE = 'user';
-let TEMPERATURE = 1;
+let TEMPERATURE = 0.5;
 let MAX_TOKENS = Infinity;
 
 let INITIAL_HISTORY = [
@@ -28,40 +28,35 @@ let INITIAL_HISTORY = [
 		"content": "You are a MIDI transformer and generator. Only output MIDI notes as a CSV with pitch,start_time_offset,duration,velocity"
 	}
 ]
-// Chat history array
-let HISTORY = [];
 
 // The prompt send to OpenAI API with error handling
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
 async function prompt(p){
-	HISTORY = INITIAL_HISTORY;
 	const abletonMidi = p?.promptMidi?.notes;
 	if (abletonMidi)
 		p.promptMidi = abletonToCSV(abletonMidi);
-	// 
+	
 
 	p = JSON.stringify(p);
 	try {
-		// add prompt to chat history
-		HISTORY.push({ role: ROLE, content: p });
 
+
+		const messages = [...INITIAL_HISTORY, { role: ROLE, content: p }];
 		// await chat completion with settings and chat history
 		const chat = await openai.createChatCompletion({
 			model: 'gpt-3.5-turbo',
-			messages: HISTORY,
+			messages,
 			temperature: TEMPERATURE,
 			max_tokens: MAX_TOKENS
 		});
 		const message = chat.data.choices[0].message;
-		// add response to chat history
-		HISTORY.push(message);
 		// output response to max patch
 		const abletonMidi = csvToAbleton(message.content);
 		max.outlet({notes: abletonMidi});
 		// output history (for storage and saving in dictionary)
-		max.outlet('history', { history: HISTORY });
+		max.outlet('history', { history: INITIAL_HISTORY });
 		max.outlet('done');
 	} catch (error) {
 		if (error.response){
@@ -92,38 +87,6 @@ max.addHandlers({
 		TEMPERATURE = Math.max(0, Math.min(2, t));
 		max.post(`temperature: ${TEMPERATURE}`);
 	},
-	// set the max tokens
-	'max_tokens' : (t) => {
-		if (isNaN(t)){
-			max.post(`Error: max_tokens ${t} is not a number`);
-			return;
-		} else {
-			// max tokens is an integer or Infinity
-			MAX_TOKENS = Math.max(1, Math.floor(t));
-		}
-		max.post(`max_tokens: ${MAX_TOKENS}`);
-	},
-	// set the role
-	'role' : (r) => {
-		if (String(r).match(/(user|assistent|system)/)){
-			ROLE = r;
-			max.post(`role: ${ROLE}`);
-		} else {
-			max.post(`Error: role ${r} is not user, assistent or system`);
-		}
-	},
-	// clear the chat history
-	'clear' : () => {
-		HISTORY = [];
-	},
-	// output the current history
-	'history' : () => {
-		max.outlet('history', { history: HISTORY });
-	},
-	// load the history of a chat from a dictionary
-	'load_history' : (dict) => {
-		HISTORY = dict.history ? dict.history : [];
-	}
 });
 
 
