@@ -45,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 55.384611010551453, 348.713569493293789, 112.0, 22.0 ],
+					"patching_rect" : [ 28.205128610134125, 293.713569493293789, 112.0, 22.0 ],
 					"text" : "sel add_new_notes"
 				}
 
@@ -57,7 +57,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 55.384611010551453, 308.328955323696164, 41.0, 22.0 ],
+					"patching_rect" : [ 28.205128610134125, 250.328955323696164, 41.0, 22.0 ],
 					"text" : "unjoin"
 				}
 
@@ -69,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 28.205128610134125, 403.538434565067291, 32.0, 22.0 ],
+					"patching_rect" : [ 28.205128610134125, 338.538434565067291, 32.0, 22.0 ],
 					"text" : "t b b"
 				}
 
@@ -81,7 +81,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.205128610134125, 444.538434565067291, 99.0, 22.0 ],
+					"patching_rect" : [ 41.205128610134125, 379.538434565067291, 99.0, 22.0 ],
 					"text" : "Clip notes added"
 				}
 
@@ -92,20 +92,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 41.205128610134125, 483.538434565067291, 67.0, 22.0 ],
+					"patching_rect" : [ 41.205128610134125, 418.538434565067291, 67.0, 22.0 ],
 					"text" : "print STEP"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-22",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 28.205128610134125, 212.029296879642516, 29.5, 22.0 ],
-					"text" : "t b l"
 				}
 
 			}
@@ -152,7 +140,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 55.384611010551453, 262.465193991535216, 62.0, 22.0 ],
+					"patching_rect" : [ 28.205128610134125, 192.465193991535216, 62.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"_persistence" : 1
 					}
@@ -177,7 +165,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-22", 0 ],
+					"destination" : [ "obj-210", 0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -228,20 +216,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-213", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
-					"source" : [ "obj-22", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-210", 0 ],
-					"source" : [ "obj-22", 1 ]
 				}
 
 			}
