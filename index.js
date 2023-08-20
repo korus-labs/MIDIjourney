@@ -33,15 +33,14 @@ pitch,start_time_offset,duration,velocity
 39,2,0.75,70
 36,1.5,0.5,40
 ...
-`
-	}
+`}
 ]
 
 // The prompt send to OpenAI API with error handling
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
-async function prompt({temperature=0.5, promptMidi=null, .w..rest}){
+async function prompt({temperature=0.5, promptMidi=null, ...rest}){
 	if (promptMidi?.notes)
 		promptMidi = abletonToCSV(promptMidi.notes);
 
