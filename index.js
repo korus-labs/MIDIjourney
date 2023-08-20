@@ -19,7 +19,6 @@ const openai = new OpenAIApi(config);
 
 // Settings
 let ROLE = 'user';
-let TEMPERATURE = 0.5;
 let MAX_TOKENS = Infinity;
 
 let INITIAL_HISTORY = [
@@ -33,22 +32,25 @@ let INITIAL_HISTORY = [
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
-async function prompt(p){
-	const abletonMidi = p?.promptMidi?.notes;
-	if (abletonMidi)
-		p.promptMidi = abletonToCSV(abletonMidi);
+async function prompt({temperature=0.5, promptMidi=null, ...rest}){
+	if (promptMidi?.notes)
+		promptMidi = abletonToCSV(promptMidi.notes);
+
 	
+	const gptPrompt = JSON.stringify({
+		...rest,
+		promptMidi,
+	});
 
-	p = JSON.stringify(p);
+	const messages = [...INITIAL_HISTORY, { role: ROLE, content: gptPrompt }];
+
+	
 	try {
-
-
-		const messages = [...INITIAL_HISTORY, { role: ROLE, content: p }];
 		// await chat completion with settings and chat history
 		const chat = await openai.createChatCompletion({
 			model: 'gpt-3.5-turbo',
 			messages,
-			temperature: TEMPERATURE,
+			temperature,
 			max_tokens: MAX_TOKENS
 		});
 		const message = chat.data.choices[0].message;
@@ -76,16 +78,6 @@ max.addHandlers({
 		// if prompt is an array join into one string
 		p = Array.isArray(p) ? p.join(" ") : p;
 		prompt(p);
-	},
-	// set the temperature
-	'temperature' : (t) => {
-		if (isNaN(t)){
-			max.post(`Error: temperature ${t} is not a number`);
-			return;
-		}
-		// temperature is a value between 0 and 2
-		TEMPERATURE = Math.max(0, Math.min(2, t));
-		max.post(`temperature: ${TEMPERATURE}`);
 	},
 });
 
