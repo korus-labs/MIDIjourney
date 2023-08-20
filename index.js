@@ -22,6 +22,12 @@ let ROLE = 'user';
 let TEMPERATURE = 1;
 let MAX_TOKENS = Infinity;
 
+let INITIAL_HISTORY = [
+	{ 
+		"role": "system",
+		"content": "You are a MIDI transformer and generator. Only output MIDI notes as a CSV with pitch,start_time_offset,duration,velocity"
+	}
+]
 // Chat history array
 let HISTORY = [];
 
@@ -30,6 +36,7 @@ let HISTORY = [];
 // Else returns a message 'error'
 //
 async function prompt(p){
+	HISTORY = INITIAL_HISTORY;
 	const abletonMidi = p?.promptMidi?.notes;
 	if (abletonMidi)
 		p.promptMidi = abletonToCSV(abletonMidi);
