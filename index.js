@@ -30,6 +30,12 @@ let HISTORY = [];
 // Else returns a message 'error'
 //
 async function prompt(p){
+	const abletonMidi = p?.promptMidi?.notes;
+	if (abletonMidi)
+		p.promptMidi = abletonToCSV(abletonMidi);
+	// 
+
+	p = JSON.stringify(p);
 	try {
 		// add prompt to chat history
 		HISTORY.push({ role: ROLE, content: p });
@@ -41,10 +47,12 @@ async function prompt(p){
 			temperature: TEMPERATURE,
 			max_tokens: MAX_TOKENS
 		});
+		const message = chat.data.choices[0].message;
 		// add response to chat history
-		HISTORY.push(chat.data.choices[0].message);
+		HISTORY.push(message);
 		// output response to max patch
-		max.outlet(chat.data.choices[0].message.content);
+		const abletonMidi = csvToAbleton(message.content);
+		max.outlet({notes: abletonMidi});
 		// output history (for storage and saving in dictionary)
 		max.outlet('history', { history: HISTORY });
 		max.outlet('done');
@@ -110,3 +118,43 @@ max.addHandlers({
 		HISTORY = dict.history ? dict.history : [];
 	}
 });
+
+
+
+
+const abletonToCSV = (notes) => {
+  let lastStartTime = 0;
+  let csvString = "pitch,start_time_offset,duration,velocity\n"; // CSV header
+
+  notes.forEach((note) => {
+    const offset = note.start_time - lastStartTime;
+    lastStartTime = note.start_time;
+    
+    csvString += `${note.pitch},${offset},${note.duration},${note.velocity}\n`;
+  });
+
+  return csvString;
+};
+
+
+const csvToAbleton = (csvString) => {
+	console.log("converting to ableton format", csvString)
+	const lines = csvString.trim().split('\n');
+	const header = lines.shift().split(',');
+  
+	let lastStartTime = 0;
+	const notes = lines.map((line) => {
+	  const [pitch, start_time_offset, duration, velocity] = line.split(',').map(Number);
+  
+	  lastStartTime += start_time_offset;
+	  
+	  return {
+		pitch,
+		start_time: lastStartTime,
+		duration,
+		velocity
+	  };
+	});
+  
+	return notes;
+  };
