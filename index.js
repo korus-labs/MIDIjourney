@@ -39,8 +39,9 @@ pitch_semitones,start_time,duration_beats,velocity_midi
 `}
 ]
 
+let ACCUMULATED_HISTORY = [];
 
-
+let ACCUMULATED_HISTORY_ACTIVE = false;
 // The prompt send to OpenAI API with error handling
 // Returns the result and a message 'done'
 // Else returns a message 'error'
@@ -52,7 +53,12 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 	
 	const gptPrompt =  `${promptText}\n${promptMidi}`
 
-	const messages = [...INITIAL_HISTORY, { role: ROLE, content:  gptPrompt }];
+	const promptMessage = { role: ROLE, content: gptPrompt };
+	
+	if (!ACCUMULATED_HISTORY_ACTIVE)
+		ACCUMULATED_HISTORY = [promptMessage];
+
+	const messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 	max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
 	for (let tries=0; tries<3; tries++) {
@@ -65,6 +71,9 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 				max_tokens: MAX_TOKENS
 			});
 			const message = chat.data.choices[0].message;
+
+			ACCUMULATED_HISTORY.push({ role: "assistant", content: message });
+		
 			max.post(`---response---\n${message.content}`)
 			// output response to max patch
 			const abletonMidi = csvToAbleton(message.content);
@@ -100,6 +109,10 @@ max.addHandlers({
 	'gptModel' : (m) => {
 		GPT_MODEL = m;
 		max.post(`GPT Model set to ${GPT_MODEL}`);
+	},
+	'enableHistory' : (a) => {
+		ACCUMULATED_HISTORY_ACTIVE = a;
+		max.post(`Accumulate History set to ${ACCUMULATED_HISTORY_ACTIVE}`);
 	}
 });
 
@@ -120,8 +133,6 @@ const abletonToCSV = (notes) => {
     
     csvString += `${note.pitch},${note.start_time},${note.duration},${note.velocity}\n`;
   });
-
-  
 
   return csvString;
 };
