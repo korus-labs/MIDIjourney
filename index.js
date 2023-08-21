@@ -98,7 +98,8 @@ let ACCUMULATED_HISTORY_ACTIVE = false;
 // Else returns a message 'error'
 //
 async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
-	if (promptMidi?.notes)
+	
+	if (promptMidi && promptMidi.notes)
 		promptMidi = abletonToCSV(promptMidi.notes);
 
 	
