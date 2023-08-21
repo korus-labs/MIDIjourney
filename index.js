@@ -79,7 +79,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 			const abletonMidi = csvToAbleton(message.content);
 			max.outlet("midi", {notes: abletonMidi});
 			// output history (for storage and saving in dictionary)
-			max.outlet('history', { history: INITIAL_HISTORY });
+			max.outlet('history', { history: messages });
 			// max.outlet('done');
 			break;
 		} catch (error) {
