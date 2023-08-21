@@ -108,6 +108,8 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 	
 	if (!ACCUMULATED_HISTORY_ACTIVE)
 		ACCUMULATED_HISTORY = [promptMessage];
+	else
+		ACCUMULATED_HISTORY.push(promptMessage);
 
 	const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
 	let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
