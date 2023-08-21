@@ -49,7 +49,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 		promptMidi = abletonToCSV(promptMidi.notes);
 
 	
-	const gptPrompt =  `${promptText}\n${promptMidi}}`
+	const gptPrompt =  `${promptText}\n${promptMidi}`
 
 	const messages = [...INITIAL_HISTORY, { role: ROLE, content:  gptPrompt }];
 
@@ -67,16 +67,16 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 			max.post(`---response---\n${message.content}`)
 			// output response to max patch
 			const abletonMidi = csvToAbleton(message.content);
-			max.outlet({notes: abletonMidi});
+			max.outlet("midi", {notes: abletonMidi});
 			// output history (for storage and saving in dictionary)
 			max.outlet('history', { history: INITIAL_HISTORY });
-			max.outlet('done');
+			// max.outlet('done');
 			break;
 		} catch (error) {
 			if (error.response){
 				max.post(error.response.status);
 				max.post(error.response.data);
-				max.outlet('error');
+				max.outlet('error', error.response.status);
 				break;
 			} else {
 				max.post(error.message);
