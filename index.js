@@ -20,6 +20,7 @@ const openai = new OpenAIApi(config);
 // Settings
 let ROLE = 'user';
 let MAX_TOKENS = Infinity;
+let GPT_MODEL = 'gpt-3.5-turbo-0613'; // "gpt-4-0613", //
 
 let INITIAL_HISTORY = [
 	{ 
@@ -58,7 +59,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 		try {
 			// await chat completion with settings and chat history
 			const chat = await openai.createChatCompletion({
-				model: 'gpt-3.5-turbo-0613', // "gpt-4-0613", //
+				model: GPT_MODEL,
 				messages,
 				temperature,
 				max_tokens: MAX_TOKENS
@@ -96,6 +97,10 @@ max.addHandlers({
 		p = Array.isArray(p) ? p.join(" ") : p;
 		prompt(p);
 	},
+	'gptModel' : (m) => {
+		GPT_MODEL = m;
+		max.post(`GPT Model set to ${GPT_MODEL}`);
+	}
 });
 
 
