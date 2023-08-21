@@ -25,10 +25,10 @@ let INITIAL_HISTORY = [
 	{ 
 		"role": "system",
 		"content": 
-`You are a MIDI transformer and generator. Only output MIDI notes as a CSV with pitch,start_time_offset,duration,velocity.
+`You are a MIDI transformer and generator. Only output MIDI notes as a CSV. Start times are relative to the previous note (i.e. delay_beats should be 0 if notes play at the same time. 1 if they are a quarter note apart and so on).
 
 syntax example:
-pitch,start_time_offset,duration,velocity
+pitch_semitones,delay_beats,duration_beats,velocity_midi
 36,0,0.25,96
 39,2,0.75,70
 36,1.5,0.5,40
@@ -56,7 +56,7 @@ async function prompt({temperature=0.5, promptMidi=null, ...rest}){
 	try {
 		// await chat completion with settings and chat history
 		const chat = await openai.createChatCompletion({
-			model: 'gpt-3.5-turbo',
+			model: "gpt-4-0613", //'gpt-3.5-turbo',
 			messages,
 			temperature,
 			max_tokens: MAX_TOKENS
@@ -94,7 +94,7 @@ max.addHandlers({
 
 const abletonToCSV = (notes) => {
   let lastStartTime = 0;
-  let csvString = "pitch,start_time_offset,duration,velocity\n"; // CSV header
+  let csvString = "pitch_semitones,delay_beats,duration_beats,velocity_midi\n"; // CSV header
 
   notes.forEach((note) => {
     const offset = note.start_time - lastStartTime;
