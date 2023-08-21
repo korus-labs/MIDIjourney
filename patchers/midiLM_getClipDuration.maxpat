@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 844.0, 848.0 ],
+		"rect" : [ 530.0, -939.0, 844.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-35",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 245.0, 639.5, 84.0, 22.0 ],
+					"text" : "expr ceil($f1)"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-39",
 					"maxclass" : "newobj",
@@ -70,7 +82,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 245.0, 633.0, 246.0, 35.0 ],
+					"patching_rect" : [ 456.0, 633.0, 246.0, 35.0 ],
 					"text" : "expr ( (((int($f1)-$f1))==0) * $f1 ) + ( (((int($f1)-$f1))!=0) * (int($f1-1) + 2*($f1>0)) )"
 				}
 
@@ -385,7 +397,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
-					"source" : [ "obj-37", 0 ]
+					"source" : [ "obj-35", 0 ]
 				}
 
 			}
@@ -398,7 +410,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-37", 0 ],
+					"destination" : [ "obj-35", 0 ],
 					"source" : [ "obj-39", 0 ]
 				}
 
