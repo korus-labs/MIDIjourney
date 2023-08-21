@@ -18,9 +18,8 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 // Settings
-let ROLE = 'user';
 let MAX_TOKENS = Infinity;
-let GPT_MODEL = 'gpt-3.5-turbo-0613'; // "gpt-4-0613", //
+let GPT_MODEL = "gpt-4-0613"; // 'gpt-3.5-turbo-0613'; // 
 
 let INITIAL_HISTORY = [
 	{ 
@@ -30,12 +29,48 @@ let INITIAL_HISTORY = [
 
 Start times and durations are in beats. Time signature is 4/4. So the first downbeat is at beat 0 and the second at beat 4.
 
-syntax example:
+examples:
+
+input: a boards of canada style chord progression
+
 pitch_semitones,start_time,duration_beats,velocity_midi
-36,0,0.25,96
-36,2,0.75,70
-39,2,0.5,40
-42,3,1,120
+69,0,4,100
+72,0.5,3.5,90
+76,0,4,85
+79,0.5,3.5,95
+
+74,4,4,105
+78,4.5,3.5,95
+81,4,4,100
+84,4.5,3.5,90
+
+67,8,4,80
+71,8.5,3.5,100
+74,8,4,90
+78,8.5,3.5,85
+
+72,12,4,95
+76,12.5,3.5,105
+79,12,4,100
+83,12.5,3.5,90
+
+
+input: fuer elise melody for 1 bar
+
+start_time,duration_beats,velocity_midi
+76,1,0.25,71
+75,1.25,0.25,38
+76,1.5,0.25,57
+75,1.75,0.25,70
+76,2,0.25,76
+71,2.25,0.25,76
+74,2.5,0.25,76
+72,2.75,0.25,83
+45,3,0.25,64
+69,3,0.75,89
+52,3.25,0.25,64
+57,3.5,0.25,70
+60,3.75,0.25,76
 `}
 ]
 
@@ -53,11 +88,12 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 	
 	const gptPrompt =  `${promptText}\n${promptMidi}`
 
-	const promptMessage = { role: ROLE, content: gptPrompt };
+	const promptMessage = { role: "user", content: gptPrompt };
 	
 	if (!ACCUMULATED_HISTORY_ACTIVE)
 		ACCUMULATED_HISTORY = [promptMessage];
 
+	const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
 	const messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 	max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
@@ -90,7 +126,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 				break;
 			} else {
 				max.post(error.message);
-				messages.push({ role: ROLE, content: error.message });
+				messages.push({ role: "user", content: error.message });
 				max.post("trying again");
 			}
 			
