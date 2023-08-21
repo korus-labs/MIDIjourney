@@ -117,7 +117,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 		try {
 			// await chat completion with settings and chat history
 			const explanationMessage = await getChatGptResponse(messages, temperature);
-			ACCUMULATED_HISTORY.push({ role: "assistant", content: explanationMessage.content });
+			ACCUMULATED_HISTORY.push(explanationMessage);
 			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 			max.post(`---explanation---\n${explanationMessage.content}`)
@@ -125,7 +125,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 			// get actual midi message from chatgpt
 			max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
 			const midiMessage = await getChatGptResponse(messages, temperature);
-			ACCUMULATED_HISTORY.push({ role: "assistant", content: midiMessage });
+			ACCUMULATED_HISTORY.push(midiMessage);
 			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 			max.post(`---midi---\n${midiMessage.content}`)
