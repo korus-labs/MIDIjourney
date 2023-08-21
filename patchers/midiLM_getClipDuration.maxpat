@@ -106,7 +106,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 255.5, 531.0, 29.5, 22.0 ],
+					"patching_rect" : [ 255.5, 552.0, 29.5, 22.0 ],
 					"text" : "/ 4."
 				}
 
@@ -117,9 +117,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 3,
-					"outlettype" : [ "int", "int", "int" ],
-					"patching_rect" : [ 255.5, 496.0, 40.0, 22.0 ],
-					"text" : "peak"
+					"outlettype" : [ "float", "int", "int" ],
+					"patching_rect" : [ 255.5, 496.0, 48.0, 22.0 ],
+					"text" : "peak 0."
 				}
 
 			}
