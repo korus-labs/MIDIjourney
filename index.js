@@ -19,20 +19,31 @@ const openai = new OpenAIApi(config);
 
 // Settings
 let MAX_TOKENS = Infinity;
-let GPT_MODEL = "gpt-4-0613"; // 'gpt-3.5-turbo-0613'; // 
+let GPT_MODEL = 'gpt-3.5-turbo-0613'; // "gpt-4-0613"; //  
 
 let INITIAL_HISTORY = [
 	{ 
 		"role": "system",
 		"content": 
-`You are a MIDI transformer and generator. Only output MIDI notes as a CSV. 
+`You are a MIDI transformer and generator. You are a music expert. Only output MIDI notes as a CSV. 
 
 Start times and durations are in beats. Time signature is 4/4. So the first downbeat is at beat 0 and the second at beat 4.
+Respond first with your reasoning and in a subsequent message with the MIDI notes.
 
 examples:
 
-input: a boards of canada style chord progression
+input:
+a boards of canada style chord progression
 
+explanation:
+Boards of Canada often employ simple yet emotionally evocative chord progressions that are combined with vintage synth tones, textural layers, and nostalgic samples to create their distinctive sound.
+
+Here is a simple chord progression that might evoke a Boards of Canada-like feeling:
+
+Copy code
+Am7 - D7 - Gmaj7 - Cmaj7
+
+midi:
 pitch_semitones,start_time,duration_beats,velocity_midi
 69,0,4,100
 72,0.5,3.5,90
@@ -55,8 +66,13 @@ pitch_semitones,start_time,duration_beats,velocity_midi
 83,12.5,3.5,90
 
 
-input: fuer elise melody for 1 bar
+input:
+fuer elise melody for 1 bar
 
+explanation:
+The first bar typically consists of the notes E, D#, E, A, repeated in quick succession. The pattern is usually played with a certain rhythm, often described as a "quaver" (eighth note) followed by a "semiquaver" (sixteenth note) pattern for each set of four notes.
+
+midi:
 start_time,duration_beats,velocity_midi
 76,1,0.25,71
 75,1.25,0.25,38
@@ -86,7 +102,7 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 		promptMidi = abletonToCSV(promptMidi.notes);
 
 	
-	const gptPrompt =  `${promptText}\n${promptMidi}`
+	const gptPrompt =  `${promptText}\n${promptMidi}\n\nStart with the explanation.`
 
 	const promptMessage = { role: "user", content: gptPrompt };
 	
@@ -94,25 +110,27 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 		ACCUMULATED_HISTORY = [promptMessage];
 
 	const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
-	const messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
+	let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 	max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
 	for (let tries=0; tries<3; tries++) {
 		try {
 			// await chat completion with settings and chat history
-			const chat = await openai.createChatCompletion({
-				model: GPT_MODEL,
-				messages,
-				temperature,
-				max_tokens: MAX_TOKENS
-			});
-			const message = chat.data.choices[0].message;
+			const explanationMessage = await getChatGptResponse(messages, temperature);
+			ACCUMULATED_HISTORY.push({ role: "assistant", content: explanationMessage.content });
+			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
-			ACCUMULATED_HISTORY.push({ role: "assistant", content: message });
-		
-			max.post(`---response---\n${message.content}`)
+			max.post(`---explanation---\n${explanationMessage.content}`)
+			max.outlet("explanation", explanationMessage.content)
+			// get actual midi message from chatgpt
+			max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
+			const midiMessage = await getChatGptResponse(messages, temperature);
+			ACCUMULATED_HISTORY.push({ role: "assistant", content: midiMessage });
+			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
+
+			max.post(`---midi---\n${midiMessage.content}`)
 			// output response to max patch
-			const abletonMidi = csvToAbleton(message.content);
+			const abletonMidi = csvToAbleton(midiMessage.content);
 			max.outlet("midi", {notes: abletonMidi});
 			// output history (for storage and saving in dictionary)
 			max.outlet('history', { history: messages });
@@ -203,3 +221,14 @@ const csvToAbleton = (csvString) => {
   
 	return notes;
   };
+
+async function getChatGptResponse(messages, temperature) {
+	const chat = await openai.createChatCompletion({
+		model: GPT_MODEL,
+		messages,
+		temperature,
+		max_tokens: MAX_TOKENS
+	});
+	const message = chat.data.choices[0].message;
+	return message;
+}
