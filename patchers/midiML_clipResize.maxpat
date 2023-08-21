@@ -45,8 +45,8 @@
 					"numinlets" : 7,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 652.0, 196.0, 22.0 ],
-					"text" : "pack Clip resized - Duration : f bars"
+					"patching_rect" : [ 102.0, 652.0, 201.0, 22.0 ],
+					"text" : "pack Clip resized - Duration : i beats"
 				}
 
 			}
@@ -56,9 +56,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "float", "float" ],
+					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 371.5, 324.0, 29.5, 22.0 ],
-					"text" : "t f f"
+					"text" : "t f i"
 				}
 
 			}
