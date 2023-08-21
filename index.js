@@ -25,57 +25,66 @@ let INITIAL_HISTORY = [
 	{ 
 		"role": "system",
 		"content": 
-`You are a MIDI transformer and generator. Only output MIDI notes as a CSV. Start times are relative to the previous note (i.e. delay_beats should be 0 if notes play at the same time. 1 if they are a quarter note apart and so on).
+`You are a MIDI transformer and generator. Only output MIDI notes as a CSV. 
+
+Start times and durations are in beats. Time signature is 4/4. So the first downbeat is at beat 0 and the second at beat 4.
 
 syntax example:
-pitch_semitones,delay_beats,duration_beats,velocity_midi
+pitch_semitones,start_time,duration_beats,velocity_midi
 36,0,0.25,96
-39,2,0.75,70
-36,1.5,0.5,40
-...
+36,2,0.75,70
+39,2,0.5,40
+42,3,1,120
 `}
 ]
+
+
 
 // The prompt send to OpenAI API with error handling
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
-async function prompt({temperature=0.5, promptMidi=null, ...rest}){
+async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 	if (promptMidi?.notes)
 		promptMidi = abletonToCSV(promptMidi.notes);
 
 	
-	const gptPrompt = JSON.stringify({
-		...rest,
-		promptMidi,
-	});
+	const gptPrompt =  `${promptText}\n${promptMidi}}`
 
-	const messages = [...INITIAL_HISTORY, { role: ROLE, content: gptPrompt }];
+	const messages = [...INITIAL_HISTORY, { role: ROLE, content:  gptPrompt }];
 
-	console.log("---prompting---\n", JSON.stringify(messages, null, 2))
-	try {
-		// await chat completion with settings and chat history
-		const chat = await openai.createChatCompletion({
-			model: 'gpt-3.5-turbo', // "gpt-4-0613", //
-			messages,
-			temperature,
-			max_tokens: MAX_TOKENS
-		});
-		const message = chat.data.choices[0].message;
-		// output response to max patch
-		const abletonMidi = csvToAbleton(message.content);
-		max.outlet({notes: abletonMidi});
-		// output history (for storage and saving in dictionary)
-		max.outlet('history', { history: INITIAL_HISTORY });
-		max.outlet('done');
-	} catch (error) {
-		if (error.response){
-			max.post(error.response.status);
-			max.post(error.response.data);
-		} else {
-			max.post(error.message);
+	max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
+	for (let tries=0; tries<3; tries++) {
+		try {
+			// await chat completion with settings and chat history
+			const chat = await openai.createChatCompletion({
+				model: 'gpt-3.5-turbo-0613', // "gpt-4-0613", //
+				messages,
+				temperature,
+				max_tokens: MAX_TOKENS
+			});
+			const message = chat.data.choices[0].message;
+			max.post(`---response---\n${message.content}`)
+			// output response to max patch
+			const abletonMidi = csvToAbleton(message.content);
+			max.outlet({notes: abletonMidi});
+			// output history (for storage and saving in dictionary)
+			max.outlet('history', { history: INITIAL_HISTORY });
+			max.outlet('done');
+			break;
+		} catch (error) {
+			if (error.response){
+				max.post(error.response.status);
+				max.post(error.response.data);
+				max.outlet('error');
+				break;
+			} else {
+				max.post(error.message);
+				messages.push({ role: ROLE, content: error.message });
+				max.post("trying again");
+			}
+			
 		}
-		max.outlet('error');
 	}
 }
 
@@ -94,14 +103,20 @@ max.addHandlers({
 
 const abletonToCSV = (notes) => {
   let lastStartTime = 0;
-  let csvString = "pitch_semitones,delay_beats,duration_beats,velocity_midi\n"; // CSV header
+
+  // order by start time
+  notes.sort((a, b) => a.start_time - b.start_time);
+
+  let csvString = "pitch_semitones,start_time,duration_beats,velocity_midi\n"; // CSV header
 
   notes.forEach((note) => {
-    const offset = note.start_time - lastStartTime;
+    const _offset = note.start_time - lastStartTime;
     lastStartTime = note.start_time;
     
-    csvString += `${note.pitch},${offset},${note.duration},${note.velocity}\n`;
+    csvString += `${note.pitch},${note.start_time},${note.duration},${note.velocity}\n`;
   });
+
+  
 
   return csvString;
 };
@@ -110,21 +125,29 @@ const abletonToCSV = (notes) => {
 const csvToAbleton = (csvString) => {
 	console.log("converting to ableton format", csvString)
 	const lines = csvString.trim().split('\n');
-	const header = lines.shift().split(',');
+	const header = lines.shift().split("#")[0].split(',');
   
 	let lastStartTime = 0;
 	const notes = lines.map((line) => {
-	  const [pitch, start_time_offset, duration, velocity] = line.split(',').map(Number);
-  
-	  lastStartTime += start_time_offset;
+	  const [pitch, start_time, duration, velocity] = line.split(',').map(Number);
+	  if (!pitch || !velocity || !duration)
+		return null;
+	//   if (delay_beats < 0) {
+	// 	throw new Error('delay_beats must be positive');
+	//   }
+	// if (start_time < lastStartTime) {
+	// 	throw new Error('start_time must be monotonically increasing');
+	// }			
+
+	  lastStartTime = start_time;
 	  
 	  return {
 		pitch,
-		start_time: lastStartTime,
+		start_time,
 		duration,
 		velocity
 	  };
-	});
+	}).filter((note) => note !== null);
   
 	return notes;
   };
