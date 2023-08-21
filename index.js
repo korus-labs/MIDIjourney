@@ -52,11 +52,11 @@ async function prompt({temperature=0.5, promptMidi=null, ...rest}){
 
 	const messages = [...INITIAL_HISTORY, { role: ROLE, content: gptPrompt }];
 
-	
+	console.log("---prompting---\n", JSON.stringify(messages, null, 2))
 	try {
 		// await chat completion with settings and chat history
 		const chat = await openai.createChatCompletion({
-			model: "gpt-4-0613", //'gpt-3.5-turbo',
+			model: 'gpt-3.5-turbo', // "gpt-4-0613", //
 			messages,
 			temperature,
 			max_tokens: MAX_TOKENS
