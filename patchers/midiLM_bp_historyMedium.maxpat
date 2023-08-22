@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -471,8 +471,8 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "", "", "int" ],
-					"patching_rect" : [ 430.0, 560.0, 90.0, 22.0 ],
-					"text" : "counter 0 5"
+					"patching_rect" : [ 430.0, 560.0, 69.0, 22.0 ],
+					"text" : "counter 1 5"
 				}
 
 			}
