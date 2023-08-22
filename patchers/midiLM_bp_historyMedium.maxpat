@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 389.0, -844.0, 684.0, 959.0 ],
+		"rect" : [ 389.0, 100.0, 684.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -817,7 +817,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 5.0, 335.0, 155.0 ],
 					"proportion" : 0.39,
-					"rounded" : 0,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{
 							"expression" : ""
