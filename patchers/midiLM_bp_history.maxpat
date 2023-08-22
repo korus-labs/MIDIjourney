@@ -185,6 +185,7 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-263",
+					"linecount" : 12,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -192,7 +193,8 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 125.0, 490.0, 375.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 10.0, 325.0, 144.85437023639679 ],
+					"presentation_linecount" : 13,
+					"presentation_rect" : [ 10.0, 10.0, 325.0, 149.85437023639679 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -204,6 +206,7 @@
 
 					}
 ,
+					"text" : "\"Franz Schubert was a renowned composer of the Romantic era known for his expressive melodies and rich harmonies. In the style of Schubert, we can create a piano melody in D minor that captures the emotional depth and lyrical qualities often found in his compositions.\n\nFor this melody, we will use a combination of stepwise motion and small leaps to create a sense of melodic flow and tension. The melody will be accompanied by simple chords in the left hand to provide harmonic support.\n\nNow, let's proceed to the MIDI notes for the piano melody in the style of Schubert in D minor.\"",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}
@@ -235,7 +238,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 325.0, 275.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 335.0, 155.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 335.0, 160.0 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{

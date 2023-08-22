@@ -125,7 +125,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 420.0, 415.0, 32.5, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 135.0, 135.0, 22.5, 25.0 ],
+					"presentation_rect" : [ 135.0, 140.0, 22.5, 25.0 ],
 					"rightarrow" : 0,
 					"saved_attribute_attributes" : 					{
 						"arrowcolor" : 						{
@@ -210,7 +210,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 485.0, 895.0, 40.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 140.0, 325.0, 15.0 ],
+					"presentation_rect" : [ 10.0, 145.0, 325.0, 15.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -351,7 +351,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 125.0, 925.0, 200.0, 130.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 10.0, 325.0, 125.0 ],
+					"presentation_rect" : [ 10.0, 10.0, 325.0, 130.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -444,7 +444,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 460.0, 415.0, 32.5, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 185.0, 135.0, 22.5, 25.0 ],
+					"presentation_rect" : [ 185.0, 140.0, 22.5, 25.0 ],
 					"saved_attribute_attributes" : 					{
 						"arrowcolor" : 						{
 							"expression" : ""
@@ -815,7 +815,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 775.0, 170.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 335.0, 155.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 335.0, 160.0 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{
