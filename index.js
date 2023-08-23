@@ -92,13 +92,20 @@ start_time,duration_beats,velocity_midi
 
 let ACCUMULATED_HISTORY = [];
 
+
+
 let ACCUMULATED_HISTORY_ACTIVE = false;
+
+
+let abortController = null;
 // The prompt send to OpenAI API with error handling
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
 async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
-	
+	if (abortController)
+		abortController.abort();
+
 	if (promptMidi && promptMidi.notes)
 		promptMidi = abletonToCSV(promptMidi.notes);
 
@@ -170,6 +177,11 @@ max.addHandlers({
 	'enableHistory' : (a) => {
 		ACCUMULATED_HISTORY_ACTIVE = a;
 		max.post(`Accumulate History set to ${ACCUMULATED_HISTORY_ACTIVE}`);
+	},
+	'cancel': () => {
+		if (abortController)
+			abortController.abort();
+		max.post("canceled");
 	}
 });
 
@@ -225,13 +237,15 @@ const csvToAbleton = (csvString) => {
 	return notes;
   };
 
-async function getChatGptResponse(messages, temperature) {
+async function 	getChatGptResponse(messages, temperature) {
+	abortController = new AbortController();
 	const chat = await openai.createChatCompletion({
 		model: GPT_MODEL,
 		messages,
 		temperature,
 		max_tokens: MAX_TOKENS
-	});
+	}, { signal: abortController.signal });
 	const message = chat.data.choices[0].message;
+	abortController = null;
 	return message;
 }
