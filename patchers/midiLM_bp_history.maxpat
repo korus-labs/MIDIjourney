@@ -57,7 +57,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 80.0, 440.0, 35.0, 22.0 ],
+					"patching_rect" : [ 70.0, 440.0, 35.0, 22.0 ],
 					"text" : "clear"
 				}
 
@@ -197,7 +197,6 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-263",
-					"linecount" : 10,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -205,7 +204,6 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 125.0, 490.0, 375.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 11,
 					"presentation_rect" : [ 10.0, 10.0, 325.0, 149.85437023639679 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -218,7 +216,6 @@
 
 					}
 ,
-					"text" : "\"Franz Schubert was a renowned composer of the Romantic era known for his melodic and expressive compositions. To create a piano melody in his style, we can incorporate lyrical melodies, rich harmonies, and emotional depth. The melody should have a flowing and expressive quality, with a mix of ascending and descending phrases. The tempo of 120bpm will provide a moderate pace, allowing for the nuances and emotions to be conveyed effectively. With a duration of 8 bars, we can explore different melodic motifs and variations to create a cohesive and engaging piece in the style of Schubert.\"",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}

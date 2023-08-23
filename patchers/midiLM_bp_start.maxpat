@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 802.0, 494.0, 684.0, 848.0 ],
+		"rect" : [ 802.0, 104.0, 680.0, 942.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -181,7 +181,7 @@
 					"bgoncolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-					"fontsize" : 16.0,
+					"fontsize" : 10.0,
 					"id" : "obj-27",
 					"maxclass" : "live.text",
 					"numinlets" : 1,
@@ -190,7 +190,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 20.0, 135.0, 120.000000000000014, 31.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 110.0, 30.0 ],
+					"presentation_rect" : [ 0.0, 5.0, 95.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
 							"expression" : ""
@@ -245,10 +245,10 @@
 
 					}
 ,
-					"text" : "CREATE",
+					"text" : "CREATE MIDI CLIP",
 					"textcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
 					"textoffcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
-					"texton" : "CREATING...",
+					"texton" : "CREATING MIDI CLIP...",
 					"varname" : "create"
 				}
 
