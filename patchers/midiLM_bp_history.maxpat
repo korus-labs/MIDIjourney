@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 860.0, 848.0 ],
+		"rect" : [ 864.0, 142.0, 860.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,24 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 90.0, 60.0, 43.0, 22.0 ],
+					"text" : "sel init"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-279",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 205.0, 440.0, 35.0, 22.0 ],
+					"patching_rect" : [ 80.0, 440.0, 35.0, 22.0 ],
 					"text" : "clear"
 				}
 
@@ -109,10 +121,10 @@
 					"id" : "obj-103",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "int", "bang" ],
-					"patching_rect" : [ 115.0, 140.0, 40.0, 22.0 ],
-					"text" : "t l 1 b"
+					"numoutlets" : 2,
+					"outlettype" : [ "", "int" ],
+					"patching_rect" : [ 115.0, 140.0, 29.5, 22.0 ],
+					"text" : "t l 1"
 				}
 
 			}
@@ -185,7 +197,7 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-263",
-					"linecount" : 12,
+					"linecount" : 10,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -193,7 +205,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 125.0, 490.0, 375.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 13,
+					"presentation_linecount" : 11,
 					"presentation_rect" : [ 10.0, 10.0, 325.0, 149.85437023639679 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -206,7 +218,7 @@
 
 					}
 ,
-					"text" : "\"Franz Schubert was a renowned composer of the Romantic era known for his expressive melodies and rich harmonies. In the style of Schubert, we can create a piano melody in D minor that captures the emotional depth and lyrical qualities often found in his compositions.\n\nFor this melody, we will use a combination of stepwise motion and small leaps to create a sense of melodic flow and tension. The melody will be accompanied by simple chords in the left hand to provide harmonic support.\n\nNow, let's proceed to the MIDI notes for the piano melody in the style of Schubert in D minor.\"",
+					"text" : "\"Franz Schubert was a renowned composer of the Romantic era known for his melodic and expressive compositions. To create a piano melody in his style, we can incorporate lyrical melodies, rich harmonies, and emotional depth. The melody should have a flowing and expressive quality, with a mix of ascending and descending phrases. The tempo of 120bpm will provide a moderate pace, allowing for the nuances and emotions to be conveyed effectively. With a duration of 8 bars, we can explore different melodic motifs and variations to create a cohesive and engaging piece in the style of Schubert.\"",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}
@@ -221,7 +233,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.761933565139771, 40.0, 30.0, 30.0 ]
+					"patching_rect" : [ 90.0, 10.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -255,13 +267,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-106", 0 ],
 					"source" : [ "obj-103", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-279", 0 ],
-					"source" : [ "obj-103", 2 ]
 				}
 
 			}
@@ -323,7 +328,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-239", 0 ],
+					"destination" : [ "obj-8", 0 ],
 					"source" : [ "obj-275", 0 ]
 				}
 
@@ -360,6 +365,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-268", 1 ],
 					"source" : [ "obj-62", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-239", 0 ],
+					"source" : [ "obj-8", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-279", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}

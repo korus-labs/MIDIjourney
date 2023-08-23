@@ -40,12 +40,24 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 26.0, 280.0, 102.0, 22.0 ],
+					"text" : "midiLM_routeDict"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 136.75, 513.0, 29.5, 22.0 ],
+					"patching_rect" : [ 360.75, 479.0, 29.5, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -57,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 136.0, 95.0, 29.5, 22.0 ],
+					"patching_rect" : [ 360.0, 61.0, 29.5, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -69,7 +81,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 20.0, 56.0, 135.0, 22.0 ],
+					"patching_rect" : [ 244.0, 22.0, 135.0, 22.0 ],
 					"text" : "midiLM_routeIfClipExist"
 				}
 
@@ -212,7 +224,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 19.75, 609.0, 80.0, 22.0 ],
+					"patching_rect" : [ 243.75, 575.0, 80.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -486,7 +498,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 136.75, 609.0, 80.0, 22.0 ],
+					"patching_rect" : [ 360.75, 575.0, 80.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -509,7 +521,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "dictionary" ],
-					"patching_rect" : [ 19.0, 6.0, 30.0, 30.0 ]
+					"patching_rect" : [ 26.0, 221.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -521,7 +533,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.75, 661.0, 30.0, 30.0 ]
+					"patching_rect" : [ 26.0, 328.224250597656294, 30.0, 30.0 ]
 				}
 
 			}
@@ -532,7 +544,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 136.0, 187.764998223812256, 71.0, 22.0 ],
+					"patching_rect" : [ 360.0, 153.764998223812256, 71.0, 22.0 ],
 					"text" : "fromsymbol"
 				}
 
@@ -544,7 +556,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 136.75, 560.393526759178258, 50.5, 22.0 ],
+					"patching_rect" : [ 360.75, 526.393526759178258, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -562,7 +574,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.999999666992153, 465.324100860048532, 158.0, 22.0 ],
+					"patching_rect" : [ 359.999999666992153, 431.324100860048532, 158.0, 22.0 ],
 					"text" : "prepend replace promptMidi"
 				}
 
@@ -574,7 +586,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.999999666992153, 412.890364684749613, 118.0, 22.0 ],
+					"patching_rect" : [ 359.999999666992153, 378.890364684749613, 118.0, 22.0 ],
 					"text" : "midiLM_dictObjStyle"
 				}
 
@@ -586,7 +598,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 135.999999666992153, 362.224250597656294, 167.0, 22.0 ],
+					"patching_rect" : [ 359.999999666992153, 328.224250597656294, 167.0, 22.0 ],
 					"text" : "route get_all_notes_extended"
 				}
 
@@ -598,7 +610,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 136.0, 225.000007433593794, 29.5, 22.0 ],
+					"patching_rect" : [ 360.0, 191.000007433593794, 29.5, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -610,7 +622,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 136.0, 274.323859972656294, 157.0, 22.0 ],
+					"patching_rect" : [ 360.0, 240.323859972656294, 157.0, 22.0 ],
 					"text" : "call get_all_notes_extended"
 				}
 
@@ -624,7 +636,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.999999666992153, 319.390388292968794, 89.298980712890625, 20.0 ],
+					"patching_rect" : [ 359.999999666992153, 285.390388292968794, 89.298980712890625, 20.0 ],
 					"saved_object_attributes" : 					{
 						"_persistence" : 1
 					}
@@ -640,13 +652,27 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 136.0, 150.0, 139.0, 22.0 ],
+					"patching_rect" : [ 360.0, 116.0, 139.0, 22.0 ],
 					"text" : "dict.unpack detailClip:"
 				}
 
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-54", 0 ],
 					"source" : [ "obj-141", 0 ]
@@ -676,7 +702,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
+					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -704,14 +730,14 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
+					"destination" : [ "obj-1", 1 ],
 					"source" : [ "obj-45", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
+					"destination" : [ "obj-1", 1 ],
 					"source" : [ "obj-48", 0 ]
 				}
 
