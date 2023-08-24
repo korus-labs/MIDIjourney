@@ -108,85 +108,89 @@ let abortController = null;
 async function prompt(inputDict){
 	max.post("Got the following data", Object.keys(inputDict));
 	try {
-
-	let {temperature=0.5, promptMidi=null, promptText="", clipDuration, gptModel, enableHistory} = inputDict;
-	
-	if (abortController)
-		abortController.abort();
-
-	if (promptMidi && promptMidi.notes)
-		promptMidi = abletonToCSV(promptMidi.notes);
-
-	
-	const gptPrompt =  `${promptText}\n${promptMidi}\n\nStart with the explanation.`
-
-	const promptMessage = { role: "user", content: gptPrompt };
-	
-	if (!enableHistory)
-		ACCUMULATED_HISTORY = [promptMessage];
-	else
-		ACCUMULATED_HISTORY.push(promptMessage);
-
-	const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
-	let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
-
-	let outputDict = {...inputDict, history: messages};
-	max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
-
-	printMessages(messages);
-	for (let tries=0; tries<3; tries++) {
-		try {
-			// await chat completion with settings and chat history
-			const explanationMessage = await getChatGptResponse(messages, {temperature, gptModel});
-			ACCUMULATED_HISTORY.push(explanationMessage);
-			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
-
-			max.post(`---explanation---\n${explanationMessage.content}`)
-			
-			outputDict = {...outputDict, history: messages, explanation: explanationMessage.content};
-			max.outlet("processing", outputDict);
+		let {temperature=0.5, promptMidi=null, promptText="", clipDuration, gptModel, enableHistory} = inputDict;
 		
+		if (abortController)
+			abortController.abort();
 
-			// get actual midi message from chatgpt
-			printMessages(messages);
-			const midiMessage = await getChatGptResponse(messages, {temperature, gptModel});
-			ACCUMULATED_HISTORY.push(midiMessage);
-			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
-
-			max.post(`---midi---\n${midiMessage.content}`)
-
-			const abletonMidi = csvToAbleton(midiMessage.content);
-
-			outputDict = {
-				...outputDict,
-				history: messages,
-				notes: abletonMidi
-			};
-
-			max.outlet("result", outputDict); 
-			// output history (for storage and saving in dictionary)
-
-			// max.outlet('done');
-			break;
-		} catch (error) {
-			if (error.response){
-				max.post(error.response.status);
-				max.post(error.response.data);
-				max.outlet('error', error.response.status);
-				break;
-			} else {
-				const errorMessage = `Error: ${error.message}\nDo not repeat the same output. Try something radically different.`;
-				ACCUMULATED_HISTORY.push({ role: "user", content: errorMessage });
-				if (error.name === "AbortError" || error.message === "canceled") {
-					max.post("canceled");
-					break;
-				}
-				max.post("error", error.message);
-				max.post("trying again");
-			}
-			
+		if (promptMidi && promptMidi.notes) {
+			// if there are more than 16 notes, only use the first 16 but append \n... to the end
+			if (promptMidi.notes.length > 16)
+				promptMidi = abletonToCSV(promptMidi.notes.slice(0, 16)) + "...";
+			else
+				promptMidi = abletonToCSV(promptMidi.notes);
 		}
-	}
+		
+		
+		const gptPrompt =  `${promptText}\n${promptMidi}\n\nStart with the explanation.`
+
+		const promptMessage = { role: "user", content: gptPrompt };
+		
+		if (!enableHistory)
+			ACCUMULATED_HISTORY = [promptMessage];
+		else
+			ACCUMULATED_HISTORY.push(promptMessage);
+
+		const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
+		let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
+
+		let outputDict = {...inputDict, history: messages};
+		max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
+
+		printMessages(messages);
+		for (let tries=0; tries<3; tries++) {
+			try {
+				// await chat completion with settings and chat history
+				const explanationMessage = await getChatGptResponse(messages, {temperature, gptModel});
+				ACCUMULATED_HISTORY.push(explanationMessage);
+				messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
+
+				max.post(`---explanation---\n${explanationMessage.content}`)
+				
+				outputDict = {...outputDict, history: messages, explanation: explanationMessage.content};
+				max.outlet("processing", outputDict);
+			
+
+				// get actual midi message from chatgpt
+				printMessages(messages);
+				const midiMessage = await getChatGptResponse(messages, {temperature, gptModel});
+				ACCUMULATED_HISTORY.push(midiMessage);
+				messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
+
+				max.post(`---midi---\n${midiMessage.content}`)
+
+				const abletonMidi = csvToAbleton(midiMessage.content);
+
+				outputDict = {
+					...outputDict,
+					history: messages,
+					notes: abletonMidi
+				};
+
+				max.outlet("result", outputDict); 
+				// output history (for storage and saving in dictionary)
+
+				// max.outlet('done');
+				break;
+			} catch (error) {
+				if (error.response){
+					max.post(error.response.status);
+					max.post(error.response.data);
+					max.outlet('error', error.response.status);
+					break;
+				} else {
+					const errorMessage = `Error: ${error.message}\nDo not repeat the same output. Try something radically different.`;
+					ACCUMULATED_HISTORY.push({ role: "user", content: errorMessage });
+					if (error.name === "AbortError" || error.message === "canceled") {
+						max.post("canceled");
+						break;
+					}
+					max.post("error", error.message);
+					max.post("trying again");
+				}
+				
+			}
+		}
 	} catch (error) {
 		max.post("error", error.message);
 		max.outlet('error', error.message);
