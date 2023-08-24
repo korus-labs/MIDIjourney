@@ -125,6 +125,9 @@ async function prompt(inputDict){
 	const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
 	let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
+	let outputDict = {...inputDict, history: messages};
+	max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
+
 	max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
 	for (let tries=0; tries<3; tries++) {
 		try {
@@ -134,7 +137,9 @@ async function prompt(inputDict){
 			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 			max.post(`---explanation---\n${explanationMessage.content}`)
-			max.outlet("explanation", explanationMessage.content);
+			
+			outputDict = {...outputDict, history: messages, explanation: explanationMessage.content};
+			max.outlet("processing", outputDict);
 		
 
 			// get actual midi message from chatgpt
@@ -147,9 +152,8 @@ async function prompt(inputDict){
 			// output response to max patch
 			const abletonMidi = csvToAbleton(midiMessage.content);
 
-			const outputDict = {
-				...inputDict,
-				explanation: explanationMessage.content,
+			outputDict = {
+				...outputDict,
 				history: messages,
 				notes: abletonMidi
 			};
