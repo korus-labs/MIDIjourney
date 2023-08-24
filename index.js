@@ -102,7 +102,10 @@ let abortController = null;
 // Returns the result and a message 'done'
 // Else returns a message 'error'
 //
-async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
+async function prompt(inputDict){
+
+	const {temperature=0.5, promptMidi=null, promptText=""} = inputDict;
+	
 	if (abortController)
 		abortController.abort();
 
@@ -131,7 +134,9 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 			max.post(`---explanation---\n${explanationMessage.content}`)
-			max.outlet("explanation", explanationMessage.content)
+			max.outlet("explanation", explanationMessage.content);
+		
+
 			// get actual midi message from chatgpt
 			max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
 			const midiMessage = await getChatGptResponse(messages, temperature);
@@ -141,9 +146,17 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 			max.post(`---midi---\n${midiMessage.content}`)
 			// output response to max patch
 			const abletonMidi = csvToAbleton(midiMessage.content);
-			max.outlet("midi", {notes: abletonMidi});
+
+			const outputDict = {
+				...inputDict,
+				explanation: explanationMessage.content,
+				history: messages,
+				notes: abletonMidi
+			};
+
+			max.outlet("result", outputDict); 
 			// output history (for storage and saving in dictionary)
-			max.outlet('history', { history: messages });
+
 			// max.outlet('done');
 			break;
 		} catch (error) {
@@ -153,7 +166,10 @@ async function prompt({temperature=0.5, promptMidi=null, promptText=""}){
 				max.outlet('error', error.response.status);
 				break;
 			} else {
-				max.post(error.message);
+				if (error.name === "AbortError" || error.message === "canceled") {
+					break;
+				}
+				max.post("error", error.message);
 				messages.push({ role: "user", content: error.message });
 				max.post("trying again");
 			}
@@ -177,6 +193,10 @@ max.addHandlers({
 	'enableHistory' : (a) => {
 		ACCUMULATED_HISTORY_ACTIVE = a;
 		max.post(`Accumulate History set to ${ACCUMULATED_HISTORY_ACTIVE}`);
+	},
+	'clearHistory' : () => {
+		ACCUMULATED_HISTORY = [];
+		max.post(`History cleared`);
 	},
 	'cancel': () => {
 		if (abortController)
