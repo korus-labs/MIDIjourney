@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -195.0, -993.0, 938.0, 959.0 ],
+		"rect" : [ -195.0, -993.0, 1852.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 255.0, -90.0, 58.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "newobj",
@@ -141,7 +153,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 695.0, 225.0, 67.0, 22.0 ],
+					"patching_rect" : [ 685.0, 225.0, 67.0, 22.0 ],
 					"text" : "r ---clearAll"
 				}
 
@@ -837,7 +849,7 @@
 							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 2,
-							"parameter_longname" : "clearHistory",
+							"parameter_longname" : "clearHistory[1]",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "clearHistory",
 							"parameter_type" : 2
@@ -1054,7 +1066,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_invisible" : 1,
-							"parameter_longname" : "textPrompt[3]",
+							"parameter_longname" : "textPrompt[6]",
 							"parameter_shortname" : "textPrompt",
 							"parameter_type" : 3
 						}
@@ -1183,7 +1195,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_invisible" : 1,
-							"parameter_longname" : "textPrompt[2]",
+							"parameter_longname" : "textPrompt[5]",
 							"parameter_shortname" : "textPrompt",
 							"parameter_type" : 3
 						}
@@ -1501,6 +1513,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-55", 0 ],
 					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-202", 0 ],
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}

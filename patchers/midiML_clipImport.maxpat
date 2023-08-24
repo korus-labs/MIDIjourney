@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1129.0, 225.0, 757.0, 747.0 ],
+		"rect" : [ 721.0, 225.0, 757.0, 747.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -302,8 +302,8 @@
 									"numinlets" : 7,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 60.5, 318.558861315250283, 209.0, 22.0 ],
-									"text" : "pack Clip notes imported - Quantity : i"
+									"patching_rect" : [ 69.5, 319.558861315250283, 248.0, 22.0 ],
+									"text" : "pack i notes imported from selected MIDI clip"
 								}
 
 							}
@@ -448,7 +448,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-17", 6 ],
+									"destination" : [ "obj-17", 1 ],
 									"source" : [ "obj-15", 1 ]
 								}
 
