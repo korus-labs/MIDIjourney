@@ -104,7 +104,7 @@ let abortController = null;
 //
 async function prompt(inputDict){
 
-	const {temperature=0.5, promptMidi=null, promptText=""} = inputDict;
+	let {temperature=0.5, promptMidi=null, promptText=""} = inputDict;
 	
 	if (abortController)
 		abortController.abort();
