@@ -10,6 +10,14 @@ require('dotenv').config();
 
 const max = require('max-api');
 const { Configuration, OpenAIApi } = require('openai');
+// const { miniNotationDescription, miniToAbleton } = require('./codeToNotes.js');
+
+
+// const max = {
+// 	post: console.log,
+// 	outlet: console.log,
+// 	addHandlers: () => {}
+// }
 
 // Use the API Key from the .env file
 const config = new Configuration({
@@ -19,7 +27,6 @@ const openai = new OpenAIApi(config);
 
 // Settings
 let MAX_TOKENS = Infinity;
-let GPT_MODEL = 'gpt-3.5-turbo-0613'; // "gpt-4-0613"; //  
 
 let INITIAL_HISTORY = [
 	{ 
@@ -93,18 +100,16 @@ start_time,duration_beats,velocity_midi
 let ACCUMULATED_HISTORY = [];
 
 
-
-let ACCUMULATED_HISTORY_ACTIVE = false;
-
-
 let abortController = null;
 // The prompt send to OpenAI API with error handling
 // Returns the result and a message 'done'
 // Else returns a message 'error'
-//
+//= // "gpt-4-0613"; //  
 async function prompt(inputDict){
+	max.post("Got the following data", Object.keys(inputDict));
+	try {
 
-	let {temperature=0.5, promptMidi=null, promptText=""} = inputDict;
+	let {temperature=0.5, promptMidi=null, promptText="", clipDuration, gptModel, enableHistory} = inputDict;
 	
 	if (abortController)
 		abortController.abort();
@@ -117,7 +122,7 @@ async function prompt(inputDict){
 
 	const promptMessage = { role: "user", content: gptPrompt };
 	
-	if (!ACCUMULATED_HISTORY_ACTIVE)
+	if (!enableHistory)
 		ACCUMULATED_HISTORY = [promptMessage];
 	else
 		ACCUMULATED_HISTORY.push(promptMessage);
@@ -128,11 +133,11 @@ async function prompt(inputDict){
 	let outputDict = {...inputDict, history: messages};
 	max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
 
-	max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
+	printMessages(messages);
 	for (let tries=0; tries<3; tries++) {
 		try {
 			// await chat completion with settings and chat history
-			const explanationMessage = await getChatGptResponse(messages, temperature);
+			const explanationMessage = await getChatGptResponse(messages, {temperature, gptModel});
 			ACCUMULATED_HISTORY.push(explanationMessage);
 			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
@@ -143,13 +148,13 @@ async function prompt(inputDict){
 		
 
 			// get actual midi message from chatgpt
-			max.post("---prompting---\n"+JSON.stringify(messages, null, 2))
-			const midiMessage = await getChatGptResponse(messages, temperature);
+			printMessages(messages);
+			const midiMessage = await getChatGptResponse(messages, {temperature, gptModel});
 			ACCUMULATED_HISTORY.push(midiMessage);
 			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
 			max.post(`---midi---\n${midiMessage.content}`)
-			// output response to max patch
+
 			const abletonMidi = csvToAbleton(midiMessage.content);
 
 			outputDict = {
@@ -170,15 +175,21 @@ async function prompt(inputDict){
 				max.outlet('error', error.response.status);
 				break;
 			} else {
+				const errorMessage = `Error: ${error.message}\nDo not repeat the same output. Try something radically different.`;
+				ACCUMULATED_HISTORY.push({ role: "user", content: errorMessage });
 				if (error.name === "AbortError" || error.message === "canceled") {
+					max.post("canceled");
 					break;
 				}
 				max.post("error", error.message);
-				messages.push({ role: "user", content: error.message });
 				max.post("trying again");
 			}
 			
 		}
+	}
+	} catch (error) {
+		max.post("error", error.message);
+		max.outlet('error', error.message);
 	}
 }
 
@@ -189,14 +200,6 @@ max.addHandlers({
 		// if prompt is an array join into one string
 		p = Array.isArray(p) ? p.join(" ") : p;
 		prompt(p);
-	},
-	'gptModel' : (m) => {
-		GPT_MODEL = m;
-		max.post(`GPT Model set to ${GPT_MODEL}`);
-	},
-	'enableHistory' : (a) => {
-		ACCUMULATED_HISTORY_ACTIVE = a;
-		max.post(`Accumulate History set to ${ACCUMULATED_HISTORY_ACTIVE}`);
 	},
 	'clearHistory' : () => {
 		ACCUMULATED_HISTORY = [];
@@ -213,22 +216,22 @@ max.addHandlers({
 
 
 const abletonToCSV = (notes) => {
-  let lastStartTime = 0;
-
-  // order by start time
-  notes.sort((a, b) => a.start_time - b.start_time);
-
-  let csvString = "pitch_semitones,start_time,duration_beats,velocity_midi\n"; // CSV header
-
-  notes.forEach((note) => {
-    const _offset = note.start_time - lastStartTime;
-    lastStartTime = note.start_time;
-    
-    csvString += `${note.pitch},${note.start_time},${note.duration},${note.velocity}\n`;
-  });
-
-  return csvString;
-};
+	let lastStartTime = 0;
+  
+	// order by start time
+	notes.sort((a, b) => a.start_time - b.start_time);
+  
+	let csvString = "pitch_semitones,start_time,duration_beats,velocity_midi\n"; // CSV header
+  
+	notes.forEach((note) => {
+	  const _offset = note.start_time - lastStartTime;
+	  lastStartTime = note.start_time;
+	  
+	  csvString += `${note.pitch},${note.start_time},${note.duration},${note.velocity}\n`;
+	});
+  
+	return csvString;
+  };  
 
 
 const csvToAbleton = (csvString) => {
@@ -261,10 +264,11 @@ const csvToAbleton = (csvString) => {
 	return notes;
   };
 
-async function 	getChatGptResponse(messages, temperature) {
+async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613"}) {
+	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length)
 	abortController = new AbortController();
 	const chat = await openai.createChatCompletion({
-		model: GPT_MODEL,
+		model: gptModel,
 		messages,
 		temperature,
 		max_tokens: MAX_TOKENS
@@ -272,4 +276,13 @@ async function 	getChatGptResponse(messages, temperature) {
 	const message = chat.data.choices[0].message;
 	abortController = null;
 	return message;
+}
+
+
+function printMessages(messages) {
+	max.post(`--- messages (${messages.length}) ---`);
+	messages.forEach((m) => {
+		max.post(`[${m.role}]:\n${m.content}\n`)
+	});
+	max.post(`--- end messages ---`);
 }
