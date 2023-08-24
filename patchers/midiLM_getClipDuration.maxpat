@@ -323,7 +323,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-40",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -336,7 +336,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-42",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -390,6 +390,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 1 ],
+					"disabled" : 1,
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -584,13 +585,15 @@
 
 			}
  ],
-		"saved_attribute_attributes" : 		{
-			"default_plcolor" : 			{
-				"expression" : ""
+		"dependency_cache" : [ 			{
+				"name" : "midiLM_routeDict.maxpat",
+				"bootpath" : "~/GitHub/midiLM/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
 			}
-
-		}
-
+ ],
+		"autosave" : 0
 	}
 
 }

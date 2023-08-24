@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 623.0, 100.0, 855.0, 959.0 ],
+		"rect" : [ 623.0, 100.0, 424.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -189,15 +189,13 @@
 					"angle" : 270.0,
 					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.867, 0.875, 0.867, 1.0 ],
+					"bordercolor" : [ 0.471, 0.565, 0.612, 1.0 ],
 					"id" : "obj-12",
 					"maxclass" : "panel",
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 690.0, 215.0, 30.0, 31.030927777290344 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 145.0, 150.0, 20.0 ],
+					"patching_rect" : [ 690.0, 385.0, 30.0, 31.030927777290344 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{
@@ -291,9 +289,9 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 740.0, 215.0, 152.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 65.0, 146.0, 140.0, 18.0 ],
-					"text" : "MIDI clip input selected : YES",
-					"textcolor" : [ 0.867, 0.875, 0.867, 1.0 ]
+					"presentation_rect" : [ 65.0, 147.0, 140.0, 18.0 ],
+					"text" : "MIDI clip input selected : NO",
+					"textcolor" : [ 0.471, 0.565, 0.612, 1.0 ]
 				}
 
 			}
@@ -658,7 +656,7 @@
 							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 2,
-							"parameter_longname" : "clipStatus[1]",
+							"parameter_longname" : "clipStatus[2]",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "clipStatus",
 							"parameter_type" : 2
@@ -1215,6 +1213,7 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
+					"linecount" : 3,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -1222,19 +1221,20 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 55.0, 305.0, 70.0 ],
 					"presentation" : 1,
+					"presentation_linecount" : 3,
 					"presentation_rect" : [ 10.0, 10.0, 325.0, 130.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_invisible" : 1,
-							"parameter_longname" : "textPrompt",
+							"parameter_longname" : "textPrompt[4]",
 							"parameter_shortname" : "textPrompt",
 							"parameter_type" : 3
 						}
 
 					}
 ,
-					"text" : "create a melody in the style of Philip Glass",
+					"text" : "Create a melody in the style of Philip Glass. Use subtle but complex arpegio technics. The duration of the melody should be 16 bars.",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt"
 				}
@@ -1442,7 +1442,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
-					"order" : 1,
+					"disabled" : 1,
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -1450,7 +1450,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
-					"order" : 2,
+					"order" : 1,
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -1568,6 +1568,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
+					"disabled" : 1,
 					"source" : [ "obj-30", 0 ]
 				}
 

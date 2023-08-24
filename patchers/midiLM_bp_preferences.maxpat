@@ -475,7 +475,7 @@
 							"parameter_enum" : [ "val1", "val2" ],
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "historyStatus",
+							"parameter_longname" : "historyStatus[1]",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "historyStatus",
 							"parameter_type" : 2
@@ -558,7 +558,7 @@
 ,
 						"valueof" : 						{
 							"parameter_enum" : [ "GPT3.5", "GPT4" ],
-							"parameter_longname" : "live.tab",
+							"parameter_longname" : "live.tab[1]",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "live.tab",
 							"parameter_type" : 2,
@@ -1270,7 +1270,7 @@
 							"parameter_initial" : [ 0.5 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 1,
-							"parameter_longname" : "temperature",
+							"parameter_longname" : "temperature[1]",
 							"parameter_mmax" : 2.0,
 							"parameter_shortname" : "temperature",
 							"parameter_type" : 0,
