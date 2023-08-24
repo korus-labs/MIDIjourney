@@ -320,8 +320,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 164.375, 162.0, 189.0, 22.0 ],
-					"text" : "midiLM_getFromDict clipDuration:"
+					"patching_rect" : [ 164.375, 162.0, 169.0, 22.0 ],
+					"text" : "midiLM_getFromDict duration:"
 				}
 
 			}

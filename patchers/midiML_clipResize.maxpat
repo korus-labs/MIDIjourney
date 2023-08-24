@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 507.0, 87.0, 879.0, 763.0 ],
+		"rect" : [ 507.0, 100.0, 879.0, 763.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -93,7 +93,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 119.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -128,8 +128,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 100.0, 189.0, 22.0 ],
-									"text" : "midiLM_getFromDict clipDuration:"
+									"patching_rect" : [ 50.0, 100.0, 169.0, 22.0 ],
+									"text" : "midiLM_getFromDict duration:"
 								}
 
 							}
@@ -260,7 +260,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 148.5, 107.0, 175.0, 22.0 ],
+					"patching_rect" : [ 149.0, 113.0, 175.0, 22.0 ],
 					"text" : "midiLM_getFromDict detailClip:"
 				}
 
@@ -272,8 +272,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 148.5, 153.0, 189.0, 22.0 ],
-					"text" : "midiLM_getFromDict clipDuration:"
+					"patching_rect" : [ 148.5, 153.0, 169.0, 22.0 ],
+					"text" : "midiLM_getFromDict duration:"
 				}
 
 			}
