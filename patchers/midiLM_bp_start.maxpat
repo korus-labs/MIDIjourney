@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 798.0, 104.0, 680.0, 942.0 ],
+		"rect" : [ 425.0, -976.0, 680.0, 942.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,31 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+					"border" : 1,
+					"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
+					"id" : "obj-15",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 205.0, 220.0, 30.0, 31.030927777290344 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 5.0, 125.0, 20.0 ],
+					"proportion" : 0.39,
+					"saved_attribute_attributes" : 					{
+						"bgfillcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "newobj",
@@ -164,7 +189,7 @@
 					"activebgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"activebgoncolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"activetextcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-					"activetextoncolor" : [ 0.868, 0.874, 0.868, 0.04 ],
+					"activetextoncolor" : [ 0.868, 0.874, 0.868, 1.0 ],
 					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"bgoncolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
@@ -178,7 +203,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 20.0, 135.0, 120.000000000000014, 31.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 5.0, 110.0, 15.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 125.0, 20.0 ],
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
 							"expression" : ""
@@ -224,7 +249,7 @@
 							"parameter_enum" : [ "val1", "val2" ],
 							"parameter_initial" : [ 0 ],
 							"parameter_invisible" : 2,
-							"parameter_longname" : "create",
+							"parameter_longname" : "create[1]",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "create",
 							"parameter_type" : 2

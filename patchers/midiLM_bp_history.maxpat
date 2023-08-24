@@ -190,7 +190,6 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-263",
-					"linecount" : 13,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -198,7 +197,6 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 160.0, 160.0, 375.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 14,
 					"presentation_rect" : [ 10.0, 10.0, 325.0, 149.85437023639679 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -211,7 +209,6 @@
 
 					}
 ,
-					"text" : "\"Philip Glass is known for his minimalist and repetitive style of music. His compositions often feature repetitive patterns and gradual changes over time. The melodies in his music are usually simple and repetitive, with a focus on rhythm and the interplay between different musical elements.\n\nFor a melody in the style of Philip Glass, we can create a repeating pattern with a gradual variation. We can use a combination of short notes and longer sustained notes to create a sense of movement and tension. The melody can be built on a simple motif or phrase that is repeated and transformed throughout the composition.\n\nNow, let's generate the MIDI notes for the melody.\"",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}
@@ -241,7 +238,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 470.0, 100.0, 33.0, 35.0 ],
+					"patching_rect" : [ 460.0, 100.0, 33.0, 35.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 5.0, 335.0, 160.0 ],
 					"proportion" : 0.39,
