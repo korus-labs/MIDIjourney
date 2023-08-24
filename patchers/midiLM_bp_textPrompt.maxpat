@@ -1215,7 +1215,6 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 2,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -1223,7 +1222,6 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 55.0, 305.0, 70.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
 					"presentation_rect" : [ 10.0, 10.0, 325.0, 130.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -1236,7 +1234,7 @@
 
 					}
 ,
-					"text" : "Create a piano melody at 120bpm, of a duration of 8 bars, in the style of Schubbert.",
+					"text" : "create a melody in the style of Philip Glass",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt"
 				}
@@ -1275,7 +1273,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -165.0, 195.0, 30.0, 30.0 ]
+					"patching_rect" : [ -165.0, 210.0, 30.0, 30.0 ]
 				}
 
 			}
