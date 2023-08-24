@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const max = require('max-api');
 const { Configuration, OpenAIApi } = require('openai');
+const { abletonToCSV, csvToAbleton } = require('./csvNotation');
 // const { miniNotationDescription, miniToAbleton } = require('./codeToNotes.js');
 
 
@@ -113,14 +114,8 @@ async function prompt(inputDict){
 		if (abortController)
 			abortController.abort();
 
-		if (promptMidi && promptMidi.notes) {
-			// if there are more than 16 notes, only use the first 16 but append \n... to the end
-			if (promptMidi.notes.length > 16)
-				promptMidi = abletonToCSV(promptMidi.notes.slice(0, 16)) + "...";
-			else
-				promptMidi = abletonToCSV(promptMidi.notes);
-		}
-		
+		if (promptMidi && promptMidi.notes)
+			promptMidi = abletonToCSV(promptMidi.notes);
 		
 		const gptPrompt =  `${promptText}\n${promptMidi}\n\nStart with the explanation.`
 
@@ -218,55 +213,6 @@ max.addHandlers({
 
 
 
-
-const abletonToCSV = (notes) => {
-	let lastStartTime = 0;
-  
-	// order by start time
-	notes.sort((a, b) => a.start_time - b.start_time);
-  
-	let csvString = "pitch_semitones,start_time,duration_beats,velocity_midi\n"; // CSV header
-  
-	notes.forEach((note) => {
-	  const _offset = note.start_time - lastStartTime;
-	  lastStartTime = note.start_time;
-	  
-	  csvString += `${note.pitch},${note.start_time},${note.duration},${note.velocity}\n`;
-	});
-  
-	return csvString;
-  };  
-
-
-const csvToAbleton = (csvString) => {
-	console.log("converting to ableton format", csvString)
-	const lines = csvString.trim().split('\n');
-	const header = lines.shift().split("#")[0].split(',');
-  
-	let lastStartTime = 0;
-	const notes = lines.map((line) => {
-	  const [pitch, start_time, duration, velocity] = line.split(',').map(Number);
-	  if (!pitch || !velocity || !duration)
-		return null;
-	//   if (delay_beats < 0) {
-	// 	throw new Error('delay_beats must be positive');
-	//   }
-	// if (start_time < lastStartTime) {
-	// 	throw new Error('start_time must be monotonically increasing');
-	// }			
-
-	  lastStartTime = start_time;
-	  
-	  return {
-		pitch,
-		start_time,
-		duration,
-		velocity
-	  };
-	}).filter((note) => note !== null);
-  
-	return notes;
-  };
 
 async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613"}) {
 	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length)
