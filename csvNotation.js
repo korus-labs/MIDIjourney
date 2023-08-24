@@ -7,7 +7,6 @@ const abletonToCSV = (notes) => {
 	
 	notes = notes.slice(0, 16);
 
-		promptMidi = abletonToCSV(promptMidi.notes);
 	let lastStartTime = 0;
 
 	// order by start time
