@@ -57,7 +57,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 315.0, 20.0, 65.0, 22.0 ],
+					"patching_rect" : [ 305.0, 20.0, 65.0, 22.0 ],
 					"text" : "route error"
 				}
 
@@ -214,7 +214,6 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,
 					"id" : "obj-263",
-					"linecount" : 18,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -222,7 +221,6 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 160.0, 160.0, 375.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 21,
 					"presentation_rect" : [ 10.0, 10.0, 325.0, 149.85437023639679 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -235,7 +233,6 @@
 
 					}
 ,
-					"text" : "\"Philip Glass is known for his minimalist and repetitive compositions that often create a sense of mystery and intensity. To capture the enigmatic and captivating mood of his music, we can create a 32-bar melody with subtle and quick arpeggios, incorporating changes in velocity to add depth.\n\nFor the melody, we can use a simple arpeggio pattern that repeats throughout the 32 bars. The pattern can consist of ascending and descending notes, with quick and precise timing. To create a sense of mystery, we can use minor or diminished chords and incorporate chromatic notes within the arpeggios.\n\nTo add intensity, we can vary the velocity of the notes, starting with a lower velocity and gradually increasing it, creating a crescendo effect. This will give the melody a dynamic and evolving quality.\n\nLet's generate the MIDI notes for the 32-bar melody in the style of Philip Glass.\"",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}
