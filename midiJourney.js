@@ -78,9 +78,9 @@ async function prompt(inputDict){
 	let notesCSV = notes ? notationEncoder(notes) : "";
 	
 	// append duration to midi prompt
-	notesCSV = `duration_bars:${duration}\n${notesCSV}`;
+	notesCSV = `duration_beats:${duration*4}\n${notesCSV}`;
 	// ${promptMidi}\n\nStart with the explanation.
-	const gptPrompt =  `${notesCSV}\ninput:${promptText}\n`
+	const gptPrompt =  `${notesCSV}\prompt:${promptText}\n`
 
 	const promptMessage = { role: "user", content: gptPrompt };
 	

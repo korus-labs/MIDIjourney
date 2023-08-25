@@ -71,7 +71,7 @@ pitch_semitones,start_time,duration_beats
 `;
 
 const csvNotationExamples = `
-
+duration_beats:16
 prompt: a boards of canada style chord progression in C major
 
 response:
@@ -96,25 +96,35 @@ pitch_semitones,start_time,duration_beats,velocity_midi
 83,12.5,3.5
 
 
-prompt: fuer elise melody for 1 bar
+request:
+duration_beats:4
+pitch_semitones,start_time,duration_beats
+60,0,2
+64,0,2
+67,0,2
+71,0,2
+62,2,2
+66,2,2
+69,2,2
+73,2,2
+
+prompt:can you make an chirpy arpeggio out of this chord progression?
 
 response:
-# Fuer Elise (Am)
-# The first bar typically consists of the notes E, D#, E, A, repeated in quick succession.  A "quaver" (eighth note) followed by a "semiquaver" (sixteenth note) pattern for each set of four notes.
-start_time,duration_beats,velocity_midi
-76,1,0.25
-75,1.25,0.25
-76,1.5,0.25
-75,1.75,0.25
-76,2,0.25
-71,2.25,0.25
-74,2.5,0.25
-72,2.75,0.25
-45,3,0.25
-69,3,0.75
-52,3.25,0.25
-57,3.5,0.25
-60,3.75,0.25
+# Chirpy Arpeggio
+# I will transform the given chord progression into a chirpy arpeggio by playing the notes of each chord in a quick succession.
+pitch_semitones,start_time,duration_beats
+60,0,0.5
+64,0.5,0.5
+67,1,0.5
+71,1.5,0.5
+62,2,0.5
+66,2.5,0.5
+69,3,0.5
+73,3.5,0.5
+
+
+
 `;
 
 exports.csvToAbleton = csvToAbleton;
