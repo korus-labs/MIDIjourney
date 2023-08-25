@@ -277,14 +277,16 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 220.0, 300.643728971481323, 240.0, 22.0 ],
+					"patching_rect" : [ 220.0, 300.643728971481323, 275.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
-					"text" : "node.script index.js @autostart 1 @watch 1"
+					"text" : "node.script midiJourney.js @autostart 1 @watch 1"
 				}
 
 			}
