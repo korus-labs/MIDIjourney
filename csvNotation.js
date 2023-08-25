@@ -1,10 +1,11 @@
+const MAX_NOTES_FOR_INPUT = 16;
 
 const abletonToCSV = (notes) => {
 	// if there are more than 16 notes, only use the first 16 but append \n... to the end
 
-	const notesExceeded = notes.length > 16;
+	const notesExceeded = notes.length > MAX_NOTES_FOR_INPUT;
 	
-	notes = notes.slice(0, 16);
+	notes = notes.slice(0, MAX_NOTES_FOR_INPUT);
 
 	let lastStartTime = 0;
 
