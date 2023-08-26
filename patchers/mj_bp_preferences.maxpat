@@ -80,7 +80,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 100.0, 600.0, 45.0 ],
+						"rect" : [ 100.0, 100.0, 1070.0, 431.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -108,7 +108,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"title" : "Api Key",
+						"title" : "Midijourney - API Key",
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-35",
@@ -118,17 +118,6 @@
 									"outlettype" : [ "bang", "bang", "" ],
 									"patching_rect" : [ 255.0, 685.0, 155.0, 22.0 ],
 									"text" : "sel setApiKey deleteApiKey"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-33",
-									"maxclass" : "newobj",
-									"numinlets" : 0,
-									"numoutlets" : 0,
-									"patching_rect" : [ 255.0, 630.0, 67.0, 22.0 ],
-									"text" : "node.script"
 								}
 
 							}
@@ -2374,14 +2363,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 153.748598523140117, 561.42856776714325, 50.5, 22.0 ],
+					"patching_rect" : [ 153.748598523140117, 561.42856776714325, 79.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
 					}
 ,
-					"text" : "dict"
+					"text" : "dict @quiet 1"
 				}
 
 			}
