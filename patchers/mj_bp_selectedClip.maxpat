@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 358.0, 100.0, 780.0, 848.0 ],
+		"rect" : [ 536.0, 527.0, 780.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -70,7 +70,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 695.0, 140.0, 50.0, 22.0 ]
+					"patching_rect" : [ 695.0, 140.0, 50.0, 22.0 ],
+					"text" : "id 0"
 				}
 
 			}
@@ -378,19 +379,19 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.745098039215686, 0.270588235294118, 1.0, 0.0 ],
-					"fontname" : "Ableton Sans Medium",
-					"fontsize" : 10.0,
+					"bgcolor" : [ 0.450980392156863, 0.0, 0.694117647058824, 0.0 ],
+					"fontname" : "Ableton Sans Light",
+					"fontsize" : 12.0,
 					"id" : "obj-16",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 260.0, 705.0, 152.0, 18.0 ],
+					"patching_rect" : [ 260.0, 705.0, 176.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 7.0, 150.0, 18.0 ],
-					"text" : "MIDI clip input selected : NO",
-					"textcolor" : [ 0.471, 0.565, 0.612, 1.0 ],
-					"textjustification" : 2
+					"presentation_rect" : [ 5.0, 7.0, 450.0, 21.0 ],
+					"text" : "Select a MIDI clip/slot",
+					"textcolor" : [ 1.0, 0.365, 0.365, 1.0 ],
+					"textjustification" : 1
 				}
 
 			}
@@ -398,7 +399,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -410,11 +411,11 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-1",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "dictionary" ],
 					"patching_rect" : [ 20.0, -235.0, 30.0, 30.0 ]
 				}
 
@@ -965,39 +966,7 @@
 				}
 
 			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "mj_getFromId.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mj_getPathFromId.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mj_observeFromId.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mj_route.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
- ],
-		"autosave" : 0,
-		"bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
-		"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ]
+ ]
 	}
 
 }
