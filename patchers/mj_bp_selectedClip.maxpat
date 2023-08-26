@@ -354,7 +354,7 @@
 					"presentation_rect" : [ 5.0, 7.0, 150.0, 18.0 ],
 					"text" : "MIDI clip input selected : YES",
 					"textcolor" : [ 0.867, 0.875, 0.867, 1.0 ],
-					"textjustification" : 1
+					"textjustification" : 2
 				}
 
 			}

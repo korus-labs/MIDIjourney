@@ -480,7 +480,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 485.0, 215.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 125.0, 20.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 200.0, 30.0 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{
@@ -608,7 +608,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "dictionary" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 125.0, 35.0, 30.0, 30.0 ]
 				}
 
@@ -623,7 +623,7 @@
 					"bgoncolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-					"fontsize" : 10.0,
+					"fontsize" : 16.0,
 					"id" : "obj-27",
 					"maxclass" : "live.text",
 					"numinlets" : 1,
@@ -632,7 +632,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 245.0, 275.0, 120.000000000000014, 31.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 125.0, 20.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 200.0, 30.0 ],
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
 							"expression" : ""
@@ -678,7 +678,7 @@
 							"parameter_enum" : [ "val1", "val2" ],
 							"parameter_initial" : [ 0 ],
 							"parameter_invisible" : 2,
-							"parameter_longname" : "create[1]",
+							"parameter_longname" : "create",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "create",
 							"parameter_type" : 2

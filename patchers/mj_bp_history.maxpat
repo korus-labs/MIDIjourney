@@ -211,17 +211,17 @@
 					"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
 					"border" : 0.0,
 					"bordercolor" : [ 0.4, 0.490196078431373, 0.545098039215686, 0.0 ],
-					"fontname" : "Ableton Sans Medium",
-					"fontsize" : 12.0,
+					"fontname" : "Ableton Sans Light",
+					"fontsize" : 16.0,
 					"id" : "obj-263",
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "int", "", "" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 160.0, 160.0, 375.0, 105.0 ],
+					"patching_rect" : [ 160.0, 160.0, 407.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 10.0, 325.0, 149.85437023639679 ],
+					"presentation_rect" : [ 15.0, 15.0, 430.0, 205.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -264,7 +264,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 460.0, 100.0, 33.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 335.0, 160.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 450.0, 225.0 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{

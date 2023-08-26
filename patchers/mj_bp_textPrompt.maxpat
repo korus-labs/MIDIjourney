@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 1444.0, 848.0 ],
+		"rect" : [ 34.0, 100.0, 773.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -58,7 +58,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "dictionary" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ -165.0, 35.0, 30.0, 30.0 ]
 				}
 
@@ -68,17 +68,19 @@
 					"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
 					"border" : 0.0,
 					"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-					"fontname" : "Ableton Sans Medium",
-					"fontsize" : 12.0,
+					"fontname" : "Ableton Sans Light",
+					"fontsize" : 16.0,
 					"id" : "obj-3",
+					"linecount" : 5,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "int", "", "" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 75.0, 50.0, 305.0, 70.0 ],
+					"patching_rect" : [ 75.0, 50.0, 394.0, 70.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 10.0, 325.0, 130.0 ],
+					"presentation_linecount" : 5,
+					"presentation_rect" : [ 15.0, 15.0, 430.0, 205.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -90,6 +92,7 @@
 
 					}
 ,
+					"text" : "Please compose a melody in the style of Philip Glass, ensuring it's engaging and subtle. Incorporate creative arpeggios with varying velocities for a dynamic effect. Focus on using quick arpeggios to capture the essence of Glass's minimalist musical approach.",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt"
 				}
@@ -108,7 +111,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 385.0, 85.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 335.0, 135.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 450.0, 225.0 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{
