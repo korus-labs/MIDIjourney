@@ -75,26 +75,27 @@ async function prompt(inputDict){
 		}
 
         // 2 bars default duration if none is input
-        const durationBeats = durationLive > 0 ? durationLive : 2*4;
-        const promptMessage = constructPrompt(notes, durationBeats, promptText);
-        history = [...history, promptMessage];
+        const duration = durationLive > 0 ? durationLive : 2*4;
+        const promptMessage = constructPrompt(notes, duration, promptText);
+			// history = [...history, promptMessage];
+		inputDict = { 
+			...inputDict, 
+			duration, 
+			history: [...history, promptMessage] 
+		};
 
         for (let tries = 0; tries < 3; tries++) {
             try {
-                const outputDict = await gptMidi(inputDict, history, durationBeats);
-                max.outlet("result", outputDict);
-                history = outputDict.history; // Update history for the next iteration
-                return;
+                inputDict = await gptMidi(inputDict);
+                max.outlet("result", inputDict);
+				return;
             } catch (error) {
 				// handle error will just output the error to max if it is not canceled
 				// else it will throw the error again
                 handleError(error);
             }
         }
-
-
-		errorToMax( "tried 3 times, but failed. giving up");
-
+		throw new Error( "tried 3 times, but failed. giving up");
     } catch (error) {
         if (error.message !== "canceled") {
 			errorToMax(error.message);
@@ -104,12 +105,12 @@ async function prompt(inputDict){
 
 
 // Function that handles the core logic inside the loop
-async function gptMidi(inputDict, history, durationBeats) {
-    const { temperature, gptModel } = inputDict;
-    let outputDict = { ...inputDict, history };
+async function gptMidi(dict) {
+    const { temperature, gptModel, duration, history } = dict;
+   
 
     // output history (for storage and saving in dictionary)
-    max.outlet("processing", outputDict);
+    max.outlet("processing", dict);
 
     // get actual midi message from chatgpt
     const midiMessage = await getChatGptResponse(history, { temperature, gptModel });
@@ -119,39 +120,39 @@ async function gptMidi(inputDict, history, durationBeats) {
     // Extracting data from response
     const { parsedNotation, title, explanation } = extractData(response);
 
-    outputDict = { 
-		...outputDict, 
+    dict = { 
+		...dict, 
 		history: newHistory, 
 		explanation, 
 		title 
 	};
 
     // output history (for storage and saving in dictionary)
-    max.outlet("processing", outputDict);
+    max.outlet("processing", dict);
 
     // Convert to ableton midi
-    const abletonMidi = NOTATION_DECODER(parsedNotation, durationBeats);
+    const abletonMidi = NOTATION_DECODER(parsedNotation, duration);
     const midiError = checkIfMidiCorrect(abletonMidi);
 
     if (midiError) {
         throw new Error(midiError);
     }
 
-    outputDict = { 
-		...outputDict, 
+    dict = { 
+		...dict, 
 		history: newHistory,
 		notes: abletonMidi 
 	};
 
     // if notation is csv we should delete the duration so it is estimated by ableton
     if (NOTATION_TYPE_OUTPUT === "csv") {
-        delete outputDict.duration;
+        delete dict.duration;
     }
 
-    return outputDict;
+    return dict;
 }
 
-
+// if its cancelled rethrow otherwise just log so the loop can retry
 function handleError(error) {
 	if (error.name === "AbortError" || error.message === "canceled") {
 		max.post("cancelled!!!");
