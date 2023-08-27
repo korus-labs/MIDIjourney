@@ -30,9 +30,12 @@ const notationEncoder = abletonToCSV;
 // const notationDescription = miniNotationDescription;
 // const notationExamples = miniNotationExamples;
 
-const notationDecoder = csvToAbleton;
-const notationDescription = csvNotationDescription;
-const notationExamples = csvNotationExamples;
+const NOTATION_TYPE_OUTPUT = "csv";
+
+const NOTATION_DECODER = csvToAbleton;
+const NOTATION_DESCRIPTION = csvNotationDescription;
+const NOTATION_EXAMPLES = csvNotationExamples;
+
 
 
 // Use the API Key from the .env file
@@ -50,9 +53,9 @@ let INITIAL_HISTORY = [
 		"content": 
 `You are an expert musical transformer and generator. 
 
-${notationDescription}
+${NOTATION_DESCRIPTION}
 
-${notationExamples}
+${NOTATION_EXAMPLES}
 `}
 ]
 
@@ -94,9 +97,9 @@ async function prompt(inputDict){
 			const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
 			let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
 
-			// await chat completion with settings and chat history
-
-			let outputDict = {...inputDict, history: messages};
+			let outputDict = {
+				...inputDict,
+				history: messages};
 			max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
 			// get actual midi message from chatgpt
 			printMessages(messages);
@@ -117,7 +120,7 @@ async function prompt(inputDict){
 			// output response to max patch
 			max.post(`Converting mini notation to ableton midi.\nGot title: ${title}.\nDuration: ${duration}.\nNotation:${parsedNotation}`);
 
-			const abletonMidi = notationDecoder(parsedNotation, duration);
+			const abletonMidi = NOTATION_DECODER(parsedNotation, duration);
 
 			// check if midi is valid
 			// there must be notes
@@ -149,10 +152,18 @@ async function prompt(inputDict){
 				throw new Error(midiError);
 			}				
 
+
+
 			outputDict = {
 				...outputDict,
 				notes: abletonMidi,
 			};
+
+			
+			// if notation is csv we should delete the duration so it is estimated by ableton
+			if (NOTATION_TYPE_OUTPUT === "csv") {
+				delete outputDict.duration;
+			}
 
 			max.outlet("result", outputDict); 
 			// output history (for storage and saving in dictionary)
