@@ -63,6 +63,7 @@ ${NOTATION_EXAMPLES}
 let abortController = null;
 
 
+// handles the initialization of necessary variables, the outer loop that retries if it fails and the error handling
 async function prompt(inputDict){
     max.post("Got the following data", Object.keys(inputDict));
 
@@ -212,7 +213,7 @@ function constructPrompt(notes, durationBeats, promptText) {
 	// construct csv notation
 	const notesCSV = notes ? notationEncoder(notes) : "";
 	// construct prompt
-	const gptPrompt = `duration_beats:${durationBeats}\n${notesCSV}${notesCSV}\prompt:${promptText}\n`;
+	const gptPrompt = `duration_beats:${durationBeats}\n${notesCSV}\prompt:${promptText}\n`;
 	const promptMessage = { role: "user", content: gptPrompt };
 	return promptMessage;
 }
@@ -253,7 +254,10 @@ function extractData(response) {
 }
 
 async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613"}) {
+	
+	printMessages(messages);
 	messages = [...INITIAL_HISTORY, ...messages];
+	
 	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length)
 	abortController = new AbortController();
 	const chat = await openai.createChatCompletion({
