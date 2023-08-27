@@ -57,7 +57,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 481.0, 78.0, 22.0 ],
+					"patching_rect" : [ 50.0, 481.0, 78.0, 22.0 ],
 					"text" : "mj_clipName"
 				}
 
@@ -166,7 +166,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "dictionary" ],
-					"patching_rect" : [ 51.0, 553.0, 61.0, 22.0 ],
+					"patching_rect" : [ 50.0, 559.0, 61.0, 22.0 ],
 					"text" : "mj_clipFill"
 				}
 
@@ -178,7 +178,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 345.0, 82.0, 22.0 ],
+					"patching_rect" : [ 50.0, 341.0, 82.0, 22.0 ],
 					"text" : "mj_clipCreate"
 				}
 
