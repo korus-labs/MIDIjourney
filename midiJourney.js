@@ -61,133 +61,94 @@ ${NOTATION_EXAMPLES}
 
 
 let abortController = null;
-// The prompt send to OpenAI API with error handling
-// Returns the result and a message 'done'
-// Else returns a message 'error'
-//= // "gpt-4-0613"; //  
+
+
 async function prompt(inputDict){
-	max.post("Got the following data", Object.keys(inputDict));
-	try {
+    max.post("Got the following data", Object.keys(inputDict));
 
-	let { 
-		temperature=0.5, 
-		notes=null, 
-		promptText="", 
-		duration: durationLive, 
-		gptModel, 
-		history=[],
-	} = inputDict;
-		
-	if (abortController)
-		abortController.abort();
-
-	
-	// 2 bars default duration if none is input
-	const durationBeats = durationLive > 0 ? durationLive : 2*4;
-
-	const promptMessage = constructPrompt(notes, durationBeats, promptText);
-	history = [... history, promptMessage];
-		
-	for (let tries=0; tries<3; tries++) {
-		try {
-	
-			let outputDict = {
-				...inputDict,
-				history
-			};
-
-			max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
-			// get actual midi message from chatgpt
-			printMessages(history);
-			const midiMessage = await getChatGptResponse(history, {temperature, gptModel});
-			history = [...history, midiMessage];
-
-
-			const response = midiMessage.content;
-			max.post(`---mini---\n${response}`)
-			const { parsedNotation, title, explanation } = extractData(response);
-
-			outputDict = {...outputDict, history, explanation, title};
-			max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
-
-
-			// output response to max patch
-			max.post(`Converting mini notation to ableton midi.\nGot title: ${title}.\nDuration: ${durationBeats}.\nNotation:${parsedNotation}`);
-
-			const abletonMidi = NOTATION_DECODER(parsedNotation, durationBeats);
-
-			// check if midi is valid
-			// there must be notes
-			// each note must have a pitch, start_time, duration and velocity.
-			// only start_time is allowed to be zero
-			// create an expressive error message if the midi is invalid saying exactly which field was misformed
-			let midiError = null;
-			if (abletonMidi.length === 0) {
-				midiError = "No notes found in midi";
-			} else {
-				abletonMidi.forEach((note) => {
-					midiError = ""
-					if (!note.pitch)
-						midiError += "pitch is missing,";
-					if (!note.duration)
-						midiError += "duration is missing,";
-					if (!note.velocity)
-						midiError += "velocity is missing,";
-					if (note.start_time === undefined)
-						midiError += "start_time is missing,";
-				});
-			}
-
-			// max.post("got midi", abletonMidi)
-
-			if (midiError) {
-				max.post("midi error", midiError);
-				max.outlet('error', midiError);
-				throw new Error(midiError);
-			}				
-
-
-
-			outputDict = {
-				...outputDict,
-				notes: abletonMidi,
-			};
-
-			
-			// if notation is csv we should delete the duration so it is estimated by ableton
-			if (NOTATION_TYPE_OUTPUT === "csv") {
-				delete outputDict.duration;
-			}
-
-			max.outlet("result", outputDict); 
-			// output history (for storage and saving in dictionary)
-
-			// max.outlet('done');
-			break;
-		} catch (error) {
-			if (error.name === "AbortError" || error.message === "canceled") {
-				max.post("canceled");
-				break;
-			}
-			if (error.response){
-				max.post(error.response.status);
-				max.post(error.response.data);
-				max.outlet('error', error.response.status);
-				break;
-			}
-			const errorMessage = `Error: ${error.message}`; //\n A reminder of the notation: ${miniNotationDescription}`;
-			// remove the last message from the history (so chatgpt doesnt repeat same mistakes)
-			history.pop();
-			// ACCUMULATED_HISTORY.push({ role: "user", content: errorMessage });
-
-			max.post("error", error.message);
-			max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
+    try {
+        let { temperature=0.5, notes=null, promptText="", duration: durationLive, gptModel, history=[] } = inputDict;
+        
+        if (abortController) { 
+			abortController.abort();
+			abortController = null;
 		}
-	}
-	} catch (error) {
-		max.post("error", error.message);
-		max.outlet('error', error.message);
-	}
+
+        // 2 bars default duration if none is input
+        const durationBeats = durationLive > 0 ? durationLive : 2*4;
+        const promptMessage = constructPrompt(notes, durationBeats, promptText);
+        history = [...history, promptMessage];
+
+        for (let tries = 0; tries < 3; tries++) {
+            try {
+                const { outputDict, newHistory } = await gptMidi(inputDict, history, durationBeats);
+                max.outlet("result", outputDict);
+                history = newHistory; // Update history for the next iteration
+                break;
+            } catch (error) {
+                if (error.name === "AbortError" || error.message === "canceled") {
+                    max.post("canceled");
+                    throw new Error("canceled");
+                }
+                
+                if (error.response) {
+                    max.post("error", error.response.status, error.response.data);
+                    max.outlet('error', error.response.status);
+                }
+
+                // If an error occurs, revert to the previous history, effectively removing the last message.
+                history = history.slice(0, -1);
+
+                max.post("error", error.message);
+                max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
+            }
+        }
+
+    } catch (error) {
+        max.post("error", error.message);
+        if (error.message !== "canceled") {
+            max.outlet('error', error.message);
+        }
+    }
+}
+
+
+// Function that handles the core logic inside the loop
+async function gptMidi(inputDict, history, durationBeats) {
+    const { temperature, gptModel } = inputDict;
+    let outputDict = { ...inputDict, history };
+
+    // output history (for storage and saving in dictionary)
+    max.outlet("processing", outputDict);
+
+    // get actual midi message from chatgpt
+    const midiMessage = await getChatGptResponse(history, { temperature, gptModel });
+    const newHistory = [...history, midiMessage];
+    const response = midiMessage.content;
+
+    // Extracting data from response
+    const { parsedNotation, title, explanation } = extractData(response);
+    outputDict = { ...outputDict, newHistory, explanation, title };
+
+    // output history (for storage and saving in dictionary)
+    max.outlet("processing", outputDict);
+
+    // Convert to ableton midi
+    const abletonMidi = NOTATION_DECODER(parsedNotation, durationBeats);
+    const midiError = checkIfMidiCorrect(abletonMidi);
+
+    if (midiError) {
+        throw new Error(midiError);
+    }
+
+    outputDict = { ...outputDict, notes: abletonMidi };
+
+    // if notation is csv we should delete the duration so it is estimated by ableton
+    if (NOTATION_TYPE_OUTPUT === "csv") {
+        delete outputDict.duration;
+    }
+
+    return { outputDict, newHistory };
 }
 
 // Messages send from Max to node.script
@@ -198,17 +159,40 @@ max.addHandlers({
 		p = Array.isArray(p) ? p.join(" ") : p;
 		prompt(p);
 	},
-	'clearHistory' : () => {
-		ACCUMULATED_HISTORY = [];
-		max.post(`History cleared`);
-	},
 	'cancel': () => {
-		if (abortController)
+		if (abortController) {
 			abortController.abort();
+			abortController = null;
+		}
 		max.post("canceled");
 	}
 });
 
+
+// check if midi is valid
+// there must be notes
+// each note must have a pitch, start_time, duration and velocity.
+// only start_time is allowed to be zero
+// create an expressive error message if the midi is invalid saying exactly which field was misformed
+function checkIfMidiCorrect(abletonMidi) {
+	let midiError = null;
+	if (abletonMidi.length === 0) {
+		midiError = "No notes found in midi";
+	} else {
+		abletonMidi.forEach((note) => {
+			midiError = "";
+			if (!note.pitch)
+				midiError += "pitch is missing,";
+			if (!note.duration)
+				midiError += "duration is missing,";
+			if (!note.velocity)
+				midiError += "velocity is missing,";
+			if (note.start_time === undefined)
+				midiError += "start_time is missing,";
+		});
+	}
+	return midiError;
+}
 
 function constructPrompt(notes, durationBeats, promptText) {
 	// construct csv notation
