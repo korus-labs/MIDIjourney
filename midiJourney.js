@@ -59,8 +59,6 @@ ${NOTATION_EXAMPLES}
 `}
 ]
 
-let ACCUMULATED_HISTORY = [];
-
 
 let abortController = null;
 // The prompt send to OpenAI API with error handling
@@ -71,56 +69,52 @@ async function prompt(inputDict){
 	max.post("Got the following data", Object.keys(inputDict));
 	try {
 
-	let {temperature=0.5, notes=null, promptText="", duration: durationLive, gptModel, enableHistory} = inputDict;
-	
-	const duration = durationLive > 0 ? durationLive / 4 : 2;
-	
+	let { 
+		temperature=0.5, 
+		notes=null, 
+		promptText="", 
+		duration: durationLive, 
+		gptModel, 
+		history=[],
+	} = inputDict;
+		
 	if (abortController)
 		abortController.abort();
 
-	let notesCSV = notes ? notationEncoder(notes) : "";
 	
-	// append duration to midi prompt
-	notesCSV = `duration_beats:${duration*4}\n${notesCSV}`;
-	// ${promptMidi}\n\nStart with the explanation.
-	const gptPrompt =  `${notesCSV}\prompt:${promptText}\n`
+	// 2 bars default duration if none is input
+	const durationBeats = durationLive > 0 ? durationLive : 2*4;
 
-	const promptMessage = { role: "user", content: gptPrompt };
-	
-	if (!enableHistory)
-		ACCUMULATED_HISTORY = [promptMessage];
-	else
-		ACCUMULATED_HISTORY.push(promptMessage);
+	const promptMessage = constructPrompt(notes, durationBeats, promptText);
+	history = [... history, promptMessage];
 		
 	for (let tries=0; tries<3; tries++) {
 		try {
-			const extraUserMessage = { role: "user", content: INITIAL_HISTORY[0].content };
-			let messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
-
+	
 			let outputDict = {
 				...inputDict,
-				history: messages};
+				history
+			};
+
 			max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
 			// get actual midi message from chatgpt
-			printMessages(messages);
-			const midiMessage = await getChatGptResponse(messages, {temperature, gptModel});
-			ACCUMULATED_HISTORY.push(midiMessage);
-			messages = [...INITIAL_HISTORY, ...ACCUMULATED_HISTORY];
+			printMessages(history);
+			const midiMessage = await getChatGptResponse(history, {temperature, gptModel});
+			history = [...history, midiMessage];
 
 
 			const response = midiMessage.content;
 			max.post(`---mini---\n${response}`)
 			const { parsedNotation, title, explanation } = extractData(response);
 
-
-			outputDict = {...outputDict, history: messages, explanation, title};
+			outputDict = {...outputDict, history, explanation, title};
 			max.outlet("processing", outputDict); // output history (for storage and saving in dictionary
 
 
 			// output response to max patch
-			max.post(`Converting mini notation to ableton midi.\nGot title: ${title}.\nDuration: ${duration}.\nNotation:${parsedNotation}`);
+			max.post(`Converting mini notation to ableton midi.\nGot title: ${title}.\nDuration: ${durationBeats}.\nNotation:${parsedNotation}`);
 
-			const abletonMidi = NOTATION_DECODER(parsedNotation, duration);
+			const abletonMidi = NOTATION_DECODER(parsedNotation, durationBeats);
 
 			// check if midi is valid
 			// there must be notes
@@ -171,25 +165,23 @@ async function prompt(inputDict){
 			// max.outlet('done');
 			break;
 		} catch (error) {
+			if (error.name === "AbortError" || error.message === "canceled") {
+				max.post("canceled");
+				break;
+			}
 			if (error.response){
 				max.post(error.response.status);
 				max.post(error.response.data);
 				max.outlet('error', error.response.status);
 				break;
-			} else {
-				const errorMessage = `Error: ${error.message}`; //\n A reminder of the notation: ${miniNotationDescription}`;
-				// remove the last message from the history (so chatgpt doesnt repeat same mistakes)
-				ACCUMULATED_HISTORY.pop();
-
-				// ACCUMULATED_HISTORY.push({ role: "user", content: errorMessage });
-				if (error.name === "AbortError" || error.message === "canceled") {
-					max.post("canceled");
-					break;
-				}
-				max.post("error", error.message);
-				max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
 			}
-			
+			const errorMessage = `Error: ${error.message}`; //\n A reminder of the notation: ${miniNotationDescription}`;
+			// remove the last message from the history (so chatgpt doesnt repeat same mistakes)
+			history.pop();
+			// ACCUMULATED_HISTORY.push({ role: "user", content: errorMessage });
+
+			max.post("error", error.message);
+			max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
 		}
 	}
 	} catch (error) {
@@ -218,13 +210,22 @@ max.addHandlers({
 });
 
 
+function constructPrompt(notes, durationBeats, promptText) {
+	// construct csv notation
+	const notesCSV = notes ? notationEncoder(notes) : "";
+	// construct prompt
+	const gptPrompt = `duration_beats:${durationBeats}\n${notesCSV}${notesCSV}\prompt:${promptText}\n`;
+	const promptMessage = { role: "user", content: gptPrompt };
+	return promptMessage;
+}
+
 // extract these fields.
 // Response format:
 // # [title]
 // # [explanation]
 // [mini notation]
-
-
+// to
+// { title, explanation, parsedNotation }
 function extractData(response) {
 	
 	response = response.split('\n');
@@ -247,6 +248,7 @@ function extractData(response) {
 }
 
 async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613"}) {
+	messages = [...INITIAL_HISTORY, ...messages];
 	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length)
 	abortController = new AbortController();
 	const chat = await openai.createChatCompletion({
