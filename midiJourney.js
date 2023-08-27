@@ -83,7 +83,7 @@ async function prompt(inputDict){
             try {
                 const outputDict = await gptMidi(inputDict, history, durationBeats);
                 max.outlet("result", outputDict);
-                history = newHistory; // Update history for the next iteration
+                history = outputDict.history; // Update history for the next iteration
                 return;
             } catch (error) {
 				// handle error will just output the error to max if it is not canceled
@@ -154,7 +154,7 @@ async function gptMidi(inputDict, history, durationBeats) {
 
 function handleError(error) {
 	if (error.name === "AbortError" || error.message === "canceled") {
-		max.post("canceled");
+		max.post("cancelled!!!");
 		throw new Error("canceled");
 	}
 	max.post("error", error.message);
@@ -173,11 +173,11 @@ max.addHandlers({
 		prompt(p);
 	},
 	'cancel': () => {
+		max.post("received cancel request");
 		if (abortController) {
 			abortController.abort();
 			abortController = null;
 		}
-		max.post("canceled");
 	}
 });
 
@@ -263,6 +263,7 @@ async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turb
 	}, { signal: abortController.signal });
 	const message = chat.data.choices[0].message;
 	abortController = null;
+	max.post("got chat gpt response");
 	return message;
 }
 
