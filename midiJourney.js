@@ -67,7 +67,7 @@ async function prompt(inputDict){
     max.post("Got the following data", Object.keys(inputDict));
 
     try {
-        let { temperature=0.5, notes=null, promptText="", duration: durationLive, gptModel, history=[] } = inputDict;
+        let { notes=null, promptText="", duration: durationLive, gptModel, history=[] } = inputDict;
         
         if (abortController) { 
 			abortController.abort();
@@ -81,33 +81,23 @@ async function prompt(inputDict){
 
         for (let tries = 0; tries < 3; tries++) {
             try {
-                const { outputDict, newHistory } = await gptMidi(inputDict, history, durationBeats);
+                const outputDict = await gptMidi(inputDict, history, durationBeats);
                 max.outlet("result", outputDict);
                 history = newHistory; // Update history for the next iteration
-                break;
+                return;
             } catch (error) {
-                if (error.name === "AbortError" || error.message === "canceled") {
-                    max.post("canceled");
-                    throw new Error("canceled");
-                }
-                
-                if (error.response) {
-                    max.post("error", error.response.status, error.response.data);
-                    max.outlet('error', error.response.status);
-                }
-
-                // If an error occurs, revert to the previous history, effectively removing the last message.
-                history = history.slice(0, -1);
-
-                max.post("error", error.message);
-                max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
+				// handle error will just output the error to max if it is not canceled
+				// else it will throw the error again
+                handleError(error);
             }
         }
 
+
+		errorToMax( "tried 3 times, but failed. giving up");
+
     } catch (error) {
-        max.post("error", error.message);
         if (error.message !== "canceled") {
-            max.outlet('error', error.message);
+			errorToMax(error.message);
         }
     }
 }
@@ -128,7 +118,13 @@ async function gptMidi(inputDict, history, durationBeats) {
 
     // Extracting data from response
     const { parsedNotation, title, explanation } = extractData(response);
-    outputDict = { ...outputDict, newHistory, explanation, title };
+
+    outputDict = { 
+		...outputDict, 
+		history: newHistory, 
+		explanation, 
+		title 
+	};
 
     // output history (for storage and saving in dictionary)
     max.outlet("processing", outputDict);
@@ -141,14 +137,31 @@ async function gptMidi(inputDict, history, durationBeats) {
         throw new Error(midiError);
     }
 
-    outputDict = { ...outputDict, notes: abletonMidi };
+    outputDict = { 
+		...outputDict, 
+		history: newHistory,
+		notes: abletonMidi 
+	};
 
     // if notation is csv we should delete the duration so it is estimated by ableton
     if (NOTATION_TYPE_OUTPUT === "csv") {
         delete outputDict.duration;
     }
 
-    return { outputDict, newHistory };
+    return outputDict;
+}
+
+
+function handleError(error) {
+	if (error.name === "AbortError" || error.message === "canceled") {
+		max.post("canceled");
+		throw new Error("canceled");
+	}
+	max.post("error", error.message);
+	if (error.response) {
+		max.post("error", error.response.status, error.response.data);
+	}
+	max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
 }
 
 // Messages send from Max to node.script
@@ -202,6 +215,13 @@ function constructPrompt(notes, durationBeats, promptText) {
 	const promptMessage = { role: "user", content: gptPrompt };
 	return promptMessage;
 }
+
+
+function errorToMax(...errorMessage) {
+	max.post("error", ...errorMessage);
+	max.outlet('error', errorMessage);
+}
+
 
 // extract these fields.
 // Response format:
