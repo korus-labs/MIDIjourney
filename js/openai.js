@@ -1,53 +1,87 @@
 require('dotenv').config();
 const { Configuration, OpenAIApi } = require('openai');
-
 const fs = require('fs');
-// saves the key to $HOME/
 const os = require('os');
-const { max } = require('./max');
+const { max } = require('./max.js');
 
-// read and write the key to $HOME/.config/midijourney_api_key
-// create folder if it doesn't exist
-const apiKeyStore = {
-	get: () => {
-		try {
-			return fs.readFileSync(`${os.homedir()}/.config/midijourney_api_key`, 'utf8');
-		} catch (error) {
-			return null;
-		}
-	},
-	set: (key) => {
-		try {
-			// create folder if it doesn't exist
-			if (!fs.existsSync(`${os.homedir()}/.config`)) {
-				fs.mkdirSync(`${os.homedir()}/.config`);
-			}
-			fs.writeFileSync(`${os.homedir()}/.config/midijourney_api_key`, key);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+const apiKeyFilePath = `${os.homedir()}/.config/midijourney_api_key`;
+
+let abortController = null;
+
+// Settings
+const MAX_TOKENS = Infinity;
+
+
+const readKey = () => {
+  try {
+    return fs.readFileSync(apiKeyFilePath, 'utf8');
+  } catch (error) {
+    return null;
+  }
+};
+
+const writeKey = (key) => {
+  try {
+    if (!fs.existsSync(`${os.homedir()}/.config`))
+      fs.mkdirSync(`${os.homedir()}/.config`);
+    fs.writeFileSync(apiKeyFilePath, key);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const openAIApi = (apiKey) => {
+  if (apiKey) writeKey(apiKey);
+
+  const finalApiKey = apiKey || readKey() || process.env.OPENAI_API_KEY;
+
+  if (!finalApiKey) {
+    throw new Error("No OpenAI API key found");
+  }
+
+  return new OpenAIApi(new Configuration({ apiKey: finalApiKey }));
+};
+
+
+async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-turbo-0613", apiKey }) {
+
+
+	messages = [ ...messages];
+	printMessages(messages);
+
+	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length);
+
+	abortController = new AbortController();
+
+	const chat = await openAIApi(apiKey).createChatCompletion({
+		model: gptModel,
+		messages,
+		temperature,
+		max_tokens: MAX_TOKENS,
+	}, { signal: abortController.signal });
+
+	const message = chat.data.choices[0].message;
+	abortController = null;
+	return message;
 }
 
-exports.openAIApi = (apiKey) => {
-	if (apiKey)
-		apiKeyStore.set(apiKey);
-	else 
-		apiKey = apiKeyStore.get() || process.env.OPENAI_API_KEY;
-	
-		if (!apiKey) {
-		throw new Error("No OpenAI API key found");
-	}
 
-	const config = new Configuration({
-		apiKey: apiKey
+function printMessages(messages) {
+	max.post(`--- messages (${messages.length}) ---`);
+	messages.forEach((m) => {
+		max.post(`[${m.role}]:\n${m.content}\n`)
 	});
-	return new OpenAIApi(config);	
+	max.post(`--- end messages ---`);
 }
 
-// api key getter/setter
-exports.apiKey = (key) => {
-	if (key)
-		apiKeyStore.set(key);
-	return apiKeyStore.get("OPENAI_API_KEY") || process.env.OPENAI_API_KEY;
+function abort() {
+	if (abortController) {
+		abortController.abort();
+		abortController = null;
+	}
 }
+
+
+exports.getChatGptResponse = getChatGptResponse;
+exports.abortController = abortController;
+exports.abort = abort;
