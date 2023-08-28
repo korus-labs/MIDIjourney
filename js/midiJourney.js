@@ -55,9 +55,6 @@ async function prompt(inputDict){
 			apiKey: apiKey(),
 			...inputDict,
 		}
-
-		// save the apiKey to the store. (In case it was overridden by the Max device)
-		apiKey(inputDict.apiKey);
         
         if (abortController) { 
 			abortController.abort();
@@ -234,7 +231,7 @@ function errorToMax(...errorMessage) {
 }
 
 
-async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613"}) {
+async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613", apiKey}) {
 	
 
 	messages = [...INITIAL_HISTORY, ...messages];
@@ -244,11 +241,11 @@ async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turb
 
 	abortController = new AbortController();
 	
-	const chat = await openAIApi().createChatCompletion({
+	const chat = await openAIApi(apiKey).createChatCompletion({
 		model: gptModel,
 		messages,
 		temperature,
-		max_tokens: MAX_TOKENS
+		max_tokens: MAX_TOKENS,
 	}, { signal: abortController.signal });
 	
 	const message = chat.data.choices[0].message;
@@ -273,11 +270,12 @@ async function test() {
 		promptText: "beautiful melody in c major",
 		duration: 8,
 		gptModel: "gpt-3.5-turbo-0613",
-		temperature: 0.7
+		temperature: 0.7,
+		apiKey: process.env.OPENAI_API_KEY
 	}));
 }
 
-
-// setTimeout(() => {
-// 	test();
-// }, 200);
+// console.log(process.env.OPENAI_API_KEY)
+setTimeout(() => {
+	test();
+}, 200);

@@ -29,9 +29,13 @@ const apiKeyStore = {
 	}
 }
 
-exports.openAIApi = () => {
-	const apiKey = apiKeyStore.get() || process.env.OPENAI_API_KEY;
-	if (!apiKey) {
+exports.openAIApi = (apiKey) => {
+	if (apiKey)
+		apiKeyStore.set(apiKey);
+	else 
+		apiKey = apiKeyStore.get() || process.env.OPENAI_API_KEY;
+	
+		if (!apiKey) {
 		throw new Error("No OpenAI API key found");
 	}
 
@@ -44,6 +48,6 @@ exports.openAIApi = () => {
 // api key getter/setter
 exports.apiKey = (key) => {
 	if (key)
-		apiKeyStore.set("OPENAI_API_KEY", key);
+		apiKeyStore.set(key);
 	return apiKeyStore.get("OPENAI_API_KEY") || process.env.OPENAI_API_KEY;
 }
