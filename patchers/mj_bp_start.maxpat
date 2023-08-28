@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -58,7 +58,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 820.0, 595.0, 78.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"text" : "createBorder"
 				}
 
@@ -207,9 +206,9 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 905.0, 755.0, 241.0, 26.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 8.0, 450.0, 26.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 180.0, 26.0 ],
 					"text" : "Select a MIDI clip/slot !",
-					"textcolor" : [ 1.0, 0.365, 0.365, 1.0 ],
+					"textcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "noMidiSlot"
 				}
@@ -566,7 +565,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 286.0, 319.0, 155.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 135.0, 6.0, 190.0, 30.0 ],
+					"presentation_rect" : [ 5.0, 7.0, 180.0, 21.0 ],
 					"rounded" : 8.0,
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
@@ -685,7 +684,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 460.0, 405.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 135.0, 5.0, 190.0, 31.030927777290344 ],
+					"presentation_rect" : [ 5.0, 6.0, 180.0, 22.030927777290344 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{

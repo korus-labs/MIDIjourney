@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 478.0, 688.0, 981.0, 848.0 ],
+		"rect" : [ 34.0, 100.0, 919.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,40 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Ableton Sans Light",
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 175.0, 290.0, 146.0, 21.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 5.0, 80.0, 21.0 ],
+					"text" : "Explanation",
+					"textcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
+					"id" : "obj-12",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 400.0, 100.0, 30.0, 31.030927777290344 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 5.0, 80.0, 20.0 ],
+					"proportion" : 0.39
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "newobj",
@@ -162,7 +196,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-5",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -221,7 +255,8 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 160.0, 160.0, 407.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 15.0, 430.0, 180.0 ],
+					"presentation_rect" : [ 15.0, 35.0, 430.0, 185.0 ],
+					"readonly" : 1,
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -233,7 +268,8 @@
 
 					}
 ,
-					"textcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
+					"text" : "afwfvwvgwg",
+					"textcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}
 
@@ -242,7 +278,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-275",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -256,7 +292,7 @@
 					"angle" : 270.0,
 					"bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
+					"bordercolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
 					"id" : "obj-231",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -264,15 +300,27 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 460.0, 100.0, 33.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 450.0, 200.0 ],
+					"presentation_rect" : [ 5.0, 25.0, 450.0, 205.0 ],
+					"proportion" : 0.39
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
+					"id" : "obj-13",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 415.0, 115.0, 30.0, 31.030927777290344 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 15.0, 80.0, 20.0 ],
 					"proportion" : 0.39,
-					"saved_attribute_attributes" : 					{
-						"bgfillcolor" : 						{
-							"expression" : ""
-						}
-
-					}
-
+					"rounded" : 0
 				}
 
 			}
@@ -425,13 +473,36 @@
 
 			}
  ],
-		"saved_attribute_attributes" : 		{
-			"default_plcolor" : 			{
-				"expression" : ""
+		"parameters" : 		{
+			"obj-263" : [ "textPrompt[7]", "textPrompt", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
 			}
-
+,
+			"inherited_shortname" : 1
 		}
-
+,
+		"dependency_cache" : [ 			{
+				"name" : "mj_route.maxpat",
+				"bootpath" : "~/Github/Midijourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "mj_routeDict.maxpat",
+				"bootpath" : "~/Github/Midijourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }

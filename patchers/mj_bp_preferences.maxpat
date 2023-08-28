@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 2803.0, -92.0, 1852.0, 959.0 ],
+		"rect" : [ 34.0, 100.0, 1852.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -56,7 +56,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 3483.0, 163.0, 987.0, 523.0 ],
+						"rect" : [ 100.0, 100.0, 641.0, 846.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -382,7 +382,7 @@
 										"valueof" : 										{
 											"parameter_enum" : [ "val1", "val2" ],
 											"parameter_initial" : [ 0 ],
-											"parameter_initial_enable" : 1,
+											"parameter_invisible" : 2,
 											"parameter_longname" : "Validate",
 											"parameter_mmax" : 1,
 											"parameter_shortname" : "Validate",
@@ -657,7 +657,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 350.0, 770.0, 22.0, 22.0 ],
+					"patching_rect" : [ 345.0, 765.0, 22.0, 22.0 ],
 					"text" : "t 1"
 				}
 
@@ -669,7 +669,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "int", "int" ],
-					"patching_rect" : [ 350.0, 735.0, 83.0, 22.0 ],
+					"patching_rect" : [ 345.0, 730.0, 83.0, 22.0 ],
 					"text" : "live.thisdevice"
 				}
 
@@ -1109,7 +1109,7 @@
 
 					}
 ,
-					"patching_rect" : [ 350.0, 850.0, 65.0, 22.0 ],
+					"patching_rect" : [ 345.0, 845.0, 65.0, 22.0 ],
 					"saved_attribute_attributes" : 					{
 						"default_plcolor" : 						{
 							"expression" : ""
@@ -1136,7 +1136,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 375.0, 815.0, 90.0, 20.0 ],
+					"patching_rect" : [ 370.0, 810.0, 90.0, 20.0 ],
 					"text" : "disable to edit",
 					"textcolor" : [ 0.898039, 0.898039, 0.898039, 1.0 ]
 				}
@@ -1152,7 +1152,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 350.0, 810.0, 24.0, 24.0 ],
+					"patching_rect" : [ 345.0, 805.0, 24.0, 24.0 ],
 					"uncheckedcolor" : [ 0.470588235294118, 0.564705882352941, 0.611764705882353, 1.0 ]
 				}
 
