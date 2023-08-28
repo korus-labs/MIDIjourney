@@ -198,5 +198,5 @@ module.exports = {
     miniNotationExamples
 }
 
-console.log(miniToAbleton("<{Amin9} {Bmin11} {F13} {E7#9}>[4,9,2]"))
+// console.log(miniToAbleton("<{Amin9} {Bmin11} {F13} {E7#9}>[4,9,2]"))
 

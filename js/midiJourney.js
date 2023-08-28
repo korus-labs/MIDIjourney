@@ -1,28 +1,10 @@
-//
-// ChatGPT Node4Max Example
-// written by Timo Hoogland
-// 2023, www.timohoogland.com
-//
-// MIT License
-//
-
-require('dotenv').config();
-
-let max = null;
-
-try {
-	max = require('max-api');
-} catch(error) {
-	max = {
-		post: console.log,
-		outlet: console.log,
-		addHandlers: () => {}
-	}
-}
-
-const { Configuration, OpenAIApi } = require('openai');
 const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./miniNotation.js');
 const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./csvNotation.js');
+const { textToClip, clipToText } = require('./clipFormatter.js');
+const { openAIApi, apiKey } = require('./openai.js');
+const { max } = require('./max.js');
+
+
 
 const notationEncoder = abletonToCSV;
 
@@ -35,14 +17,6 @@ const NOTATION_TYPE_OUTPUT = "csv";
 const NOTATION_DECODER = csvToAbleton;
 const NOTATION_DESCRIPTION = csvNotationDescription;
 const NOTATION_EXAMPLES = csvNotationExamples;
-
-
-
-// Use the API Key from the .env file
-const config = new Configuration({
-	apiKey: process.env.OPENAI_API_KEY
-});
-const openai = new OpenAIApi(config);
 
 // Settings
 let MAX_TOKENS = Infinity;
@@ -68,28 +42,38 @@ async function prompt(inputDict){
     max.post("Got the following data", Object.keys(inputDict));
 
     try {
-        let { notes=null, promptText="", duration: durationLive, gptModel, history=[] } = inputDict;
+		// set default values
+		inputDict = {
+			temperature: 0.7,
+			gptModel: "gpt-3.5-turbo-0613",
+			key: "unknown",
+			title: "unknown",
+			explanation: "n/a",
+        	// 2 bars default duration if none is input
+			duration: 2*4,
+			history: [],
+			...inputDict,
+		}
+
         
         if (abortController) { 
 			abortController.abort();
 			abortController = null;
 		}
 
-        // 2 bars default duration if none is input
-        const duration = durationLive > 0 ? durationLive : 2*4;
-        const promptMessage = constructPrompt(notes, duration, promptText);
-			// history = [...history, promptMessage];
+
+        const promptMessage = constructPrompt(inputDict);
+
 		inputDict = { 
 			...inputDict, 
-			duration, 
-			history: [...history, promptMessage] 
+			history: [...inputDict.history, promptMessage] 
 		};
 
         for (let tries = 0; tries < 3; tries++) {
             try {
                 inputDict = await gptMidi(inputDict);
                 max.outlet("result", inputDict);
-				return;
+				return inputDict;
             } catch (error) {
 				// handle error will just output the error to max if it is not canceled
 				// else it will throw the error again
@@ -117,22 +101,22 @@ async function gptMidi(dict) {
     const midiMessage = await getChatGptResponse(history, { temperature, gptModel });
     const newHistory = [...history, midiMessage];
     const response = midiMessage.content;
-
+	max.post(`got response\n-------\n${response}`);
     // Extracting data from response
-    const { parsedNotation, title, explanation } = extractData(response);
+    const { notation, title, explanation } = textToClip(response);
 
     dict = { 
 		...dict, 
 		history: newHistory, 
 		explanation, 
-		title 
+		title
 	};
 
     // output history (for storage and saving in dictionary)
     max.outlet("processing", dict);
 
     // Convert to ableton midi
-    const abletonMidi = NOTATION_DECODER(parsedNotation, duration);
+    const abletonMidi = NOTATION_DECODER(notation, duration);
     const midiError = checkIfMidiCorrect(abletonMidi);
 
     if (midiError) {
@@ -159,7 +143,7 @@ function handleError(error) {
 		max.post("cancelled!!!");
 		throw new Error("canceled");
 	}
-	max.post("error", error.message);
+	max.post("error", error.message, error.stack);
 	if (error.response) {
 		max.post("error", error.response.status, error.response.data);
 	}
@@ -180,7 +164,11 @@ max.addHandlers({
 			abortController.abort();
 			abortController = null;
 		}
+	},
+	'apikey': (key) => {
+		max.post("apikey", apiKey(key));
 	}
+	
 });
 
 
@@ -209,12 +197,31 @@ function checkIfMidiCorrect(abletonMidi) {
 	return midiError;
 }
 
-function constructPrompt(notes, durationBeats, promptText) {
+function constructPrompt({promptText, duration, notes, title, key, explanation}) {
+	
+	if (!notes) 
+		return { 
+			role: "user", 
+			content: `# Prompt\n${promptText}` 
+		};
+
 	// construct csv notation
-	const notesCSV = notes ? notationEncoder(notes) : "";
-	// construct prompt
-	const gptPrompt = `duration_beats:${durationBeats}\n${notesCSV}\prompt:${promptText}\n`;
-	const promptMessage = { role: "user", content: gptPrompt };
+	const notesCSV = notationEncoder(notes);
+	// // construct prompt
+	const inputPrompt = clipToText( {
+		title,
+		duration,
+		key,
+		explanation,
+		notation: notesCSV
+	});
+
+	const prompt = 
+`# Request
+${inputPrompt}
+# Prompt
+${promptText}`;
+	const promptMessage = { role: "user", content: prompt };
 	return promptMessage;
 }
 
@@ -225,50 +232,25 @@ function errorToMax(...errorMessage) {
 }
 
 
-// extract these fields.
-// Response format:
-// # [title]
-// # [explanation]
-// [mini notation]
-// to
-// { title, explanation, parsedNotation }
-function extractData(response) {
-	
-	response = response.split('\n');
-
-	const title = response.shift().slice(1).trim();
-	const explanation = response.shift().slice(1).trim();
-	const miniNotationPart = response.join('\n').trim();
-	
-	let parsedNotation = null;
-	try {
-		parsedNotation = JSON.parse(miniNotationPart);
-	} catch (error) {
-		parsedNotation = miniNotationPart;
-	}
-
-	// remove all " ' ` and \ characters
-	parsedNotation = parsedNotation.replace(/["'`\\]/g, '');
-	
-	return { parsedNotation, title, explanation };
-}
-
 async function getChatGptResponse(messages, {temperature, gptModel="gpt-3.5-turbo-0613"}) {
 	
-	printMessages(messages);
+
 	messages = [...INITIAL_HISTORY, ...messages];
-	
-	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length)
+	printMessages(messages);
+
+	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length);
+
 	abortController = new AbortController();
-	const chat = await openai.createChatCompletion({
+	
+	const chat = await openAIApi().createChatCompletion({
 		model: gptModel,
 		messages,
 		temperature,
 		max_tokens: MAX_TOKENS
 	}, { signal: abortController.signal });
+	
 	const message = chat.data.choices[0].message;
 	abortController = null;
-	max.post("got chat gpt response");
 	return message;
 }
 
@@ -280,3 +262,20 @@ function printMessages(messages) {
 	});
 	max.post(`--- end messages ---`);
 }
+
+
+
+async function test() {
+	console.log(await prompt({
+		notes: null,
+		promptText: "beautiful melody in c major",
+		duration: 8,
+		gptModel: "gpt-3.5-turbo-0613",
+		temperature: 0.7
+	}));
+}
+
+
+setTimeout(() => {
+	test();
+}, 200);
