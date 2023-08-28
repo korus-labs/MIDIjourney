@@ -52,9 +52,12 @@ async function prompt(inputDict){
         	// 2 bars default duration if none is input
 			duration: 2*4,
 			history: [],
+			apiKey: apiKey(),
 			...inputDict,
 		}
 
+		// save the apiKey to the store. (In case it was overridden by the Max device)
+		apiKey(inputDict.apiKey);
         
         if (abortController) { 
 			abortController.abort();
@@ -103,13 +106,15 @@ async function gptMidi(dict) {
     const response = midiMessage.content;
 	max.post(`got response\n-------\n${response}`);
     // Extracting data from response
-    const { notation, title, explanation } = textToClip(response);
+    const { notation, title, explanation, key, duration: durationNew } = textToClip(response);
 
     dict = { 
 		...dict, 
 		history: newHistory, 
 		explanation, 
-		title
+		title,
+		key,
+		duration: durationNew || duration
 	};
 
     // output history (for storage and saving in dictionary)
@@ -164,9 +169,6 @@ max.addHandlers({
 			abortController.abort();
 			abortController = null;
 		}
-	},
-	'apikey': (key) => {
-		max.post("apikey", apiKey(key));
 	}
 	
 });
@@ -276,6 +278,6 @@ async function test() {
 }
 
 
-setTimeout(() => {
-	test();
-}, 200);
+// setTimeout(() => {
+// 	test();
+// }, 200);
