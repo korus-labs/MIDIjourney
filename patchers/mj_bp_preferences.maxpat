@@ -58,14 +58,14 @@
 						"classnamespace" : "box",
 						"rect" : [ 100.0, 100.0, 560.0, 45.0 ],
 						"bglocked" : 0,
-						"openinpresentation" : 0,
+						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
+						"gridsnaponopen" : 2,
+						"objectsnaponopen" : 0,
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
 						"lefttoolbarpinned" : 0,
@@ -84,6 +84,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"title" : "Midijourney - Api Key",
 						"boxes" : [ 							{
 								"box" : 								{
 									"angle" : 270.0,
@@ -95,7 +96,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 491.0, 157.0, 30.0, 31.030927777290344 ],
+									"patching_rect" : [ 169.0, 86.969072222709656, 30.0, 31.030927777290344 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 520.0, 5.0, 35.0, 35.0 ],
 									"proportion" : 0.39,
@@ -441,7 +442,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 285.0, 577.0, 30.0, 30.0 ]
+									"patching_rect" : [ 285.0, 188.0, 30.0, 30.0 ]
 								}
 
 							}
