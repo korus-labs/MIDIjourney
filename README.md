@@ -1,31 +1,41 @@
 # MidiJourney: Your AI Musical Companion
 
-Welcome to MidiJourney, a groundbreaking Max for Live device that uses the power of OpenAI's chatgpt to generate music. Created by Elliot Fouchy and Thomas Haferlach in 2023, MidiJourney is your ticket to an unexplored universe of musical possibilities.
+## Developed by Pixelynx ([pixelynx.io](https://pixelynx.io))
 
-## Unleash Your Creativity
+### Creators: Elliot Fouchy and Thomas Haferlach
 
-With MidiJourney, you're not just composing music; you're collaborating with an AI that's been trained on a vast array of musical styles. Whether you're crafting intricate solos, laying down backing tracks, or transforming a musical idea into a new piece, MidiJourney can provide the spark of inspiration you need.
+Welcome to MidiJourney, a Max for Live device developed by Pixelynx. This tool integrates OpenAI's GPT technology into your Ableton Live setup, offering a unique AI collaboration experience for your music-making process.
 
-## Easy to Use
+## Amplify Your Creativity
 
-MidiJourney is designed with simplicity in mind. You don't need to be a tech wizard to use it. If you can use Ableton, you can use MidiJourney. And if you ever need help, our code is open-source and well-documented.
-## Dive into the Code
+MidiJourney isn't just a tool; it's your AI musical companion. Whether you're working on intricate solos, composing backing tracks, or fleshing out a new musical concept, MidiJourney can provide that extra spark to make your work shine.
 
-For the curious minds, MidiJourney offers a chance to dive into the fascinating world of AI and music. Our code is a journey in itself, taking you through the intricacies of music notation conversion, OpenAI interaction, MIDI message generation, and music transformation.
+## User-Friendly Design
 
-### Explore Our Files
+Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
 
-- **csvNotation.js**: Learn how we convert between Ableton and CSV formats.
-- **max.js**: Discover how we interact with Max.
-- **clipFormatter.js**: See how we parse and dump YAML data.
-- **miniNotation.js**: Understand our music notation conversion process.
-- **openai.js**: Find out how we interact with the OpenAI API.
-- **midiJourney.js**: This is the heart of our project. See how we generate and transform MIDI messages using OpenAI's GPT-3 model.
+## What's Inside?
 
-Join us on this journey and let's make music like never before!
+Dive deeper into the code to explore the technical aspects. It's a learning opportunity to understand AI, music conversion, and interaction with various APIs.
 
-This project uses the following technologies:
+### Main Files and Folders
+
+- **device/MidiJourney.amxd**: This is the main Max for Live device.
+- **patchers/**: Folder containing Max for Live patchers that contribute to device functionality.
+- **csvNotation.js**: Focuses on converting between Ableton and CSV musical notations.
+- **clipFormatter.js**: Responsible for parsing and exporting YAML data.
+- **miniNotation.js**: Handles the music notation conversion process.
+- **openai.js**: Manages the interactions with OpenAI's API.
+- **midiJourney.js**: The core of MidiJourney. This file governs how MIDI messages are generated and manipulated.
+
+## License
+
+This project is under the MIT License, giving you the freedom to explore and modify as you wish.
+
+### Technologies Utilized
 
 - [OpenAI GPT](https://openai.com/research/gpt-3/)
 - [Ableton Live](https://www.ableton.com/)
 - [Max MSP / Max for Live](https://cycling74.com/products/max)
+
+Join us on this journey to redefine the boundaries of music creation!
