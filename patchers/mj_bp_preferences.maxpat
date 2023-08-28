@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 1852.0, 959.0 ],
+		"rect" : [ 34.0, 100.0, 919.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -56,7 +56,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 100.0, 641.0, 846.0 ],
+						"rect" : [ 100.0, 100.0, 1175.0, 600.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -86,6 +86,94 @@
 						"assistshowspatchername" : 0,
 						"title" : "Midijourney - Api Key",
 						"boxes" : [ 							{
+								"box" : 								{
+									"activebgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+									"activebgoncolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
+									"activetextcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
+									"activetextoncolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+									"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+									"bgoncolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
+									"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+									"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+									"fontname" : "Ableton Sans Light",
+									"fontsize" : 16.0,
+									"id" : "obj-54",
+									"maxclass" : "live.text",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"parameter_enable" : 1,
+									"patching_rect" : [ 146.0, 93.030927777290344, 68.0, 25.0 ],
+									"pictures" : [ "validate.svg", "validate.svg" ],
+									"presentation" : 1,
+									"presentation_rect" : [ 525.0, 10.0, 25.0, 25.0 ],
+									"remapsvgcolors" : 1,
+									"rounded" : 8.0,
+									"saved_attribute_attributes" : 									{
+										"activebgcolor" : 										{
+											"expression" : ""
+										}
+,
+										"activebgoncolor" : 										{
+											"expression" : ""
+										}
+,
+										"activetextcolor" : 										{
+											"expression" : ""
+										}
+,
+										"activetextoncolor" : 										{
+											"expression" : ""
+										}
+,
+										"bgcolor" : 										{
+											"expression" : ""
+										}
+,
+										"bgoncolor" : 										{
+											"expression" : ""
+										}
+,
+										"bordercolor" : 										{
+											"expression" : ""
+										}
+,
+										"focusbordercolor" : 										{
+											"expression" : ""
+										}
+,
+										"textcolor" : 										{
+											"expression" : ""
+										}
+,
+										"textoffcolor" : 										{
+											"expression" : ""
+										}
+,
+										"valueof" : 										{
+											"parameter_enum" : [ "val1", "val2" ],
+											"parameter_initial" : [ 0 ],
+											"parameter_invisible" : 2,
+											"parameter_longname" : "Validate",
+											"parameter_mmax" : 1,
+											"parameter_shortname" : "Validate",
+											"parameter_type" : 2
+										}
+
+									}
+,
+									"text" : "Validate",
+									"textcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+									"textoffcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
+									"texton" : "Validate",
+									"usepicture" : 1,
+									"usesvgviewbox" : 1,
+									"varname" : "Validate"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "newobj",
@@ -124,7 +212,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 270.0,
-									"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+									"bgcolor" : [ 0.216, 0.216, 0.216, 1.0 ],
 									"border" : 1,
 									"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 									"id" : "obj-58",
@@ -278,7 +366,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 270.0,
-									"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+									"bgcolor" : [ 0.216, 0.216, 0.216, 1.0 ],
 									"border" : 1,
 									"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 									"id" : "obj-50",
@@ -310,94 +398,6 @@
 									"outlettype" : [ "bang" ],
 									"patching_rect" : [ 75.0, 135.0, 63.0, 22.0 ],
 									"text" : "closebang"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"activebgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-									"activebgoncolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-									"activetextcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-									"activetextoncolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
-									"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-									"bgoncolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-									"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-									"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-									"fontname" : "Ableton Sans Light",
-									"fontsize" : 16.0,
-									"id" : "obj-54",
-									"maxclass" : "live.text",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"parameter_enable" : 1,
-									"patching_rect" : [ 146.0, 93.030927777290344, 68.0, 25.0 ],
-									"pictures" : [ "validate.svg", "validate.svg" ],
-									"presentation" : 1,
-									"presentation_rect" : [ 525.0, 10.0, 25.0, 25.0 ],
-									"remapsvgcolors" : 1,
-									"rounded" : 8.0,
-									"saved_attribute_attributes" : 									{
-										"activebgcolor" : 										{
-											"expression" : ""
-										}
-,
-										"activebgoncolor" : 										{
-											"expression" : ""
-										}
-,
-										"activetextcolor" : 										{
-											"expression" : ""
-										}
-,
-										"activetextoncolor" : 										{
-											"expression" : ""
-										}
-,
-										"bgcolor" : 										{
-											"expression" : ""
-										}
-,
-										"bgoncolor" : 										{
-											"expression" : ""
-										}
-,
-										"bordercolor" : 										{
-											"expression" : ""
-										}
-,
-										"focusbordercolor" : 										{
-											"expression" : ""
-										}
-,
-										"textcolor" : 										{
-											"expression" : ""
-										}
-,
-										"textoffcolor" : 										{
-											"expression" : ""
-										}
-,
-										"valueof" : 										{
-											"parameter_enum" : [ "val1", "val2" ],
-											"parameter_initial" : [ 0 ],
-											"parameter_invisible" : 2,
-											"parameter_longname" : "Validate",
-											"parameter_mmax" : 1,
-											"parameter_shortname" : "Validate",
-											"parameter_type" : 2
-										}
-
-									}
-,
-									"text" : "Validate",
-									"textcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
-									"textoffcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-									"texton" : "Validate",
-									"usepicture" : 1,
-									"usesvgviewbox" : 1,
-									"varname" : "Validate"
 								}
 
 							}
@@ -2171,7 +2171,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+					"bgcolor" : [ 0.216, 0.216, 0.216, 1.0 ],
 					"border" : 1,
 					"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"id" : "obj-33",
@@ -2197,7 +2197,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+					"bgcolor" : [ 0.216, 0.216, 0.216, 1.0 ],
 					"border" : 1,
 					"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"id" : "obj-34",
@@ -2223,7 +2223,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+					"bgcolor" : [ 0.216, 0.216, 0.216, 1.0 ],
 					"border" : 1,
 					"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"id" : "obj-35",
@@ -2421,7 +2421,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+					"bgcolor" : [ 0.216, 0.216, 0.216, 1.0 ],
 					"border" : 1,
 					"bordercolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"id" : "obj-9",
