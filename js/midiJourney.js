@@ -276,6 +276,6 @@ async function test() {
 }
 
 // console.log(process.env.OPENAI_API_KEY)
-setTimeout(() => {
-	test();
-}, 200);
+// setTimeout(() => {
+// 	test();
+// }, 200);

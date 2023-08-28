@@ -100,9 +100,7 @@ const example2Input = clipToText({
 67,0,2
 71,0,2
 62,2,2
-66,2,2
-69,2,2
-73,2,2`});
+...`});
 
 const example2Prompt = "Transform this into a chirpy arpeggio"
 
@@ -118,9 +116,7 @@ const example2 = clipToText({
 67,1,0.5
 71,1.5,0.5
 62,2,0.5
-66,2.5,0.5
-69,3,0.5
-73,3.5,0.5`});
+...`});
 
 const example1Prompt = "Make a boards of canada style chord progression in 4 bars."
 
@@ -139,14 +135,7 @@ const example1 = clipToText({
 78,4.5,3.5
 81,4,4
 84,4.5,3.5
-67,8,4
-71,8.5,3.5
-74,8,4
-78,8.5,3.5
-72,12,4
-76,12.5,3.5
-79,12,4
-83,12.5,3.5`});
+...`});
 
 
 // console.log(example2Input);
@@ -184,4 +173,4 @@ const floatPrint = (n) => parseFloat(n.toFixed(2));
 // 	pitch: 60,
 // 	start_time: 0,
 // 	duration: 1
-// 	}]
+// 	}]));
