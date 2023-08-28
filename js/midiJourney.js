@@ -3,6 +3,7 @@ const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples 
 const { textToClip, clipToText } = require('./clipFormatter.js');
 const { max } = require('./max.js');
 const { getChatGptResponse, abort } = require('./openai.js');
+const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 
 
 const notationEncoder = abletonToCSV;
@@ -33,7 +34,13 @@ exports.INITIAL_HISTORY = INITIAL_HISTORY;
 
 
 
-// handles the initialization of necessary variables, the outer loop that retries if it fails and the error handling
+/**
+ * Main function to call. Handle the initialization of necessary variables, retrying on failures, and manage error handling.
+ * @async
+ * @param {Object} inputDict - The input parameters.
+ * @returns {Promise<Object>} The modified input dictionary.
+ * @throws Will throw an error if it fails to get a successful response after 3 tries.
+ */
 async function prompt(inputDict){
     max.post("Got the following data", Object.keys(inputDict));
 	max.post("detailClip", inputDict.detailClip)
@@ -82,7 +89,12 @@ async function prompt(inputDict){
 }
 
 
-// Function that handles the core logic inside the loop
+/**
+ * Handles the core logic of the interaction with the GPT model.
+ * @async
+ * @param {Object} dict - The dictionary containing input parameters.
+ * @returns {Promise<Object>} The dictionary with added or modified values.
+ */
 async function gptMidi(dict) {
     const { temperature, gptModel, duration, history } = dict;
    
@@ -133,60 +145,17 @@ async function gptMidi(dict) {
 }
 
 
-// if its cancelled rethrow otherwise just log so the loop can retry
-function handleError(error) {
-	if (error.name === "AbortError" || error.message === "canceled") {
-		max.post("cancelled!!!");
-		throw new Error("canceled");
-	}
-	max.post("error", error.message, error.stack);
-	if (error.response) {
-		max.post("error", error.response.status, error.response.data);
-	}
-	max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
-}
-
-// Messages send from Max to node.script
-// 
-max.addHandlers({
-	'prompt' : (p) => {
-		// if prompt is an array join into one string
-		p = Array.isArray(p) ? p.join(" ") : p;
-		prompt(p);
-	},
-	'cancel': () => {
-		max.post("received cancel request");
-		abort();
-	}
-	
-});
-
-
-// check if midi is valid
-// there must be notes
-// each note must have a pitch, start_time, duration and velocity.
-// only start_time is allowed to be zero
-// create an expressive error message if the midi is invalid saying exactly which field was misformed
-function checkIfMidiCorrect(abletonMidi) {
-	let midiError = null;
-	if (abletonMidi.length === 0) {
-		midiError = "No notes found in midi";
-	} else {
-		abletonMidi.forEach((note) => {
-			midiError = "";
-			if (!note.pitch)
-				midiError += "pitch is missing,";
-			if (!note.duration)
-				midiError += "duration is missing,";
-			if (!note.velocity)
-				midiError += "velocity is missing,";
-			if (note.start_time === undefined)
-				midiError += "start_time is missing,";
-		});
-	}
-	return midiError;
-}
-
+/**
+ * Constructs the prompt message for the GPT model based on input parameters.
+ * @param {Object} params - The input parameters.
+ * @param {string} params.promptText - The text to be used as the prompt for the GPT model.
+ * @param {number} params.duration - The duration of the musical piece.
+ * @param {Array} params.notes - The array containing note data.
+ * @param {string} params.title - The title of the musical piece.
+ * @param {string} params.key - The key of the musical piece.
+ * @param {string} params.explanation - Additional explanation or details.
+ * @returns {Object} The constructed prompt message object.
+ */
 function constructPrompt({promptText, duration, notes, title, key, explanation}) {
 	
 	if (!notes) 
@@ -216,10 +185,51 @@ ${promptText}`;
 }
 
 
+/**
+ * Handles any errors during the prompt function.
+ * @param {Error} error - The error object.
+ * @throws Will re-throw the error if it was an abort error.
+ */
+function handleError(error) {
+	if (error.name === "AbortError" || error.message === "canceled") {
+		max.post("cancelled!!!");
+		throw new Error("canceled");
+	}
+	max.post("error", error.message, error.stack);
+	if (error.response) {
+		max.post("error", error.response.status, error.response.data);
+	}
+	max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
+}
+
+
+/**
+ * Outputs errors to Max.
+ * @param {...any} errorMessage - Error message(s) to be sent to Max.
+ */
 function errorToMax(...errorMessage) {
 	max.post("error", ...errorMessage);
 	max.outlet('error', errorMessage);
 }
+
+
+
+/**
+ * Max message handlers.
+ * @type {Object}
+ */
+max.addHandlers({
+	'prompt' : (p) => {
+		// if prompt is an array join into one string
+		p = Array.isArray(p) ? p.join(" ") : p;
+		prompt(p);
+	},
+	'cancel': () => {
+		max.post("received cancel request");
+		abort();
+	}
+	
+});
 
 
 
