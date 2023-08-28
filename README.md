@@ -23,3 +23,9 @@ For the curious minds, MidiJourney offers a chance to dive into the fascinating 
 - **midiJourney.js**: This is the heart of our project. See how we generate and transform MIDI messages using OpenAI's GPT-3 model.
 
 Join us on this journey and let's make music like never before!
+
+This project uses the following technologies:
+
+- [OpenAI GPT](https://openai.com/research/gpt-3/)
+- [Ableton Live](https://www.ableton.com/)
+- [Max MSP / Max for Live](https://cycling74.com/products/max)
