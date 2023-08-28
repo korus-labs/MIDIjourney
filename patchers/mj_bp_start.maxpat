@@ -222,16 +222,16 @@
 , 			{
 				"box" : 				{
 					"bgcolor" : [ 0.082352941176471, 0.435294117647059, 0.411764705882353, 0.0 ],
-					"fontname" : "Ableton Sans Medium",
+					"fontname" : "Ableton Sans Light",
 					"fontsize" : 16.0,
 					"id" : "obj-39",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 475.0, 75.0, 241.0, 26.0 ],
+					"patching_rect" : [ 475.0, 75.0, 233.0, 26.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 180.0, 26.0 ],
-					"text" : "Select a MIDI clip/slot !",
+					"presentation_rect" : [ 5.0, 5.0, 174.0, 26.0 ],
+					"text" : "Select a MIDI clip/slot",
 					"textcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "noMidiSlot"
@@ -441,6 +441,7 @@
 					"bgoncolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
+					"fontname" : "Ableton Sans Light",
 					"fontsize" : 16.0,
 					"hidden" : 1,
 					"id" : "obj-27",
