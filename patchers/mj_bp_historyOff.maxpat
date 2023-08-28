@@ -15,7 +15,7 @@
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
-		"default_fontname" : "Arial",
+		"default_fontname" : "Shree Devanagari 714 Light",
 		"gridonopen" : 1,
 		"gridsize" : [ 5.0, 5.0 ],
 		"gridsnaponopen" : 2,
@@ -245,7 +245,7 @@
 					"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
 					"border" : 0.0,
 					"bordercolor" : [ 0.4, 0.490196078431373, 0.545098039215686, 0.0 ],
-					"fontname" : "Ableton Sans Light",
+					"fontname" : "Shree Devanagari 714",
 					"fontsize" : 16.0,
 					"id" : "obj-263",
 					"maxclass" : "textedit",
@@ -253,9 +253,9 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "", "int", "", "" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 160.0, 160.0, 407.0, 105.0 ],
+					"patching_rect" : [ 145.0, 170.0, 369.0, 67.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 35.0, 430.0, 185.0 ],
+					"presentation_rect" : [ 25.0, 40.0, 410.0, 170.0 ],
 					"readonly" : 1,
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -268,7 +268,6 @@
 
 					}
 ,
-					"text" : "afwfvwvgwg",
 					"textcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}

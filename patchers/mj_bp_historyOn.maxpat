@@ -1198,7 +1198,7 @@
 					"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
 					"border" : 0.0,
 					"bordercolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
-					"fontname" : "Ableton Sans Light",
+					"fontname" : "Shree Devanagari 714",
 					"fontsize" : 16.0,
 					"id" : "obj-25",
 					"maxclass" : "textedit",
@@ -1206,9 +1206,9 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "", "int", "", "" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 500.0, 860.0, 242.0, 130.0 ],
+					"patching_rect" : [ 500.0, 860.0, 243.0, 130.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 35.0, 430.0, 160.0 ],
+					"presentation_rect" : [ 25.0, 40.0, 410.0, 155.0 ],
 					"readonly" : 1,
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -1483,7 +1483,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 625.0, 685.0, 40.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 207.0, 441.0, 17.0 ],
+					"presentation_rect" : [ 5.0, 207.0, 450.0, 17.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
