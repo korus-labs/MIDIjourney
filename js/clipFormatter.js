@@ -14,14 +14,14 @@ function textToClip(response) {
 		parsedResponse = yaml.load(response);
 	} catch (error) {
 		console.error('Failed to parse YAML:', error);
-		return null;
+		throw error;
 	}
 
 	// Destructure and check for required fields
 	const { title, duration, key, explanation, notation } = parsedResponse;
 
-	if (!title || !duration) {
-		throw new Error('Missing required fields: title and/or duration');
+	if (!title) {
+		throw new Error('Missing required fields: title');
 	}
 
 	if (!notation) {
