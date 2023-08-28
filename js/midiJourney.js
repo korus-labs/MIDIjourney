@@ -40,7 +40,8 @@ let abortController = null;
 // handles the initialization of necessary variables, the outer loop that retries if it fails and the error handling
 async function prompt(inputDict){
     max.post("Got the following data", Object.keys(inputDict));
-
+	max.post("detailClip", inputDict.detailClip)
+	max.post("apiKey", inputDict.apiKey);
     try {
 		// set default values
 		inputDict = {
@@ -52,7 +53,7 @@ async function prompt(inputDict){
         	// 2 bars default duration if none is input
 			duration: 2*4,
 			history: [],
-			apiKey: apiKey(),
+			apiKey: apiKey(apiKey),
 			...inputDict,
 		}
         
