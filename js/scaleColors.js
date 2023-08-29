@@ -12,6 +12,8 @@ const camelotColors = {
     11: 16726484,
     12: 16726484
   };
+
+  const defaultColor = 16777215;
   
   const camelotChords = {
     1: ["ab minor", "g# minor", "b major", "cb major"],
@@ -38,7 +40,7 @@ const camelotColors = {
   // Mapping function
   const getColorCodeForScale = (chordName) => {
     const normalizedChord = chordName.toLowerCase();
-    return chordToCamelot[normalizedChord] || "Chord not found";
+    return chordToCamelot[normalizedChord] || defaultColor;
   };
   
   exports.getColorCodeForScale = getColorCodeForScale;
