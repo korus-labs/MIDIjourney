@@ -10,8 +10,6 @@ Welcome to MidiJourney, a Max for Live device developed by Pixelynx. This tool i
 
 MidiJourney isn't just a tool; it's your AI musical companion. Whether you're working on intricate solos, composing backing tracks, or fleshing out a new musical concept, MidiJourney can provide that extra spark to make your work shine.
 
-## User-Friendly Design
-
 Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
 
 ## Getting Started
