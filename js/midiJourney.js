@@ -4,6 +4,7 @@ const { textToClip, clipToText } = require('./clipFormatter.js');
 const { max } = require('./max.js');
 const { getChatGptResponse, abort } = require('./openai.js');
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
+const { getColorCodeForScale } = require('./scaleColors.js');
 
 
 const notationEncoder = abletonToCSV;
@@ -72,6 +73,7 @@ async function prompt(inputDict){
         for (let tries = 0; tries < 3; tries++) {
             try {
                 inputDict = await gptMidi(inputDict);
+				max.post("output keys", Object.keys(inputDict));
                 max.outlet("result", inputDict);
 				return inputDict;
             } catch (error) {
@@ -110,32 +112,31 @@ async function gptMidi(dict) {
     // Extracting data from response
     const { notation, title, explanation, key, duration: durationNew } = textToClip(response);
 
-    dict = { 
-		...dict, 
-		history: newHistory, 
-		explanation, 
-		title,
-		key,
-		duration: durationNew || duration
-	};
-
-    // output history (for storage and saving in dictionary)
-    max.outlet("processing", dict);
+	// if a duration was returned use that else use the input duration
+	const finalDuration = durationNew || duration;
+	
 
     // Convert to ableton midi
-    const abletonMidi = NOTATION_DECODER(notation, duration);
+    const abletonMidi = NOTATION_DECODER(notation, finalDuration);
     const midiError = checkIfMidiCorrect(abletonMidi);
 
     if (midiError) {
         throw new Error(midiError);
     }
 
-    dict = { 
+	dict = { 
 		...dict, 
-		history: newHistory,
-		notes: abletonMidi 
+		history: newHistory, 
+		explanation, 
+		title,
+		key,
+		duration: finalDuration,
+		color: getColorCodeForScale(key),
+		notes: abletonMidi,
 	};
 
+
+	max.post("determined color", dict.color,"from key", key);
     // if notation is csv we should delete the duration so it is estimated by ableton
     if (NOTATION_TYPE_OUTPUT === "csv") {
         delete dict.duration;

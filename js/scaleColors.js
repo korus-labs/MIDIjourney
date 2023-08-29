@@ -36,9 +36,9 @@ const camelotColors = {
   );
   
   // Mapping function
-  const getColorCodeForChord = (chordName) => {
+  const getColorCodeForScale = (chordName) => {
     const normalizedChord = chordName.toLowerCase();
     return chordToCamelot[normalizedChord] || "Chord not found";
   };
   
-  exports.getColorCodeForChord = getColorCodeForChord;
+  exports.getColorCodeForScale = getColorCodeForScale;
