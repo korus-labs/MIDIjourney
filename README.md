@@ -1,6 +1,6 @@
 # MidiJourney: Your AI Musical Companion
 
-<img width="500" alt="Screenshot" src="https://github.com/ElliotEtag/Midijourney/assets/5099901/e7801155-3252-4024-b398-478ba3328e02">
+<img width="763" alt="Screenshot 2023-08-29 at 16 30 23" src="https://github.com/ElliotEtag/Midijourney/assets/5099901/9d2103ce-2fc5-4163-994f-86262b50be40">
 
 ## Developed by Pixelynx ([pixelynx.io](https://pixelynx.io))
 
