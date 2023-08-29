@@ -1,5 +1,7 @@
 # MidiJourney: Your AI Musical Companion
 
+<img width="500" alt="Screenshot" src="https://github.com/ElliotEtag/Midijourney/assets/5099901/e7801155-3252-4024-b398-478ba3328e02">
+
 ## Developed by Pixelynx ([pixelynx.io](https://pixelynx.io))
 
 ### Creators: Elliot Fouchy and Thomas Haferlach
