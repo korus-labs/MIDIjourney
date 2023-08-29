@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -45,8 +45,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.742539048194885, 518.0, 280.0, 22.0 ],
-					"text" : "mj_consolePrint detailClip: \"STEP - Input Clip\""
+					"patching_rect" : [ 66.742539048194885, 518.0, 288.0, 22.0 ],
+					"text" : "mj_consolePrint detailClip: \"STEP - Input Detail Clip\""
 				}
 
 			}
