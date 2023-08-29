@@ -1,5 +1,7 @@
 # MidiJourney: Your AI Musical Companion
 
+<img width="550" alt="Screenshot 2023-08-29 at 16 30 23" src="https://github.com/ElliotEtag/Midijourney/assets/5099901/9d2103ce-2fc5-4163-994f-86262b50be40">
+
 ## Developed by Pixelynx ([pixelynx.io](https://pixelynx.io))
 
 ### Creators: Elliot Fouchy and Thomas Haferlach
@@ -9,8 +11,6 @@ Welcome to MidiJourney, a Max for Live device developed by Pixelynx. This tool i
 ## Amplify Your Creativity
 
 MidiJourney isn't just a tool; it's your AI musical companion. Whether you're working on intricate solos, composing backing tracks, or fleshing out a new musical concept, MidiJourney can provide that extra spark to make your work shine.
-
-## User-Friendly Design
 
 Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
 
