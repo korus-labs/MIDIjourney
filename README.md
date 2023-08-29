@@ -28,6 +28,18 @@ Dive deeper into the code to explore the technical aspects. It's a learning oppo
 - **openai.js**: Manages the interactions with OpenAI's API.
 - **midiJourney.js**: The core of MidiJourney. This file governs how MIDI messages are generated and manipulated.
 
+### Setting Up OpenAI API Access
+
+To use MidiJourney's OpenAI features, you'll need to set up API access:
+
+1. Create an OpenAI account.
+2. Verify your account.
+3. Log in and navigate to the API section.
+4. Generate a new API key.
+5. Save this key securely.
+6. Set up billing information.
+7. Set usage limits to manage costs.
+
 ## License
 
 This project is under the MIT License, giving you the freedom to explore and modify as you wish.
