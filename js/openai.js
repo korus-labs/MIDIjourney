@@ -25,6 +25,7 @@ const writeKey = (key) => {
     if (!fs.existsSync(`${os.homedir()}/.config`))
       fs.mkdirSync(`${os.homedir()}/.config`);
     fs.writeFileSync(apiKeyFilePath, key);
+	max.post("wrote key to", apiKeyFilePath);
   } catch (error) {
     console.error(error);
   }

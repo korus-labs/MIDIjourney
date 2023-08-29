@@ -96,14 +96,14 @@ async function prompt(inputDict){
  * @returns {Promise<Object>} The dictionary with added or modified values.
  */
 async function gptMidi(dict) {
-    const { temperature, gptModel, duration, history } = dict;
+    const { duration, history } = dict;
    
 
     // output history (for storage and saving in dictionary)
     max.outlet("processing", dict);
 
     // get actual midi message from chatgpt
-    const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...history], { temperature, gptModel });
+    const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...history], dict);
     const newHistory = [...history, midiMessage];
     const response = midiMessage.content;
 	max.post(`got response\n-------\n${response}`);
