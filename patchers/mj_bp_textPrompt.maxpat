@@ -47,7 +47,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 175.0, 290.0, 146.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 10.0, 80.0, 21.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 80.0, 21.0 ],
 					"text" : "Text Prompt",
 					"textcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 					"textjustification" : 1
@@ -67,8 +67,15 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 400.0, 100.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 10.0, 80.0, 20.0 ],
-					"proportion" : 0.39
+					"presentation_rect" : [ 5.0, 5.0, 80.0, 20.0 ],
+					"proportion" : 0.39,
+					"saved_attribute_attributes" : 					{
+						"bgfillcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -88,7 +95,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-1",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -105,7 +112,6 @@
 					"fontname" : "Shree Devanagari 714",
 					"fontsize" : 16.0,
 					"id" : "obj-3",
-					"linecount" : 5,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -113,8 +119,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 50.0, 403.0, 111.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 5,
-					"presentation_rect" : [ 25.0, 45.0, 410.0, 170.0 ],
+					"presentation_rect" : [ 25.0, 40.0, 410.0, 170.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
@@ -126,7 +131,7 @@
 
 					}
 ,
-					"text" : "Please compose a melody in the style of Philip Glass, ensuring it's engaging and subtle. Incorporate creative arpeggios with varying velocities for a dynamic effect. Focus on using quick arpeggios to capture the essence of Glass's minimalist musical approach.",
+					"text" : "create a melody in c major for a piano\n",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt"
 				}
@@ -145,8 +150,15 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 385.0, 85.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 30.0, 450.0, 200.0 ],
-					"proportion" : 0.39
+					"presentation_rect" : [ 5.0, 25.0, 450.0, 200.0 ],
+					"proportion" : 0.39,
+					"saved_attribute_attributes" : 					{
+						"bgfillcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -154,7 +166,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -241,9 +253,16 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 415.0, 115.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 20.0, 80.0, 20.0 ],
+					"presentation_rect" : [ 5.0, 15.0, 80.0, 20.0 ],
 					"proportion" : 0.39,
-					"rounded" : 0
+					"rounded" : 0,
+					"saved_attribute_attributes" : 					{
+						"bgfillcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -325,30 +344,7 @@
 				}
 
 			}
- ],
-		"parameters" : 		{
-			"obj-3" : [ "textPrompt[4]", "textPrompt", 0 ],
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
-		"dependency_cache" : [ 			{
-				"name" : "mj_routeDict.maxpat",
-				"bootpath" : "~/Github/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
- ],
-		"autosave" : 0
+ ]
 	}
 
 }
