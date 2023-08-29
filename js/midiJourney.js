@@ -1,7 +1,7 @@
 const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./miniNotation.js');
 const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./csvNotation.js');
-const { textToClip, clipToText } = require('./clipFormatter.js');
-const { max } = require('./max.js');
+const { textToClip, constructPrompt} = require('./clipFormatter.js');
+const { max, errorToMax } = require('./max.js');
 const { getChatGptResponse, abort } = require('./openai.js');
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
@@ -63,7 +63,10 @@ async function prompt(inputDict){
         abort();
 
 
-        const promptMessage = constructPrompt(inputDict);
+		const notes = inputDict.notes;
+		// construct csv notation
+		const notesCSV = notes && notes.length > 0 ? notationEncoder(notes) : null;
+        const promptMessage = constructPrompt(inputDict, notesCSV);
 
 		inputDict = { 
 			...inputDict, 
@@ -147,46 +150,6 @@ async function gptMidi(dict) {
 
 
 /**
- * Constructs the prompt message for the GPT model based on input parameters.
- * @param {Object} params - The input parameters.
- * @param {string} params.promptText - The text to be used as the prompt for the GPT model.
- * @param {number} params.duration - The duration of the musical piece.
- * @param {Array} params.notes - The array containing note data.
- * @param {string} params.title - The title of the musical piece.
- * @param {string} params.key - The key of the musical piece.
- * @param {string} params.explanation - Additional explanation or details.
- * @returns {Object} The constructed prompt message object.
- */
-function constructPrompt({promptText, duration, notes, title, key, explanation}) {
-	
-	if (!notes) 
-		return { 
-			role: "user", 
-			content: `# Prompt\n${promptText}` 
-		};
-
-	// construct csv notation
-	const notesCSV = notationEncoder(notes);
-	// // construct prompt
-	const inputPrompt = clipToText( {
-		title,
-		duration,
-		key,
-		explanation,
-		notation: notesCSV
-	});
-
-	const prompt = 
-`# Request
-${inputPrompt}
-# Prompt
-${promptText}`;
-	const promptMessage = { role: "user", content: prompt };
-	return promptMessage;
-}
-
-
-/**
  * Handles any errors during the prompt function.
  * @param {Error} error - The error object.
  * @throws Will re-throw the error if it was an abort error.
@@ -203,15 +166,6 @@ function handleError(error) {
 	max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
 }
 
-
-/**
- * Outputs errors to Max.
- * @param {...any} errorMessage - Error message(s) to be sent to Max.
- */
-function errorToMax(...errorMessage) {
-	max.post("error", ...errorMessage);
-	max.outlet('error', errorMessage);
-}
 
 
 

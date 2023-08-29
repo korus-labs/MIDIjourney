@@ -14,6 +14,22 @@ MidiJourney isn't just a tool; it's your AI musical companion. Whether you're wo
 
 Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
 
+## Getting Started
+
+To use MidiJourney in Ableton Live:
+
+1. Drag the device/MidiJourney.amxd file onto the master track of your Live project. 
+
+2. Configure your OpenAI API access by following the steps in the "Setting Up OpenAI API Access" section above.
+
+3. Click on an empty MIDI clip slot. 
+
+4. Type a text prompt describing the musical idea you want generated.
+
+5. Click the "Generate" button. MidiJourney will contact the OpenAI API and generate a new MIDI clip based on your prompt.
+
+6. You can also click on an existing MIDI clip and modify the prompt to have MidiJourney generate variations or continuations of that musical idea.
+
 ## What's Inside?
 
 Dive deeper into the code to explore the technical aspects. It's a learning opportunity to understand AI, music conversion, and interaction with various APIs.

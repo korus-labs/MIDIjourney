@@ -72,5 +72,42 @@ const clipToText = ({ title, duration, key, explanation, notation }) => {
 };
 
 
+/**
+ * Constructs the prompt message for the GPT model based on input parameters.
+ * @param {Object} params - The input parameters.
+ * @param {string} params.promptText - The text to be used as the prompt for the GPT model.
+ * @param {number} params.duration - The duration of the musical piece.
+ * @param {string} params.notation - The array containing note data.
+ * @param {string} params.title - The title of the musical piece.
+ * @param {string} params.key - The key of the musical piece.
+ * @param {string} params.explanation - Additional explanation or details.
+ * @returns {Object} The constructed prompt message object.
+ */
+function constructPrompt({ promptText, duration, title, key, explanation}, notation) {
+
+	if (!notation)
+		return userMessage(`# Prompt\n${promptText}`)
+
+	// construct prompt
+	const inputPrompt = clipToText({
+		title,
+		duration,
+		key,
+		explanation,
+		notation
+	});
+
+	const prompt = `# Request
+${inputPrompt}
+# Prompt
+${promptText}`;
+
+	const promptMessage = userMessage(prompt);
+	return promptMessage;
+}
+
+const userMessage = content => ({ role: "user", content });
+
+exports.constructPrompt = constructPrompt;
 exports.textToClip = textToClip;
 exports.clipToText = clipToText;
