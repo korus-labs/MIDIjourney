@@ -39,7 +39,7 @@ const camelotColors = {
   
   // Mapping function
   const getColorCodeForScale = (chordName) => {
-    const normalizedChord = chordName.toLowerCase();
+    const normalizedChord = chordName?.toLowerCase();
     return chordToCamelot[normalizedChord] || defaultColor;
   };
   
