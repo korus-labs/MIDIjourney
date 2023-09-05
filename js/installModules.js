@@ -18,8 +18,10 @@ if (!fs.existsSync(nodeModulesPath)) {
         }
         max.post(`stdout: ${stdout}`);
         max.post(`stderr: ${stderr}`);
+        max.outlet('done')
     });
 }
 else {
     max.post('node_modules exists. Dont need to install');
+    max.outlet('done')
 }
