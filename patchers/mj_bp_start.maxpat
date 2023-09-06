@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 639.0, 100.0, 813.0, 848.0 ],
+		"rect" : [ 639.0, 100.0, 332.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -362,40 +362,10 @@
 							}
  ],
 						"bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
-						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
-						"saved_attribute_attributes" : 						{
-							"default_plcolor" : 							{
-								"expression" : ""
-							}
-,
-							"editing_bgcolor" : 							{
-								"expression" : ""
-							}
-,
-							"locked_bgcolor" : 							{
-								"expression" : ""
-							}
-
-						}
-
+						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ]
 					}
 ,
 					"patching_rect" : [ 395.0, 60.0, 71.0, 22.0 ],
-					"saved_attribute_attributes" : 					{
-						"default_plcolor" : 						{
-							"expression" : ""
-						}
-,
-						"editing_bgcolor" : 						{
-							"expression" : ""
-						}
-,
-						"locked_bgcolor" : 						{
-							"expression" : ""
-						}
-
-					}
-,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -495,7 +465,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 5.0, 174.0, 26.0 ],
 					"text" : "Select a MIDI clip/slot",
-					"textcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
+					"textcolor" : [ 1.0, 0.364705882352941, 0.364705882352941, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "noMidiSlot"
 				}
@@ -673,11 +643,11 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-1",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "dictionary" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ -46.0, -79.0, 30.0, 30.0 ]
 				}
 
@@ -693,7 +663,7 @@
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"fontname" : "Ableton Sans Light",
-					"fontsize" : 16.0,
+					"fontsize" : 14.0,
 					"hidden" : 1,
 					"id" : "obj-27",
 					"maxclass" : "live.text",
@@ -758,10 +728,10 @@
 
 					}
 ,
-					"text" : "CREATE MIDI CLIP",
+					"text" : "Create MIDI Clip",
 					"textcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
 					"textoffcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
-					"texton" : "CREATING MIDI CLIP...",
+					"texton" : "Creating MIDI Clip...",
 					"varname" : "create"
 				}
 
@@ -770,7 +740,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -824,13 +794,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 6.0, 180.0, 22.030927777290344 ],
 					"proportion" : 0.39,
-					"saved_attribute_attributes" : 					{
-						"bgfillcolor" : 						{
-							"expression" : ""
-						}
-
-					}
-,
 					"varname" : "createBorder"
 				}
 
@@ -1082,13 +1045,43 @@
 
 			}
  ],
-		"saved_attribute_attributes" : 		{
-			"default_plcolor" : 			{
-				"expression" : ""
+		"parameters" : 		{
+			"obj-27" : [ "create", "create", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
 			}
-
+,
+			"inherited_shortname" : 1
 		}
-
+,
+		"dependency_cache" : [ 			{
+				"name" : "mj_moduleBorderBlink.maxpat",
+				"bootpath" : "~/GitHub/Midijourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "mj_route.maxpat",
+				"bootpath" : "~/GitHub/Midijourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "mj_routeDict.maxpat",
+				"bootpath" : "~/GitHub/Midijourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
