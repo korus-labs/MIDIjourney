@@ -57,7 +57,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 129.38738739490509, 73.0, 132.0, 22.0 ],
+					"patching_rect" : [ 143.38738739490509, 45.0, 132.0, 22.0 ],
 					"text" : "mj_ifClipDontExist"
 				}
 
