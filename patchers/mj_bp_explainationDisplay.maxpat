@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 431.0, 100.0, 969.0, 848.0 ],
+		"rect" : [ 431.0, 100.0, 539.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 160.0, 235.0, 123.0, 22.0 ],
+					"patching_rect" : [ 150.0, 205.0, 123.0, 22.0 ],
 					"text" : "route historyAssistant"
 				}
 
@@ -69,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 300.0, 320.0, 72.0, 22.0 ],
+					"patching_rect" : [ 265.0, 265.0, 72.0, 22.0 ],
 					"text" : "prepend set"
 				}
 
@@ -107,11 +107,12 @@
 					"fontsize" : 16.0,
 					"id" : "obj-25",
 					"maxclass" : "textedit",
+					"nosymquotes" : 1,
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "int", "", "" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 135.0, 375.0, 243.0, 130.0 ],
+					"patching_rect" : [ 265.0, 305.0, 243.0, 130.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 25.0, 20.0, 410.0, 175.0 ],
 					"readonly" : 1,
@@ -126,6 +127,7 @@
 
 					}
 ,
+					"tabmode" : 0,
 					"textcolor" : [ 1.0, 0.8, 0.364705882352941, 1.0 ],
 					"varname" : "textPrompt[1]"
 				}
@@ -248,42 +250,6 @@
 				}
 
 			}
-, 			{
-				"box" : 				{
-					"id" : "obj-122",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 135.0, 280.0, 22.0, 22.0 ],
-					"text" : "t b"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-121",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 25.0, 235.0, 122.0, 22.0 ],
-					"text" : "mj_route clearHistory"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-47",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.0, 320.0, 35.0, 22.0 ],
-					"text" : "clear"
-				}
-
-			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -301,27 +267,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-122", 0 ],
-					"source" : [ "obj-121", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-131", 0 ],
-					"source" : [ "obj-121", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-47", 0 ],
-					"source" : [ "obj-122", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-130", 0 ]
 				}
@@ -329,7 +274,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-121", 0 ],
+					"destination" : [ "obj-131", 0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -359,13 +304,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
 					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-25", 0 ],
-					"source" : [ "obj-47", 0 ]
 				}
 
 			}

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 586.0, 100.0, 892.0, 959.0 ],
+		"rect" : [ 586.0, 100.0, 462.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -174,6 +174,7 @@
 					"fontsize" : 16.0,
 					"id" : "obj-3",
 					"maxclass" : "textedit",
+					"nosymquotes" : 1,
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "int", "", "" ],
@@ -192,7 +193,8 @@
 
 					}
 ,
-					"text" : "Bass Balade in D minor please",
+					"tabmode" : 0,
+					"text" : "Please create a melody in F major for a piano",
 					"textcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
 					"varname" : "textPrompt"
 				}
