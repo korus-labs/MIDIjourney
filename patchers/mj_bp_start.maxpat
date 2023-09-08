@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 639.0, 100.0, 332.0, 848.0 ],
+		"rect" : [ 639.0, 100.0, 242.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -362,10 +362,32 @@
 							}
  ],
 						"bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
-						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ]
+						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
+						"saved_attribute_attributes" : 						{
+							"editing_bgcolor" : 							{
+								"expression" : ""
+							}
+,
+							"locked_bgcolor" : 							{
+								"expression" : ""
+							}
+
+						}
+
 					}
 ,
 					"patching_rect" : [ 395.0, 60.0, 71.0, 22.0 ],
+					"saved_attribute_attributes" : 					{
+						"editing_bgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"locked_bgcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -455,17 +477,18 @@
 , 			{
 				"box" : 				{
 					"bgcolor" : [ 0.082352941176471, 0.435294117647059, 0.411764705882353, 0.0 ],
-					"fontname" : "Ableton Sans Light",
+					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 16.0,
+					"hidden" : 1,
 					"id" : "obj-39",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 475.0, 75.0, 233.0, 26.0 ],
+					"patching_rect" : [ 475.0, 75.0, 241.0, 26.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 174.0, 26.0 ],
+					"presentation_rect" : [ 5.0, 7.0, 180.0, 26.0 ],
 					"text" : "Select a MIDI clip/slot",
-					"textcolor" : [ 1.0, 0.364705882352941, 0.364705882352941, 1.0 ],
+					"textcolor" : [ 1.0, 0.0, 0.043137254901961, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "noMidiSlot"
 				}
@@ -643,11 +666,11 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-1",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "dictionary" ],
 					"patching_rect" : [ -46.0, -79.0, 30.0, 30.0 ]
 				}
 
@@ -656,15 +679,13 @@
 				"box" : 				{
 					"activebgcolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"activebgoncolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
-					"activetextcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
-					"activetextoncolor" : [ 0.216, 0.216, 0.216, 1.0 ],
+					"activetextcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"activetextoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgcolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"bgoncolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
-					"fontname" : "Ableton Sans Light",
-					"fontsize" : 14.0,
-					"hidden" : 1,
+					"fontsize" : 16.0,
 					"id" : "obj-27",
 					"maxclass" : "live.text",
 					"numinlets" : 1,
@@ -673,7 +694,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 286.0, 319.0, 155.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 7.0, 180.0, 21.0 ],
+					"presentation_rect" : [ 5.0, 9.0, 180.0, 21.0 ],
 					"rounded" : 8.0,
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
@@ -740,7 +761,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -781,10 +802,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 1.0 ],
-					"border" : 1,
-					"bordercolor" : [ 0.216, 0.216, 0.216, 1.0 ],
-					"hidden" : 1,
+					"bgcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 0.0 ],
+					"border" : 4,
+					"bordercolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-10",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -792,8 +812,15 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 460.0, 405.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 6.0, 180.0, 22.030927777290344 ],
+					"presentation_rect" : [ 5.0, 5.0, 180.0, 29.030927777290344 ],
 					"proportion" : 0.39,
+					"saved_attribute_attributes" : 					{
+						"bgfillcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+,
 					"varname" : "createBorder"
 				}
 
@@ -1044,44 +1071,7 @@
 				}
 
 			}
- ],
-		"parameters" : 		{
-			"obj-27" : [ "create", "create", 0 ],
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
-		"dependency_cache" : [ 			{
-				"name" : "mj_moduleBorderBlink.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mj_route.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mj_routeDict.maxpat",
-				"bootpath" : "~/GitHub/Midijourney/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
- ],
-		"autosave" : 0
+ ]
 	}
 
 }
