@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 5,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 119.0, 640.0, 480.0 ],
+		"rect" : [ 928.0, 326.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -69,9 +69,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 334.0, 341.0, 165.0, 22.0 ],
-					"presentation_linecount" : 5,
-					"text" : "4 1. 0.90636 0.330113 1."
+					"patching_rect" : [ 334.0, 346.0, 165.0, 22.0 ],
+					"text" : "4 0.252174 0.811837 1. 1."
 				}
 
 			}
@@ -83,8 +82,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 294.0, 313.0, 165.0, 22.0 ],
-					"presentation_linecount" : 5,
-					"text" : "3 0.89533 0.462105 0. 1."
+					"text" : "3 0.975652 0.46087 1. 1."
 				}
 
 			}
@@ -96,8 +94,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 251.0, 287.0, 165.0, 22.0 ],
-					"presentation_linecount" : 5,
-					"text" : "2 0.771025 1. 0.265701 1."
+					"text" : "2 0.252174 1. 0.522356 1."
 				}
 
 			}
@@ -109,8 +106,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 220.0, 259.0, 165.0, 22.0 ],
-					"presentation_linecount" : 5,
-					"text" : "1 1. 0.90636 0.330113 1."
+					"text" : "1 0.252174 0.811837 1. 1."
 				}
 
 			}
@@ -122,7 +118,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 190.0, 230.0, 165.0, 22.0 ],
-					"text" : "0 0.360247 0. 0.605475 1."
+					"text" : "0 0.008976 0. 0.086957 1."
 				}
 
 			}
