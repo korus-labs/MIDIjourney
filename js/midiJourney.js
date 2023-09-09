@@ -68,9 +68,11 @@ async function prompt(inputDict){
 		const notesCSV = notes && notes.length > 0 ? notationEncoder(notes) : null;
         const promptMessage = constructPrompt(inputDict, notesCSV);
 
+		// add prompt to history
+		// if inputDict.historyStatus is false don't use previous history
 		inputDict = { 
 			...inputDict, 
-			history: [...inputDict.history, promptMessage] 
+			history: inputDict.historyStatus ? [...inputDict.history, promptMessage] : [promptMessage]
 		};
 
         for (let tries = 0; tries < 3; tries++) {
