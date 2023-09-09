@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 3,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -84,7 +84,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-32",
@@ -177,7 +176,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 415.0, 398.03515625, 217.0, 22.0 ],
-									"text" : "mj_colorControl 1 requestText textcolor"
+									"text" : "mj_colorControl 0 requestTitle textcolor"
 								}
 
 							}
@@ -234,6 +233,13 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-35", 0 ],
+									"source" : [ "obj-24", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-35", 0 ],
 									"source" : [ "obj-26", 0 ]
 								}
 
@@ -284,6 +290,14 @@
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
 									"source" : [ "obj-33", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-24", 0 ],
+									"order" : 7,
+									"source" : [ "obj-8", 1 ]
 								}
 
 							}
@@ -357,9 +371,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+						"locked_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -475,19 +489,20 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 315.0, -165.0, 161.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 80.0, 20.0 ],
+					"presentation_rect" : [ 5.0, 6.0, 80.0, 20.0 ],
 					"text" : "Text Prompt",
-					"textcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
-					"textjustification" : 1
+					"textcolor" : [ 0.820742, 0.056361, 1.0, 1.0 ],
+					"textjustification" : 1,
+					"varname" : "requestTitle"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bgcolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bordercolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
 					"id" : "obj-8",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -516,7 +531,6 @@
 					"fontname" : "Shree Devanagari 714",
 					"fontsize" : 16.0,
 					"id" : "obj-3",
-					"linecount" : 2,
 					"maxclass" : "textedit",
 					"nosymquotes" : 1,
 					"numinlets" : 1,
@@ -525,7 +539,6 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 5.0, 403.0, 111.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
 					"presentation_rect" : [ 25.0, 40.0, 410.0, 170.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
@@ -539,7 +552,7 @@
 					}
 ,
 					"tabmode" : 0,
-					"text" : "/Users/Lapitopi/Desktop/Screenshot 2023-09-07 at 21.54.14.png",
+					"text" : "Create a piano melody in B minor",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "requestText"
 				}
@@ -548,9 +561,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.033203125, 0.0, 0.125, 1.0 ],
+					"bgcolor" : [ 0.820742, 0.056361, 1.0, 1.0 ],
 					"border" : 4,
-					"bordercolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bordercolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
 					"id" : "obj-13",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -652,9 +665,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bgcolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bordercolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
 					"id" : "obj-12",
 					"maxclass" : "panel",
 					"mode" : 0,
