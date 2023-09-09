@@ -45,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 360.0, 305.0, 29.5, 22.0 ],
+					"patching_rect" : [ 350.0, 305.0, 29.5, 22.0 ],
 					"text" : "set"
 				}
 
@@ -212,7 +212,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "dictionary" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 40.000000249999999, 30.0, 30.0 ]
 								}
 
@@ -496,7 +496,7 @@
 					}
 ,
 					"tabmode" : 0,
-					"textcolor" : [ 0.8671875, 1.0, 0.5, 1.0 ],
+					"textcolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
 					"varname" : "responseText"
 				}
 
@@ -512,7 +512,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 209.0, 80.0, 21.0 ],
 					"text" : "Explanation",
-					"textcolor" : [ 0.033203125, 0.0, 0.125, 1.0 ],
+					"textcolor" : [ 0.360247, 0.0, 0.605475, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "responseTitle"
 				}
@@ -521,9 +521,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.8671875, 1.0, 0.5, 1.0 ],
+					"bgcolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.8671875, 1.0, 0.5, 1.0 ],
+					"bordercolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
 					"id" : "obj-14",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -547,9 +547,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.033203125, 0.0, 0.125, 1.0 ],
+					"bgcolor" : [ 0.360247, 0.0, 0.605475, 1.0 ],
 					"border" : 4,
-					"bordercolor" : [ 0.8671875, 1.0, 0.5, 1.0 ],
+					"bordercolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
 					"id" : "obj-231",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -573,9 +573,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.8671875, 1.0, 0.5, 1.0 ],
+					"bgcolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.8671875, 1.0, 0.5, 1.0 ],
+					"bordercolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
 					"id" : "obj-15",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -617,7 +617,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "dictionary" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 20.0, 25.0, 30.0, 30.0 ]
 				}
 
