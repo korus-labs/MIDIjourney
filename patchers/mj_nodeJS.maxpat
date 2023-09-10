@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 5,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -264,9 +264,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
+						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
+						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -389,27 +389,6 @@
 					"outlettype" : [ "dictionary", "" ],
 					"patching_rect" : [ 85.0, 149.0, 76.0, 22.0 ],
 					"text" : "mj_routeDict"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-7",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "n4m.monitor.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 606.0, 256.0, 400.0, 220.0 ],
-					"viewvisibility" : 1
 				}
 
 			}
@@ -544,8 +523,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -641,13 +618,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-268", 0 ],
 					"source" : [ "obj-273", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"source" : [ "obj-273", 1 ]
 				}
 
 			}

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 5,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -150.0, -882.0, 1444.0, 848.0 ],
+		"rect" : [ 34.0, 87.0, 1444.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "bang", "int", "int" ],
+					"patching_rect" : [ 550.0, 455.0, 83.0, 22.0 ],
+					"text" : "live.thisdevice"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-36",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -50,7 +62,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -181,9 +193,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
+						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
+						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -228,7 +240,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -597,7 +609,6 @@
 					"bgcolor" : [ 0.082352941176471, 0.435294117647059, 0.411764705882353, 0.0 ],
 					"fontname" : "Ableton Sans Bold",
 					"fontsize" : 16.0,
-					"hidden" : 1,
 					"id" : "obj-39",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -606,7 +617,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 7.0, 185.0, 26.0 ],
 					"text" : "Select a MIDI clip/slot",
-					"textcolor" : [ 0.771025, 1.0, 0.265701, 1.0 ],
+					"textcolor" : [ 0.252174, 1.0, 0.522356, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "noMidiSlot"
 				}
@@ -804,6 +815,7 @@
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"focusbordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
 					"fontsize" : 16.0,
+					"hidden" : 1,
 					"id" : "obj-27",
 					"maxclass" : "live.text",
 					"numinlets" : 1,
@@ -923,6 +935,7 @@
 					"bgcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 0.0 ],
 					"border" : 4,
 					"bordercolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"hidden" : 1,
 					"id" : "obj-10",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -1158,6 +1171,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-19", 1 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
