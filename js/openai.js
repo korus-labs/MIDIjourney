@@ -11,7 +11,7 @@ let abortController = null;
 // Settings
 const MAX_TOKENS = Infinity;
 
-const API_KEY_MISSING_ERROR = `No OpenAI API key found.
+const API_KEY_MISSING_ERROR = `Invalid OpenAI API key.
 
 1. Create an OpenAI account and navigate to the API section.
 2. Generate a new API key and paste it into the device's "API KEY" box.`;
@@ -60,16 +60,37 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
 
 	abortController = new AbortController();
 
-	const chat = await openAIApi(apiKey).createChatCompletion({
-		model: gptModel,
-		messages,
-		temperature,
-		max_tokens: MAX_TOKENS,
-	}, { signal: abortController.signal });
+	// handle 
+	// 	[ “error”, 401, 	{
+	// 		“error” : 		{
+	// 			“message” : “Incorrect API key provided: egeg. You can find your API key at https://platform.openai.com/account/api-keys.“,
+	// 			“type” : “invalid_request_error”,
+	// 			“param” : null,
+	// 			“code” : “invalid_api_key”
+	// 		}
+	// 	}
+	//  ]
+	// and throw API_KEY_MISSING_ERROR
+	// if it is another error, throw it
+	try {
+		const chat = await openAIApi(apiKey).createChatCompletion({
+			model: gptModel,
+			messages,
+			temperature,
+			max_tokens: MAX_TOKENS,
+		}, { signal: abortController.signal });
 
-	const message = chat.data.choices[0].message;
-	abortController = null;
-	return message;
+		const message = chat.data.choices[0].message;
+		abortController = null;
+		return message;
+	} catch (error) {
+		max.post("OpenAI error", error.response);
+		if (error?.response?.data?.error?.code === "invalid_api_key") {
+			throw new Error(API_KEY_MISSING_ERROR);
+		} else {
+			throw error;
+		}
+	}
 }
 
 
