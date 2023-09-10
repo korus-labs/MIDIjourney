@@ -12,7 +12,9 @@ Welcome to MidiJourney, a Max for Live device developed by Pixelynx. This tool i
 
 MidiJourney isn't just a tool; it's your AI musical companion. Whether you're working on intricate solos, composing backing tracks, or fleshing out a new musical concept, MidiJourney can provide that extra spark to make your work shine.
 
-Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
+Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI or music expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
+
+Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues for creativity and monetization that will help artists grow exponentially.
 
 ## Features
 
@@ -61,7 +63,9 @@ To use MidiJourney's OpenAI features, you'll need to set up API access:
 This project is under the MIT License, giving you the freedom to explore and modify as you wish.
 
 ### Technologies Utilized
+### Technologies Utilized
 
+- [KORUS Labs](https://korus.co/koruslabs)
 - [OpenAI GPT](https://openai.com/research/gpt-3/)
 - [Ableton Live](https://www.ableton.com/)
 - [Max MSP / Max for Live](https://cycling74.com/products/max)
