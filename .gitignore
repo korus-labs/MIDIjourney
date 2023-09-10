@@ -1,5 +1,6 @@
 # Node.js dependencies
 node_modules/
+device/packages
 npm-debug.log
 yarn-error.log
 .env
