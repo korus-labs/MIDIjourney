@@ -35,8 +35,6 @@ const writeKey = (key) => {
   }
 };
 
-max.post("testing...")
-
 const openAIApi = (apiKey) => {
   if (apiKey) writeKey(apiKey);
 
