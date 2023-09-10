@@ -84,14 +84,16 @@ const responseFormat = clipToText({
 
 
 const csvNotationDescription = `
-- Respond in a structured way with title, explanation of what you will do, key, duration and notation.
+- Respond in a structured way with title, explanation, key, duration and notation.
 - The response is in YAML format. 
 - The notation is in CSV format.
 - The title should be short (20 characters maximum).
 - Start times and durations are in beats. 
 - Time signature is 4/4. 
-- the first downbeat is at beat 0 and the second at beat 4.
-
+- First downbeat at beat 0,  second at beat 4.
+- Drums use GM midi pitches. (e.g. 38 is a snare drum)
+- Avoid making simple melodies and rhythms. E.g. use timings that are not always multiples of 0.5.
+- Avoid repeating the same melody multiple times.
 
 # Response format
 ${responseFormat}`;
@@ -147,10 +149,6 @@ const example1 = clipToText({
 ...`});
 
 
-// console.log(example2Input);
-// console.log(example2);
-// console.log(example1);
-
 const csvNotationExamples = 
 `
 # Request
@@ -178,9 +176,3 @@ exports.csvNotationExamples = csvNotationExamples;
 // function to print float with 2 decimal places
 const floatPrint = (n) => parseFloat(n.toFixed(2));
 
-
-// console.log("abletonToCSV", abletonToCSV([{
-// 	pitch: 60,
-// 	start_time: 0,
-// 	duration: 1
-// 	}]));

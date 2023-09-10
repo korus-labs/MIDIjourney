@@ -5,7 +5,7 @@ const { max, errorToMax } = require('./maxUtils/max.js');
 const { getChatGptResponse, abort, API_KEY_MISSING_ERROR } = require('./openai.js');
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
-
+const { last } = require('ramda');
 
 const notationEncoder = abletonToCSV;
 
@@ -67,10 +67,9 @@ async function prompt(inputDict){
         const promptMessage = constructPrompt(inputDict, notesCSV);
 
 		// add prompt to history
-		// if inputDict.historyStatus is false don't use previous history
 		inputDict = { 
 			...inputDict, 
-			history: inputDict.historyStatus ? [...inputDict.history, promptMessage] : [promptMessage]
+			history: [...inputDict.history, promptMessage],
 		};
 
         for (let tries = 0; tries < 3; tries++) {
@@ -101,12 +100,17 @@ async function prompt(inputDict){
  * @returns {Promise<Object>} The dictionary with added or modified values.
  */
 async function gptMidi(dict) {
-    const { duration, history } = dict;
+    const { duration, history, historyStatus } = dict;
    
 
     // output history (for storage and saving in dictionary)
     max.outlet("processing", dict);
 
+	// if historyStatus is false set history to only contain the last message
+	if (!historyStatus) {
+		dict = { ...dict, history: [last(history)] };
+	}
+	
     // get actual midi message from chatgpt
     const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...history], dict);
     const newHistory = [...history, midiMessage];
