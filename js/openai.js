@@ -42,7 +42,7 @@ const openAIApi = (apiKey) => {
 
   const finalApiKey = apiKey || readKey() || process.env.OPENAI_API_KEY;
 
-  if (!finalApiKey || true) {
+  if (!finalApiKey) {
     throw new Error(API_KEY_MISSING_ERROR);
   }
 
