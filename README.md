@@ -62,5 +62,6 @@ Developed by Elliot Fouchy and Thomas Haferlach, this project is under the MIT L
 - [OpenAI GPT](https://openai.com/research/gpt-3/)
 - [Ableton Live](https://www.ableton.com/)
 - [Max MSP / Max for Live](https://cycling74.com/products/max)
+- [Pollinations.AI](https://pollinations.ai)
 
 Join us on this journey to redefine the boundaries of music creation!
