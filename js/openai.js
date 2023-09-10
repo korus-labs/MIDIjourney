@@ -11,6 +11,7 @@ let abortController = null;
 // Settings
 const MAX_TOKENS = Infinity;
 
+const API_KEY_MISSING_ERROR = "No OpenAI API key found. Please set it in the preferences.";
 
 const readKey = () => {
   try {
@@ -31,13 +32,14 @@ const writeKey = (key) => {
   }
 };
 
+
 const openAIApi = (apiKey) => {
   if (apiKey) writeKey(apiKey);
 
   const finalApiKey = apiKey || readKey() || process.env.OPENAI_API_KEY;
 
   if (!finalApiKey) {
-    throw new Error("No OpenAI API key found");
+    throw new Error(API_KEY_MISSING_ERROR);
   }
 
   return new OpenAIApi(new Configuration({ apiKey: finalApiKey }));
@@ -86,3 +88,4 @@ function abort() {
 exports.getChatGptResponse = getChatGptResponse;
 exports.abortController = abortController;
 exports.abort = abort;
+exports.API_KEY_MISSING_ERROR = API_KEY_MISSING_ERROR;

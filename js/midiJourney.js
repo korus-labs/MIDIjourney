@@ -2,7 +2,7 @@ const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require
 const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./csvNotation.js');
 const { textToClip, constructPrompt} = require('./clipFormatter.js');
 const { max, errorToMax } = require('./max.js');
-const { getChatGptResponse, abort } = require('./openai.js');
+const { getChatGptResponse, abort, API_KEY_MISSING_ERROR } = require('./openai.js');
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
 
@@ -161,6 +161,12 @@ function handleError(error) {
 		max.post("cancelled!!!");
 		throw new Error("canceled");
 	}
+	
+	if (error.message === API_KEY_MISSING_ERROR) {
+		max.post("error", error.message);
+		throw new Error(error.message);
+	}
+
 	max.post("error", error.message, error.stack);
 	if (error.response) {
 		max.post("error", error.response.status, error.response.data);
