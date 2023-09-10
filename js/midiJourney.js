@@ -1,7 +1,7 @@
-const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./miniNotation.js');
-const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./csvNotation.js');
-const { textToClip, constructPrompt} = require('./clipFormatter.js');
-const { max, errorToMax } = require('./max.js');
+const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./encoding/miniNotation.js');
+const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./encoding/csvNotation.js');
+const { textToClip, constructPrompt} = require('./encoding/clipFormatter.js');
+const { max, errorToMax } = require('./maxUtils/max.js');
 const { getChatGptResponse, abort, API_KEY_MISSING_ERROR } = require('./openai.js');
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
@@ -20,7 +20,7 @@ const NOTATION_DESCRIPTION = csvNotationDescription;
 const NOTATION_EXAMPLES = csvNotationExamples;
 
 
-let INITIAL_HISTORY = [
+const INITIAL_HISTORY = [
 	{ 
 		"role": "system",
 		"content": 
@@ -31,8 +31,6 @@ ${NOTATION_DESCRIPTION}
 ${NOTATION_EXAMPLES}
 `}
 ];
-exports.INITIAL_HISTORY = INITIAL_HISTORY;
-
 
 
 /**
@@ -129,6 +127,7 @@ async function gptMidi(dict) {
         throw new Error(midiError);
     }
 
+	// construct the new dictionary
 	dict = { 
 		...dict, 
 		history: newHistory, 
@@ -142,6 +141,7 @@ async function gptMidi(dict) {
 
 
 	max.post("determined color", dict.color,"from key", key);
+
     // if notation is csv we should delete the duration so it is estimated by ableton
     if (NOTATION_TYPE_OUTPUT === "csv") {
         delete dict.duration;
@@ -197,19 +197,3 @@ max.addHandlers({
 });
 
 
-
-async function test() {
-	console.log(await prompt({
-		notes: null,
-		promptText: "beautiful melody in c major",
-		duration: 8,
-		gptModel: "gpt-3.5-turbo-0613",
-		temperature: 0.7,
-		apiKey: process.env.OPENAI_API_KEY
-	}));
-}
-
-// console.log(process.env.OPENAI_API_KEY)
-// setTimeout(() => {
-// 	test();
-// }, 200);

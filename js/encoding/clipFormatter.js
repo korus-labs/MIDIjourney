@@ -1,13 +1,12 @@
 const yaml = require('js-yaml');
 
-// Response format:
-// title: "String"  # Required
-// duration: Integer  # Required
-// key: "String"  # Optional
-// explanation: "String"  # Optional
-// notation: "String"  # Required, and can have multiple entries. In CSV format this would be one note per line
-// to
-// { title, explanation, notation }
+
+/**
+ * Converts a YAML-formatted response to a clip object.
+ * 
+ * @param {string} response - The YAML-formatted response string.
+ * @returns {Object} A clip object.
+ */
 function textToClip(response) {
 	let parsedResponse;
 	try {
@@ -40,6 +39,12 @@ function textToClip(response) {
 	};
 }
 
+/**
+ * Converts a clip object to a YAML-formatted response.
+ * 
+ * @param {Object} clip - The clip object.
+ * @returns {string} A YAML-formatted response string.
+ */
 const clipToText = ({ title, duration, key, explanation, notation }) => {
 	if (!title || !duration) {
 		throw new Error('Missing required fields: title and/or duration');
@@ -105,6 +110,7 @@ ${promptText}`;
 	const promptMessage = userMessage(prompt);
 	return promptMessage;
 }
+
 
 const userMessage = content => ({ role: "user", content });
 

@@ -4,6 +4,13 @@ const MAX_NOTES_FOR_INPUT = 24;
 
 const CSV_HEADER = "pitch,time,duration";
 
+
+/**
+ * Converts Ableton note data to a CSV formatted string.
+ * 
+ * @param {Array} notes - An array containing Ableton Midi note data.
+ * @returns {string} A CSV-formatted string.
+ */
 const abletonToCSV = (notes) => {
 	// if there are more than 16 notes, only use the first 16 but append \n... to the end
 
@@ -29,9 +36,13 @@ const abletonToCSV = (notes) => {
 	return csvString;
 };
 
-exports.abletonToCSV = abletonToCSV;
 
-
+/**
+ * Converts a CSV-formatted string to Ableton note data.
+ * 
+ * @param {string} csvString - A CSV-formatted string.
+ * @returns {Array} An array containing Ableton Midi note data.
+ */
 const csvToAbleton = (csvString) => {
 	console.log("converting to ableton format", csvString);
 	const lines = csvString.trim().split('\n');
@@ -71,8 +82,6 @@ const responseFormat = clipToText({
 });
 
 
-
-console.log(responseFormat);
 
 const csvNotationDescription = `
 - Respond in a structured way with title, explanation of what you will do, key, duration and notation.
@@ -161,6 +170,7 @@ ${example2Prompt}
 # Response
 ${example2}`;
 
+exports.abletonToCSV = abletonToCSV;
 exports.csvToAbleton = csvToAbleton;
 exports.csvNotationDescription = csvNotationDescription;
 exports.csvNotationExamples = csvNotationExamples;
