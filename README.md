@@ -2,11 +2,9 @@
 
 <img width="600" alt="Screenshot 2023-09-10 at 21 17 26" src="https://github.com/ElliotEtag/Midijourney/assets/5099901/d63b7e3a-d79f-4134-948d-3af4336e3326">
 
-## Developed by Pixelynx ([pixelynx.io](https://pixelynx.io))
+## Developed by Pixelynx's KORUS Labs ([pixelynx.io](https://pixelynx.io))
 
-### Creators: Elliot Fouchy and Thomas Haferlach
-
-Welcome to MidiJourney, a Max for Live device developed by Pixelynx. This tool integrates OpenAI's GPT technology into your Ableton Live setup, offering a unique AI collaboration experience for your music-making process.
+Welcome to MidiJourney. Brought to you by the team at Pixelynx's KORUS Labs, and shaped by the artistic direction of Richie Hawtin and deadmau5, this plugin seamlessly integrates artificial intelligence to elevate your music-making experience.
 
 ## Amplify Your Creativity
 
@@ -60,9 +58,8 @@ To use MidiJourney's OpenAI features, you'll need to set up API access:
 
 ## License
 
-This project is under the MIT License, giving you the freedom to explore and modify as you wish.
+Developed by Elliot Fouchy and Thomas Haferlach, this project is under the MIT License, giving you the freedom to explore and modify as you wish. 
 
-### Technologies Utilized
 ### Technologies Utilized
 
 - [KORUS Labs](https://korus.co/koruslabs)
