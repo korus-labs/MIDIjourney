@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 5,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -195.0, -993.0, 1534.0, 959.0 ],
+		"rect" : [ 34.0, 87.0, 1534.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -491,7 +491,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 6.0, 80.0, 20.0 ],
 					"text" : "Text Prompt",
-					"textcolor" : [ 0.820742, 0.056361, 1.0, 1.0 ],
+					"textcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "requestTitle"
 				}
@@ -500,9 +500,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
+					"bgcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
+					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-8",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -561,15 +561,15 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.820742, 0.056361, 1.0, 1.0 ],
+					"bgcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"border" : 4,
-					"bordercolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
+					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-13",
 					"maxclass" : "panel",
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 320.0, -140.0, 30.0, 31.030927777290344 ],
+					"patching_rect" : [ 315.0, -140.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 25.0, 450.0, 200.0 ],
 					"proportion" : 0.39,
@@ -665,9 +665,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
+					"bgcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 1.0, 0.90636, 0.330113, 1.0 ],
+					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-12",
 					"maxclass" : "panel",
 					"mode" : 0,

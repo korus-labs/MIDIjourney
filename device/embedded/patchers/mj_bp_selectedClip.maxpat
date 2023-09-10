@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -195.0, -993.0, 1301.0, 959.0 ],
+		"rect" : [ 34.0, 87.0, 1301.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -84,7 +84,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
@@ -420,7 +419,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 10.0, 10.0, 440.0, 21.0 ],
 					"text" : "None",
-					"textcolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"textcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"varname" : "midiStatus"
 				}
 
@@ -436,7 +435,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 375.0, 35.0, 80.0, 21.0 ],
 					"text" : "MIDI Prompt",
-					"textcolor" : [ 0.033203125, 0.0, 0.125, 1.0 ],
+					"textcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "midiTitle"
 				}
@@ -445,9 +444,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bgcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-12",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -508,15 +507,15 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.033203125, 0.0, 0.125, 1.0 ],
+					"bgcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"border" : 4,
-					"bordercolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-32",
 					"maxclass" : "panel",
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 230.0, 110.0, 30.0, 31.030927777290344 ],
+					"patching_rect" : [ 230.0, 105.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 5.0, 450.0, 30.0 ],
 					"proportion" : 0.39,
@@ -534,9 +533,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bgcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.25, 0.5078125, 1.0, 1.0 ],
+					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-33",
 					"maxclass" : "panel",
 					"mode" : 0,

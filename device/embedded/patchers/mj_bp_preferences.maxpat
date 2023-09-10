@@ -1146,7 +1146,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 360.0, 216.0, 1144.0, 592.0 ],
+						"rect" : [ 145.0, 327.0, 792.0, 402.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -1546,7 +1546,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 335.0, 55.0, 67.0, 22.0 ],
+									"patching_rect" : [ 335.0, 60.0, 67.0, 22.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 									"text" : "thispatcher"
 								}

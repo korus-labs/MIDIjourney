@@ -613,7 +613,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 450.0, 175.0, 247.0, 26.0 ],
+					"patching_rect" : [ 470.0, 175.0, 247.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 7.0, 185.0, 26.0 ],
 					"text" : "Select a MIDI clip/slot",

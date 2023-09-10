@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 5,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, -952.0, 775.0, 848.0 ],
+		"rect" : [ 62.0, 87.0, 775.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -74,7 +74,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -272,7 +272,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -503,7 +503,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -916,7 +916,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1585,7 +1585,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 375.0, 6.0, 80.0, 21.0 ],
 					"text" : "History",
-					"textcolor" : [ 0.360247, 0.0, 0.605475, 1.0 ],
+					"textcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "historyTitle"
 				}
@@ -1594,9 +1594,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.662846, 0.662846, 0.662846, 1.0 ],
+					"bgcolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.662846, 0.662846, 0.662846, 1.0 ],
+					"bordercolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"id" : "obj-3",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -1641,7 +1641,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1924,7 +1924,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2375,7 +2375,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2658,7 +2658,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3205,7 +3205,7 @@
 					"hidden" : 1,
 					"id" : "obj-5",
 					"ignoreclick" : 1,
-					"linecolor" : [ 0.662846, 0.662846, 0.662846, 1.0 ],
+					"linecolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"linethickness" : 2.0,
 					"maxclass" : "function",
 					"numinlets" : 1,
@@ -3226,15 +3226,15 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.360247, 0.0, 0.605475, 1.0 ],
+					"bgcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"border" : 4,
-					"bordercolor" : [ 0.662846, 0.662846, 0.662846, 1.0 ],
+					"bordercolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"id" : "obj-13",
 					"maxclass" : "panel",
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 555.0, 230.0, 30.0, 31.030927777290344 ],
+					"patching_rect" : [ 560.0, 235.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 25.0, 450.0, 29.0 ],
 					"proportion" : 0.39,
@@ -3252,9 +3252,9 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.662846, 0.662846, 0.662846, 1.0 ],
+					"bgcolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"border" : 1,
-					"bordercolor" : [ 0.662846, 0.662846, 0.662846, 1.0 ],
+					"bordercolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"id" : "obj-1",
 					"maxclass" : "panel",
 					"mode" : 0,
