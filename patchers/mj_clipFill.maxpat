@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 5,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -110.0, -907.0, 1095.0, 763.0 ],
+		"rect" : [ 247.0, -899.0, 1095.0, 763.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -74,7 +74,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 5,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -449,10 +449,24 @@
 								}
 
 							}
- ]
+ ],
+						"saved_attribute_attributes" : 						{
+							"default_plcolor" : 							{
+								"expression" : ""
+							}
+
+						}
+
 					}
 ,
 					"patching_rect" : [ 168.0, 371.49082756506732, 91.0, 22.0 ],
+					"saved_attribute_attributes" : 					{
+						"default_plcolor" : 						{
+							"expression" : ""
+						}
+
+					}
+,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -511,18 +525,6 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 27.0, 159.224250597656237, 117.0, 22.0 ],
 					"text" : "mj_route liveVersion"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 26.0, 63.0, 66.0, 22.0 ],
-					"text" : "route done"
 				}
 
 			}
@@ -748,7 +750,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.0, 21.0, 30.0, 30.0 ]
+					"patching_rect" : [ 27.0, 49.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -792,13 +794,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-3", 1 ],
 					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"source" : [ "obj-15", 1 ]
 				}
 
 			}
@@ -853,7 +848,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
+					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-213", 0 ]
 				}
 
