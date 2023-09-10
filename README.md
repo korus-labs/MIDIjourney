@@ -1,7 +1,6 @@
 # MidiJourney: Your AI Musical Companion
 
-![image](https://github.com/ElliotEtag/Midijourney/assets/36901823/63b8c410-10a5-4e39-a5fc-9896bf9c8c36)
-
+<img width="600" alt="Screenshot 2023-09-10 at 21 17 26" src="https://github.com/ElliotEtag/Midijourney/assets/5099901/d63b7e3a-d79f-4134-948d-3af4336e3326">
 
 ## Developed by Pixelynx ([pixelynx.io](https://pixelynx.io))
 
@@ -14,6 +13,16 @@ Welcome to MidiJourney, a Max for Live device developed by Pixelynx. This tool i
 MidiJourney isn't just a tool; it's your AI musical companion. Whether you're working on intricate solos, composing backing tracks, or fleshing out a new musical concept, MidiJourney can provide that extra spark to make your work shine.
 
 Designed for ease of use, MidiJourney seamlessly integrates with Ableton Live. You don't need to be an AI expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
+
+## Features
+
+- **Easy Integration with Ableton Live**: Seamless experience that lets you focus on making music.
+- **Describe Your Music Idea in Words, Powered by OpenAI GPT**: Simply tell the AI what you're imagining, and watch it turn your idea into music.
+- **Educational Insights**: Get explanations of what MidiJourney is doing, providing you an educational angle to understand the AI and music theory behind your creations.
+- **Clip Variations and Continuations**: Generate new takes on existing clips or complete the musical ideas.
+- **Clips Colored According to Circle of Fifths**: Visual harmony cues to make your workflow even smoother.
+- **Conversational History**: Recall past musical ideas for a cohesive song creation, though it may slightly slow down the process.
+- **Temperature Control**: Dial up the creativity or chaos with an adjustable "temperature" setting.
 
 ## Getting Started
 
