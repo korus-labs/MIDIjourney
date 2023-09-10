@@ -6,7 +6,7 @@ const { max } = require("./max");
 const fs = require('fs');
 const path = require('path');
 
-const nodeModulesPath = path.join(__dirname,'node_modules');
+const nodeModulesPath = path.join(__dirname,'..', 'node_modules');
 max.post(`nodeModulesPath: ${nodeModulesPath}`);
 if (!fs.existsSync(nodeModulesPath)) {
     max.post('Installing node modules...');

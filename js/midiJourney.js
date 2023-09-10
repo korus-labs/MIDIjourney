@@ -25,7 +25,10 @@ const INITIAL_HISTORY = [
 		"role": "system",
 		"content": 
 `You are an expert musical transformer and generator. 
-
+- Respond in a structured way with title, explanation, key, duration and notation.
+- The title should be short (20 characters maximum).
+- Avoid making simple melodies and rhythms. E.g. use timings that are not always multiples of 0.5.
+- Avoid repeating the same melody multiple times.
 ${NOTATION_DESCRIPTION}
 
 ${NOTATION_EXAMPLES}
@@ -107,10 +110,10 @@ async function gptMidi(dict) {
     max.outlet("processing", dict);
 
 	// if historyStatus is false set history to only contain the last message
-	const historyToUse = historyStatus ? history : [last(history)];
+	const reducedHistory = historyStatus ? history : [last(history)];
 
     // get actual midi message from chatgpt
-    const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...historyToUse], dict);
+    const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...reducedHistory], dict);
     const newHistory = [...history, midiMessage];
     const response = midiMessage.content;
 	max.post(`got response\n-------\n${response}`);
@@ -125,9 +128,8 @@ async function gptMidi(dict) {
     const abletonMidi = NOTATION_DECODER(notation, finalDuration);
     const midiError = checkIfMidiCorrect(abletonMidi);
 
-    if (midiError) {
+    if (midiError) 
         throw new Error(midiError);
-    }
 
 	// construct the new dictionary
 	dict = { 
