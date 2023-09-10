@@ -32,7 +32,9 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
   
 	max.post("Getting GPT response. Temperature:", temperature, "Model:", gptModel, "Num messages:", messages.length);
   
-	abortController = new AbortController();
+  max.post("creating new abort controller")
+	abort();
+  abortController = new AbortController();
   
 	try {
 	  const chat = await openAIApi(apiKey).createChatCompletion({
@@ -43,12 +45,11 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
 	  }, { signal: abortController.signal });
   
 	  const message = chat.data.choices[0].message;
-    max.post("Setting abort controller to null")
 	  abortController = null;
 	  return message;
+
 	} catch (error) {
 	  max.post("OpenAI error", error.response);
-    max.post("Setting abort controller to null")
     abortController = null;
 	  // Check for an invalid API key and throw a custom error message
 	  if (error?.response?.data?.error?.code === "invalid_api_key") 
@@ -108,10 +109,7 @@ const printMessages = (messages) => {
 
 // Abort a running request
 const abort = () => {
-  
   if (abortController) {
-    const stack = new Error().stack;
-    max.post("Aborting request?", abortController, stack);
     abortController.abort();
     abortController = null;
   }

@@ -29,6 +29,14 @@ const INITIAL_HISTORY = [
 - The title should be short (20 characters maximum).
 - Avoid making simple melodies and rhythms. E.g. use timings that are not always multiples of 0.5.
 - Avoid repeating the same melody multiple times.
+
+Consider incorporating these music theory concepts in your composition:
+- Diatonic scales and key signatures (e.g., C major scale: C, D, E, F, G, A, B)
+- Harmonic progressions and cadences (e.g., ii-V-I progression: Dm7, G7, Cmaj7)
+- Rhythmic patterns and time signatures (e.g., syncopated rhythm in 4/4 time)
+- Melodic contour and phrasing (e.g., ascending melody with a peak, followed by a descent)
+- Chord inversions and voicings (e.g., Cmaj7 in first inversion: E, G, B, C)
+
 ${NOTATION_DESCRIPTION}
 
 ${NOTATION_EXAMPLES}
@@ -60,9 +68,6 @@ async function prompt(inputDict){
 			history: [],
 			...inputDict,
 		}
-        
-        abort();
-
 
 		const notes = inputDict.notes;
 		// construct csv notation
