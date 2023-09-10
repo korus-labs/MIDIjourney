@@ -4,18 +4,18 @@ const fs = require('fs');
 const os = require('os');
 const { max } = require('./max.js');
 
+// Initialize global variables and constants
 const apiKeyFilePath = `${os.homedir()}/.config/midijourney_api_key`;
+const MAX_TOKENS = Infinity;
+const API_KEY_MISSING_ERROR = `
+Invalid OpenAI API key.
+1. Create an OpenAI account and navigate to the API section.
+2. Generate a new API key and paste it into the device's "API KEY" box.
+`;
 
 let abortController = null;
 
-// Settings
-const MAX_TOKENS = Infinity;
-
-const API_KEY_MISSING_ERROR = `Invalid OpenAI API key.
-
-1. Create an OpenAI account and navigate to the API section.
-2. Generate a new API key and paste it into the device's "API KEY" box.`;
-
+// Read the API key from file
 const readKey = () => {
   try {
     return fs.readFileSync(apiKeyFilePath, 'utf8');
@@ -24,17 +24,20 @@ const readKey = () => {
   }
 };
 
+// Write the API key to file
 const writeKey = (key) => {
   try {
-    if (!fs.existsSync(`${os.homedir()}/.config`))
+    if (!fs.existsSync(`${os.homedir()}/.config`)) {
       fs.mkdirSync(`${os.homedir()}/.config`);
+    }
     fs.writeFileSync(apiKeyFilePath, key);
-	max.post("wrote key to", apiKeyFilePath);
+    max.post("Wrote key to", apiKeyFilePath);
   } catch (error) {
     console.error(error);
   }
 };
 
+// Initialize the OpenAI API object
 const openAIApi = (apiKey) => {
   if (apiKey) writeKey(apiKey);
 
@@ -47,67 +50,56 @@ const openAIApi = (apiKey) => {
   return new OpenAIApi(new Configuration({ apiKey: finalApiKey }));
 };
 
-
+// Get the GPT model's response
 async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-turbo-0613", apiKey }) {
+  messages = [...messages];
+  printMessages(messages);
 
+  max.post("Getting GPT response. Temperature:", temperature, "Model:", gptModel, "Num messages:", messages.length);
 
-	messages = [ ...messages];
-	printMessages(messages);
+  abortController = new AbortController();
 
-	max.post("getting chat gpt response. Temperature:", temperature, "model:", gptModel, "num messages:", messages.length);
+  try {
+    const chat = await openAIApi(apiKey).createChatCompletion({
+      model: gptModel,
+      messages,
+      temperature,
+      max_tokens: MAX_TOKENS,
+    }, { signal: abortController.signal });
 
-	abortController = new AbortController();
+    const message = chat.data.choices[0].message;
+    abortController = null;
+    return message;
+  } catch (error) {
+    max.post("OpenAI error", error.response);
 
-	// handle 
-	// 	[ “error”, 401, 	{
-	// 		“error” : 		{
-	// 			“message” : “Incorrect API key provided: egeg. You can find your API key at https://platform.openai.com/account/api-keys.“,
-	// 			“type” : “invalid_request_error”,
-	// 			“param” : null,
-	// 			“code” : “invalid_api_key”
-	// 		}
-	// 	}
-	//  ]
-	// and throw API_KEY_MISSING_ERROR
-	// if it is another error, throw it
-	try {
-		const chat = await openAIApi(apiKey).createChatCompletion({
-			model: gptModel,
-			messages,
-			temperature,
-			max_tokens: MAX_TOKENS,
-		}, { signal: abortController.signal });
-
-		const message = chat.data.choices[0].message;
-		abortController = null;
-		return message;
-	} catch (error) {
-		max.post("OpenAI error", error.response);
-		if (error?.response?.data?.error?.code === "invalid_api_key") {
-			throw new Error(API_KEY_MISSING_ERROR);
-		} else {
-			throw error;
-		}
-	}
+    // Check for an invalid API key and throw a custom error message
+    if (error?.response?.data?.error?.code === "invalid_api_key") {
+      throw new Error(API_KEY_MISSING_ERROR);
+    } else {
+      throw error;
+    }
+  }
 }
 
+// Print messages to the console
+const printMessages = (messages) => {
+  max.post(`--- Messages (${messages.length}) ---`);
+  messages.forEach((m) => {
+    max.post(`[${m.role}]:\n${m.content}\n`);
+  });
+  max.post(`--- End Messages ---`);
+};
 
-function printMessages(messages) {
-	max.post(`--- messages (${messages.length}) ---`);
-	messages.forEach((m) => {
-		max.post(`[${m.role}]:\n${m.content}\n`)
-	});
-	max.post(`--- end messages ---`);
-}
+// Abort a running request
+const abort = () => {
+  if (abortController) {
+    abortController.abort();
+    abortController = null;
+  }
+};
 
-function abort() {
-	if (abortController) {
-		abortController.abort();
-		abortController = null;
-	}
-}
-
-
+// Export functions and constants
 exports.getChatGptResponse = getChatGptResponse;
 exports.abortController = abortController;
 exports.abort = abort;
