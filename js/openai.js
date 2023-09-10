@@ -11,7 +11,10 @@ let abortController = null;
 // Settings
 const MAX_TOKENS = Infinity;
 
-const API_KEY_MISSING_ERROR = "No OpenAI API key found. Please set it in the preferences.";
+const API_KEY_MISSING_ERROR = `No OpenAI API key found.
+
+1. Create an OpenAI account and navigate to the API section.
+2. Generate a new API key and paste it into the "API KEY" box.`;
 
 const readKey = () => {
   try {
