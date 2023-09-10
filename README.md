@@ -6,7 +6,7 @@
 
 Welcome to MIDIjourney. Brought to you by the team at Pixelynx's KORUS Labs, and shaped by the artistic direction of Richie Hawtin and deadmau5, this plugin seamlessly integrates artificial intelligence to elevate your music-making experience.
 
-## Amplify Your Creativity
+## Take a Whimsical Detour into Tune Town
 
 MIDIjourney isn't just a tool; it's your AI musical companion. Whether you're working on intricate solos, composing backing tracks, or fleshing out a new musical concept, MIDIjourney can provide that extra spark to make your work shine.
 
