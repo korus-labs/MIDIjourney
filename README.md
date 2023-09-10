@@ -43,13 +43,9 @@ Dive deeper into the code to explore the technical aspects. It's a learning oppo
 
 To use MidiJourney's OpenAI features, you'll need to set up API access:
 
-1. Create an OpenAI account.
-2. Verify your account.
-3. Log in and navigate to the API section.
-4. Generate a new API key.
-5. Save this key securely.
-6. Set up billing information.
-7. Set usage limits to manage costs.
+1. Create an OpenAI account and navigate to the API section.
+2. Generate a new API key.
+3. Paste API key into the "API KEY" box.
 
 ## License
 
