@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 734.0, 145.0, 738.0, 848.0 ],
+		"rect" : [ 748.0, -959.0, 738.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -89,7 +89,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 863.0, -993.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -117,6 +117,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-19",
@@ -184,8 +185,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 105.25, 261.0, 460.0, 22.0 ],
-									"text" : "pak \"Oops, something went wrong, please retry -------------------------------------------->\" s"
+									"patching_rect" : [ 105.25, 261.0, 398.0, 22.0 ],
+									"text" : "pak \"Oops, something went wrong :( ---------------------------------------------\" s"
 								}
 
 							}
@@ -300,7 +301,7 @@
 
 					}
 ,
-					"patching_rect" : [ 328.250000000000057, 617.0, 96.0, 22.0 ],
+					"patching_rect" : [ 333.999999999999943, 617.0, 96.0, 22.0 ],
 					"saved_attribute_attributes" : 					{
 						"default_plcolor" : 						{
 							"expression" : ""
@@ -330,7 +331,7 @@
 					"outlettype" : [ "bang" ],
 					"outlinecolor" : [ 1.0, 0.364705882352941, 0.364705882352941, 1.0 ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 375.0, 484.0, 24.0, 24.0 ]
+					"patching_rect" : [ 370.0, 473.146093219518661, 24.0, 24.0 ]
 				}
 
 			}
@@ -341,7 +342,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 292.452441333333297, 529.0, 50.5, 22.0 ],
+					"patching_rect" : [ 292.452441333333297, 521.0, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -383,7 +384,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 199.119107999999983, 529.0, 54.0, 22.0 ],
+					"patching_rect" : [ 199.119107999999983, 521.0, 54.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -397,7 +398,7 @@
 					"outlettype" : [ "bang" ],
 					"outlinecolor" : [ 1.0, 0.364705882352941, 0.364705882352941, 1.0 ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 261.0, 529.0, 24.0, 24.0 ]
+					"patching_rect" : [ 261.0, 521.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -476,7 +477,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 199.119107999999983, 576.0, 50.5, 22.0 ],
+					"patching_rect" : [ 199.119107999999983, 568.0, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -505,7 +506,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 432.333333333333314, 617.0, 132.0, 22.0 ],
+					"patching_rect" : [ 438.083333333333201, 617.0, 132.0, 22.0 ],
 					"text" : "print \"ERROR - NODE\""
 				}
 
@@ -558,6 +559,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
