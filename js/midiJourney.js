@@ -107,12 +107,10 @@ async function gptMidi(dict) {
     max.outlet("processing", dict);
 
 	// if historyStatus is false set history to only contain the last message
-	if (!historyStatus) {
-		dict = { ...dict, history: [last(history)] };
-	}
-	
+	const historyToUse = historyStatus ? history : [last(history)];
+
     // get actual midi message from chatgpt
-    const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...history], dict);
+    const midiMessage = await getChatGptResponse([...INITIAL_HISTORY, ...historyToUse], dict);
     const newHistory = [...history, midiMessage];
     const response = midiMessage.content;
 	max.post(`got response\n-------\n${response}`);
