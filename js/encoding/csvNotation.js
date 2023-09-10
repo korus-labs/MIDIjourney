@@ -102,11 +102,11 @@ const example2Input = clipToText({
 	key: "A minor",
 	notation:
 `${CSV_HEADER}
-60,0,2
-64,0,2
-67,0,2
-71,0,2
-62,2,2
+60,0,1.75
+64,0,2.25
+67,0,2.33
+71,0.45,1.8
+62,2,2.5
 ...`});
 
 const example2Prompt = "Transform this into a chirpy arpeggio"
@@ -119,10 +119,10 @@ const example2 = clipToText({
 	notation:
 `${CSV_HEADER}
 60,0,0.5
-64,0.5,0.5
-67,1,0.5
-71,1.5,0.5
-62,2,0.5
+64,0.66,0.33
+67,1.33,0.66
+71,2,1.75
+62,4,0.66
 ...`});
 
 const example1Prompt = "Make a boards of canada style chord progression in 4 bars."
@@ -134,14 +134,14 @@ const example1 = clipToText({
 	key: "C major",
 	notation: 
 `${CSV_HEADER}
-69,0,4
-72,0.5,3.5
-76,0,4
-79,0.5,3.5
-74,4,4
-78,4.5,3.5
-81,4,4
-84,4.5,3.5
+69,0,4.25
+72,0.25,3.5
+76,0.66,3.66
+79,1.33,3
+74,4.25,3.75
+78,4.5,3.44
+81,4.85,3.33
+84,4.75,2.25
 ...`});
 
 
