@@ -21,7 +21,7 @@ Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues 
 - **Educational Insights**: Get explanations of what MIDIjourney is doing, providing you an educational angle to understand the AI and music theory behind your creations.
 - **Clip Variations and Continuations**: Generate new takes on existing clips or complete the musical ideas.
 - **Clips Colored According to Circle of Fifths**: Visual harmony cues to make your workflow even smoother.
-- **Conversational History**: Recall past musical ideas for a cohesive song creation, though it may slightly slow down the process.
+- **Conversational History**: Recall past musical ideas for a cohesive song creation.
 - **Temperature Control**: Dial up the creativity or chaos with an adjustable "temperature" setting.
 
 ## Getting Started
@@ -43,7 +43,7 @@ Dive deeper into the code to explore the technical aspects. It's a learning oppo
 
 - **MIDIjourney.amxd**: This is the main Max for Live device.
 - **patchers/**: Folder containing Max for Live patchers that contribute to device functionality.
-- **js/MIDIjourney.js**: The core of MIDIjourney. This file governs how MIDI messages are generated and manipulated.
+- **js/**: The core of MIDIjourney. These files governs how MIDI messages are generated and manipulated.
 
 ### Setting Up OpenAI API Access
 
