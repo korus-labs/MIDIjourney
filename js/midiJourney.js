@@ -168,9 +168,11 @@ function handleError(error) {
 	}
 
 	max.post("error", error.message, error.stack);
+	
 	if (error.response) {
 		max.post("error", error.response.status, error.response.data);
 	}
+
 	max.post("trying again. error was not appended to the history (otherwise gpt seems to love to repeat commands)");
 }
 
