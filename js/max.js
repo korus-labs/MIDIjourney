@@ -22,7 +22,7 @@ try {
  */
 function errorToMax(...errorMessage) {
 	max.post("error", ...errorMessage);
-	max.outlet('error', errorMessage);
+	max.outlet('error', ...errorMessage);
 }
 
 

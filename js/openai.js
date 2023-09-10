@@ -14,7 +14,7 @@ const MAX_TOKENS = Infinity;
 const API_KEY_MISSING_ERROR = `No OpenAI API key found.
 
 1. Create an OpenAI account and navigate to the API section.
-2. Generate a new API key and paste it into the "API KEY" box.`;
+2. Generate a new API key and paste it into the device's "API KEY" box.`;
 
 const readKey = () => {
   try {
@@ -35,13 +35,14 @@ const writeKey = (key) => {
   }
 };
 
+max.post("testing...")
 
 const openAIApi = (apiKey) => {
   if (apiKey) writeKey(apiKey);
 
   const finalApiKey = apiKey || readKey() || process.env.OPENAI_API_KEY;
 
-  if (!finalApiKey) {
+  if (!finalApiKey || true) {
     throw new Error(API_KEY_MISSING_ERROR);
   }
 
