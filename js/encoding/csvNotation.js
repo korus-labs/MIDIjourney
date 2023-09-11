@@ -57,6 +57,8 @@ const csvToAbleton = (csvString) => {
 		if (!velocity)
 			velocity = 100;
 		
+		velocity = Math.min(Math.max(velocity, 0), 126);
+
 		lastStartTime = start_time;
 
 		return {
@@ -90,6 +92,7 @@ const csvNotationDescription = `
 - Time signature is 4/4. 
 - First downbeat at beat 0,  second at beat 4.
 - Drums use GM midi pitches. (e.g. 38 is a snare drum)
+- Velocity is between 0-127
 
 # Response format
 ${responseFormat}`;
