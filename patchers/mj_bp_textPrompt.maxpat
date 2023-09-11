@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 1534.0, 959.0 ],
+		"rect" : [ 34.0, 100.0, 1534.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 3,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -531,6 +531,7 @@
 					"fontname" : "Shree Devanagari 714",
 					"fontsize" : 16.0,
 					"id" : "obj-3",
+					"linecount" : 10,
 					"maxclass" : "textedit",
 					"nosymquotes" : 1,
 					"numinlets" : 1,
@@ -539,12 +540,13 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 5.0, 403.0, 111.0 ],
 					"presentation" : 1,
+					"presentation_linecount" : 10,
 					"presentation_rect" : [ 25.0, 40.0, 410.0, 170.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_invisible" : 1,
-							"parameter_longname" : "textPrompt[4]",
+							"parameter_longname" : "textPrompt",
 							"parameter_shortname" : "textPrompt",
 							"parameter_type" : 3
 						}
@@ -552,7 +554,7 @@
 					}
 ,
 					"tabmode" : 0,
-					"text" : "Create a piano melody in B minor",
+					"text" : "Create an intricate arpeggio that sounds like a melancholic frog quacking with dynamic variations that show its enthusiasm to catch an insect. in minor\n\n\n\n\n\n\n\n",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "requestText"
 				}
@@ -645,7 +647,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 310.0, 245.0, 57.0, 22.0 ],
+					"patching_rect" : [ 280.0, 245.0, 57.0, 22.0 ],
 					"text" : "tosymbol"
 				}
 
