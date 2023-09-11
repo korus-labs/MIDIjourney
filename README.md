@@ -1,6 +1,6 @@
 # MIDIjourney: Your GPS for Groove and Pitch
 
-![image](https://github.com/korus-labs/MIDIjourney/assets/144635256/5f93e70b-47dd-4284-8f31-7a950e7adf21)
+<img width="600" alt="image" src="https://github.com/korus-labs/MIDIjourney/assets/5099901/836ee586-ee14-4397-b60e-a0443c57c46f">
 
 ## Developed by Pixelynx's KORUS Labs ([pixelynx.io](https://pixelynx.io))
 
