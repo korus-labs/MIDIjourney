@@ -31,9 +31,8 @@ To use MIDIjourney in Ableton Live:
 1. Drag the device/MIDIjourney.amxd file onto the master track of your Live 10 or 11 project.
 2. Configure your OpenAI API key following our simple setup guide.
 3. Click on an empty MIDI clip slot. 
-4. Type a text prompt describing the musical idea you want generated.
-5. Open a MIDI clip, describe your vision in text, and click "Generate".
-6. You can select an existing MIDI clip  to have MIDIjourney generate variations or continuations.
+4. Open a MIDI clip, describe your vision in text, and click "Generate".
+5. You can select an existing MIDI clip to have MIDIjourney generate variations or continuations.
 
 ## What's Inside?
 
