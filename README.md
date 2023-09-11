@@ -10,7 +10,7 @@ Welcome to MIDIjourney. Brought to you by the team at Pixelynx's KORUS Labs, and
 
 MIDIjourney is not just another plugin; it's a co-creative adventure between you and artificial intelligence. Whether you're composing a killer hook, building up beats, or exploring new sonic landscapes, MIDIjourney serves as a springboard for unexplored creative depths.
 
-Designed for ease of use, MIDIjourney seamlessly integrates with Ableton Live. You don't need to be an AI or music expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
+Designed for ease of use, MIDIjourney seamlessly integrates with Ableton Live 10 and 11. You don't need to be an AI or music expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
 
 Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues for creativity and monetization that will help artists grow exponentially.
 
@@ -28,11 +28,11 @@ Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues 
 
 To use MIDIjourney in Ableton Live:
 
-1. Drag the device/MIDIjourney.amxd file onto the master track of your Live project. 
-2.Configure your OpenAI API key following our simple setup guide.
+1. Drag the device/MIDIjourney.amxd file onto the master track of your Live 10 or 11 project.
+2. Configure your OpenAI API key following our simple setup guide.
 3. Click on an empty MIDI clip slot. 
 4. Type a text prompt describing the musical idea you want generated.
-5.Open a MIDI clip, describe your vision in text, and click "Generate".
+5. Open a MIDI clip, describe your vision in text, and click "Generate".
 6. You can select an existing MIDI clip  to have MIDIjourney generate variations or continuations.
 
 ## What's Inside?
