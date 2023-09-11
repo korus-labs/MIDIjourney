@@ -6,7 +6,7 @@ const { getChatGptResponse, abort, API_KEY_MISSING_ERROR } = require('./openai.j
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
 const { last } = require('ramda');
-
+const fs = require("fs");
 const notationEncoder = abletonToCSV;
 
 // const notationDecoder = miniToAbleton;
@@ -36,7 +36,7 @@ Consider incorporating these music theory concepts in your composition:
 - Rhythmic patterns and time signatures (e.g., syncopated rhythm in 4/4 time)
 - Melodic contour and phrasing (e.g., ascending melody with a peak, followed by a descent)
 - Chord inversions and voicings (e.g., Cmaj7 in first inversion: E, G, B, C)
-
+- Always vary the velocity/dynamics of notes.
 ${NOTATION_DESCRIPTION}
 
 ${NOTATION_EXAMPLES}
@@ -155,6 +155,12 @@ async function gptMidi(dict) {
     if (NOTATION_TYPE_OUTPUT === "csv") {
         delete dict.duration;
     }
+
+	try {
+		fs.writeFileSync("/tmp/midijourney_last_dict.json", JSON.stringify(dict, null, 2));
+	} catch (e) {
+		console.error("could not write debug file but no problem");
+	}
 
     return dict;
 }

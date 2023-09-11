@@ -2,7 +2,7 @@ const { clipToText } = require('./clipFormatter.js');
 
 const MAX_NOTES_FOR_INPUT = 24;
 
-const CSV_HEADER = "pitch,time,duration";
+const CSV_HEADER = "pitch,time,duration,velocity";
 
 
 /**
@@ -12,7 +12,7 @@ const CSV_HEADER = "pitch,time,duration";
  * @returns {string} A CSV-formatted string.
  */
 const abletonToCSV = (notes) => {
-	// if there are more than 16 notes, only use the first 16 but append \n... to the end
+	// if there are more than 24 notes, only use the first 24 but append \n... to the end
 
 	const notesExceeded = notes.length > MAX_NOTES_FOR_INPUT;
 	
@@ -28,7 +28,7 @@ const abletonToCSV = (notes) => {
 	notes.forEach((note) => {
 		const _offset = note.start_time - lastStartTime;
 		lastStartTime = note.start_time;
-		csvString += `${floatPrint(note.pitch)},${floatPrint(note.start_time)},${floatPrint(note.duration)}\n`;
+		csvString += `${floatPrint(note.pitch)},${floatPrint(note.start_time)},${floatPrint(note.duration)},${floatPrint(note.velocity)}\n`;
 	});
 
 	if (notesExceeded)
@@ -102,11 +102,11 @@ const example2Input = clipToText({
 	key: "A minor",
 	notation:
 `${CSV_HEADER}
-60,0,1.75
-64,0,2.25
-67,0,2.33
-71,0.45,1.8
-62,2,2.5
+60,0,1.75,63
+64,0,2.25,76
+67,0,2.33,92
+71,0.45,1.8,110
+62,2,2.5,127
 ...`});
 
 const example2Prompt = "Transform this into a chirpy arpeggio"
@@ -118,11 +118,11 @@ const example2 = clipToText({
 	key: "A minor",
 	notation:
 `${CSV_HEADER}
-60,0,0.5
-64,0.66,0.33
-67,1.33,0.66
-71,2,1.75
-62,4,0.66
+60,0,0.5,80
+64,0.66,0.33,100
+67,1.33,0.66,120
+71,2,1.75,127
+62,4,0.66,55
 ...`});
 
 const example1Prompt = "Make a boards of canada style chord progression in 4 bars."
@@ -134,14 +134,14 @@ const example1 = clipToText({
 	key: "C major",
 	notation: 
 `${CSV_HEADER}
-69,0,4.25
-72,0.25,3.5
-76,0.66,3.66
-79,1.33,3
-74,4.25,3.75
-78,4.5,3.44
-81,4.85,3.33
-84,4.75,2.25
+69,0,4.25,50
+72,0.25,3.5,65
+76,0.66,3.66,95
+79,1.33,3,110
+74,4.25,3.75,75
+78,4.5,3.44,90
+81,4.85,3.33,100
+84,4.75,2.25,55
 ...`});
 
 
