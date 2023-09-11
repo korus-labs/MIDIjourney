@@ -1,4 +1,4 @@
-const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./encoding/miniNotation.js');
+// const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./encoding/miniNotation.js');
 const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./encoding/csvNotation.js');
 const { textToClip, constructPrompt} = require('./encoding/clipFormatter.js');
 const { max, errorToMax } = require('./maxUtils/max.js');

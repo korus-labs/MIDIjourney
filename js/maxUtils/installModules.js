@@ -8,7 +8,7 @@ const path = require('path');
 
 const nodeModulesPath = path.join(__dirname,'..', 'node_modules');
 max.post(`nodeModulesPath: ${nodeModulesPath}`);
-if (!fs.existsSync(nodeModulesPath)) {
+if (true && !fs.existsSync(nodeModulesPath)) {
     max.post('Installing node modules...');
     const { exec } = require('child_process');
     exec('npm install', (err, stdout, stderr) => {

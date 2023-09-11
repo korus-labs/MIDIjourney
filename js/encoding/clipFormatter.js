@@ -33,8 +33,8 @@ function textToClip(response) {
 	return {
 		title: title.trim(),
 		duration,
-		key: key?.trim() ?? null,
-		explanation: explanation?.trim() ?? '',
+		key: key ? key.trim() : null,
+		explanation: explanation ? explanation.trim() : '',
 		notation: cleanedNotation,
 	};
 }
@@ -58,8 +58,8 @@ const clipToText = ({ title, duration, key, explanation, notation }) => {
 	const data = {
 		"title": title.trim(),
 		"duration": duration,
-		"key": key?.trim() ?? null,
-		"explanation": explanation?.trim() ?? '',
+		"key": key ? key.trim() : null,
+		"explanation": explanation ? explanation.trim() : '',
 		"notation": notation.replace(/["'`\\]/g, ''),
 	};
 

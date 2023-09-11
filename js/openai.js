@@ -3,6 +3,8 @@ const { Configuration, OpenAIApi } = require('openai');
 const fs = require('fs');
 const os = require('os');
 const { max } = require('./maxUtils/max.js');
+const { path } = require('ramda');
+const { AbortController } = require('node-abort-controller');
 
 // Initialize global variables and constants
 const apiKeyFilePath = `${os.homedir()}/.config/midijourney_api_key`;
@@ -52,7 +54,7 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
 	  max.post("OpenAI error", error.response);
     abortController = null;
 	  // Check for an invalid API key and throw a custom error message
-	  if (error?.response?.data?.error?.code === "invalid_api_key") 
+	  if (path(["response","data","error","code"], error) === "invalid_api_key") 
 		  throw new Error(API_KEY_MISSING_ERROR);
 	  else 
 		  throw error;
