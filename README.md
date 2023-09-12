@@ -16,7 +16,7 @@ Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues 
 
 ## Features
 
-- **Seamless Symbiosis with Ableton Live:** Our plugin melds naturally with Ableton, so you can keep your creative flow state uninterrupted.
+- **Seamless Symbiosis with Ableton Live (v10 and v11):** Our plugin melds naturally with Ableton, so you can keep your creative flow state uninterrupted.
 - **Describe Your Music Idea in Words:** Simply tell the AI what you're imagining, and watch it turn your idea into music.
 - **Learn as You Create:** The plugin doesn't just make music; it educates you along the way. Get insights into both the AI algorithms and the music theory at play as you compose. 
 - **Multiple Layers of Complexity:** Generate everything from simple clips to intricate compositions. MIDIjourney adapts to your creative needs.
@@ -28,7 +28,7 @@ Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues 
 
 To use MIDIjourney in Ableton Live:
 
-1. Drag the device/MIDIjourney.amxd file onto the master track of your Live 10 or 11 project.
+1. Drag the device/MIDIjourney.amxd file onto the master track of your Live project.
 2. Configure your OpenAI API key following our simple setup guide.
 3. Click on an empty MIDI clip slot. 
 4. Open a MIDI clip, describe your vision in text, and click "Generate".
