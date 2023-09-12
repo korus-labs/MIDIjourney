@@ -57,7 +57,7 @@ const csvToAbleton = (csvString) => {
 		if (!velocity)
 			velocity = 100;
 		
-		velocity = Math.min(Math.max(velocity, 0), 126);
+		velocity = Math.min(Math.max(velocity, 1), 126);
 
 		lastStartTime = start_time;
 
