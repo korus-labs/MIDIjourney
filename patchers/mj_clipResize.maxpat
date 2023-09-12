@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,13 +40,12 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"color" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 0.0, 113.0, 54.0, 22.0 ],
+					"patching_rect" : [ 298.5, 505.0, 54.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -106,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 564.0, 369.0, 71.0, 22.0 ],
+					"patching_rect" : [ 569.0, 339.952393000000029, 71.0, 22.0 ],
 					"text" : "fromsymbol"
 				}
 
@@ -118,7 +117,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 318.5, 298.0, 54.0, 22.0 ],
+					"patching_rect" : [ 298.5, 297.0, 54.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -130,7 +129,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 384.5, 298.0, 54.0, 22.0 ],
+					"patching_rect" : [ 364.5, 297.0, 54.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -160,7 +159,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 318.5, 497.0, 51.0, 22.0 ],
+					"patching_rect" : [ 298.5, 469.0, 51.0, 22.0 ],
 					"text" : "sel crop"
 				}
 
@@ -172,7 +171,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 318.5, 457.0, 41.0, 22.0 ],
+					"patching_rect" : [ 298.5, 429.0, 41.0, 22.0 ],
 					"text" : "unjoin"
 				}
 
@@ -184,7 +183,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 462.75, 298.0, 29.5, 22.0 ],
+					"patching_rect" : [ 453.75, 297.0, 29.5, 22.0 ],
 					"text" : "8."
 				}
 
@@ -196,7 +195,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 470.0, 251.0, 37.0, 22.0 ],
+					"patching_rect" : [ 450.0, 250.0, 37.0, 22.0 ],
 					"text" : "sel 0."
 				}
 
@@ -208,7 +207,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 318.5, 367.952393000000029, 53.0, 22.0 ],
+					"patching_rect" : [ 298.5, 339.952393000000029, 53.0, 22.0 ],
 					"text" : "call crop"
 				}
 
@@ -220,7 +219,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "bang", "float" ],
-					"patching_rect" : [ 318.5, 198.0, 40.0, 22.0 ],
+					"patching_rect" : [ 298.5, 201.0, 40.0, 22.0 ],
 					"text" : "t b b f"
 				}
 
@@ -232,7 +231,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 488.0, 367.952393000000029, 94.0, 22.0 ],
+					"patching_rect" : [ 468.0, 339.952393000000029, 94.0, 22.0 ],
 					"text" : "set loop_end $1"
 				}
 
@@ -244,7 +243,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 384.5, 367.952393000000029, 94.0, 22.0 ],
+					"patching_rect" : [ 364.5, 339.952393000000029, 94.0, 22.0 ],
 					"text" : "set loop_start 0."
 				}
 
@@ -268,7 +267,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 318.5, 418.952393000000029, 62.0, 22.0 ],
+					"patching_rect" : [ 298.5, 390.952393000000029, 62.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"_persistence" : 1
 					}
@@ -349,7 +348,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -377,7 +376,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
+					"destination" : [ "obj-12", 0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -461,7 +460,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
+					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
