@@ -83,8 +83,6 @@ async function prompt(inputDict){
         for (let tries = 0; tries < 3; tries++) {
             try {
                 inputDict = await gptMidi(inputDict);
-				max.post("output keys", Object.keys(inputDict));
-                max.outlet("result", inputDict);
 				return inputDict;
             } catch (error) {
 				// handle error will just output the error to max if it is not canceled
@@ -178,7 +176,7 @@ function handleError(error) {
 	}
 	
 	if (error.message === API_KEY_MISSING_ERROR) {
-		max.post("error", error.message);
+		max.post("apikeyerror", error.message);
 		throw new Error(error.message);
 	}
 
@@ -199,10 +197,16 @@ function handleError(error) {
  * @type {Object}
  */
 max.addHandlers({
-	'prompt' : (p) => {
+	'prompt' : async (p) => {
 		// if prompt is an array join into one string
 		p = Array.isArray(p) ? p.join(" ") : p;
-		prompt(p);
+		const outputDict = await prompt(p);
+
+		if (!outputDict)
+			return;
+		
+		max.post("output keys", Object.keys(outputDict));
+		max.outlet("result", outputDict);
 	},
 	'cancel': () => {
 		max.post("received cancel request");

@@ -51,7 +51,7 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
 	  return message;
 
 	} catch (error) {
-	  max.post("OpenAI error", error.response);
+	  max.post("OpenAI error", error.response.data);
     abortController = null;
 	  // Check for an invalid API key and throw a custom error message
 	  if (path(["response","data","error","code"], error) === "invalid_api_key") 
