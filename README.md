@@ -22,7 +22,8 @@ Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues 
 - **Multiple Layers of Complexity:** Generate everything from simple clips to intricate compositions. MIDIjourney adapts to your creative needs.
 - **Color Your Creations:** Use visual cues from the Circle of Fifths to guide your musical choices, offering a smoother workflow and aesthetic harmony.
 - **Musical Memory:** Review your previous interactions with the plugin to ensure your compositions are cohesive and evolving.
-- **Temperature Control;** Dial up the creativity or chaos with an adjustable "temperature" setting.
+- **Temperature Control:** Dial up the creativity or chaos with an adjustable "temperature" setting.
+- **History Feature:** Activate the "History" function to retain a record of previous prompts and interactions, influencing subsequent MIDI clip creations. Clear this history at any time by utilizing the "clear" button.
 
 ## Starting Points and Destinations
 
@@ -31,7 +32,7 @@ To use MIDIjourney in Ableton Live:
 1. Download the latest release (MIDIjourney_v1.0.0-**.amxd) from the [Releases](https://github.com/korus-labs/MIDIjourney/releases) section.
 2. Drag the device/MIDIjourney.amxd file onto the master track of your Live project.
 3. Configure your OpenAI API key (see below for details).
-4. Click on an empty MIDI clip slot. 
+4. Click on a MIDI clip slot (empty or not, if the selected MIDI slot contains a clip with notes they will be added to the input text prompt). 
 5. Open a MIDI clip, describe your vision in text, and click "Generate".
 6. You can select an existing MIDI clip to have MIDIjourney generate variations or continuations.
 
