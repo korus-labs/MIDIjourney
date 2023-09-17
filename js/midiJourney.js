@@ -2,7 +2,7 @@
 const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./encoding/csvNotation.js');
 const { textToClip, constructPrompt} = require('./encoding/clipFormatter.js');
 const { max, errorToMax } = require('./maxUtils/max.js');
-const { getChatGptResponse, abort, API_KEY_MISSING_ERROR } = require('./openai.js');
+const { getChatGptResponse, abort, API_KEY_MISSING_ERROR, QUOTA_EXCEEDED_ERROR } = require('./openai.js');
 const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
 const { last } = require('ramda');
@@ -177,6 +177,11 @@ function handleError(error) {
 	
 	if (error.message === API_KEY_MISSING_ERROR) {
 		max.post("apikeyerror", error.message);
+		throw new Error(error.message);
+	}
+
+	if (error.message === QUOTA_EXCEEDED_ERROR) {
+		max.post("quotaexceedederror", error.message);
 		throw new Error(error.message);
 	}
 

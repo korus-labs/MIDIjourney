@@ -9,12 +9,18 @@ const { AbortController } = require('node-abort-controller');
 // Initialize global variables and constants
 const apiKeyFilePath = `${os.homedir()}/.config/midijourney_api_key`;
 const MAX_TOKENS = Infinity;
+
 const API_KEY_MISSING_ERROR = `
 Invalid OpenAI API key.
 1. Create an OpenAI account and navigate to the API section.
 2. Generate a new API key and paste it into the device's "API KEY" box.
 `;
 
+const QUOTA_EXCEEDED_ERROR = `
+OpenAI API quota exceeded. 
+
+You probably need to fix your OpenAI billing information at https://platform.openai.com/account/billing/overview.
+`;
 
 /**
  * Fetches a chat response from a GPT-3.5-turbo model.
@@ -56,8 +62,10 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
 	  // Check for an invalid API key and throw a custom error message
 	  if (path(["response","data","error","code"], error) === "invalid_api_key") 
 		  throw new Error(API_KEY_MISSING_ERROR);
-	  else 
-		  throw error;
+	  // check for quota exceeded
+		if  (path(["response","data","error","code"], error) === "insufficient_quota")
+      throw new Error(QUOTA_EXCEEDED_ERROR);
+    throw error;
 	}
 }
 
@@ -121,3 +129,4 @@ const abort = () => {
 exports.getChatGptResponse = getChatGptResponse;
 exports.abort = abort;
 exports.API_KEY_MISSING_ERROR = API_KEY_MISSING_ERROR;
+exports.QUOTA_EXCEEDED_ERROR = QUOTA_EXCEEDED_ERROR;
