@@ -91,7 +91,7 @@ const clipToText = ({ title, duration, key, explanation, notation }) => {
 function constructPrompt({ promptText, duration, title, key, explanation}, notation) {
 
 	if (!notation)
-		return userMessage(`# Prompt\n${promptText}`)
+		return userMessage(`# Prompt\n${promptText}\n\n# Response\n`)
 
 	// construct prompt
 	const inputPrompt = clipToText({
@@ -105,7 +105,9 @@ function constructPrompt({ promptText, duration, title, key, explanation}, notat
 	const prompt = `# Request
 ${inputPrompt}
 # Prompt
-${promptText}`;
+${promptText}
+
+# Response`;
 
 	const promptMessage = userMessage(prompt);
 	return promptMessage;

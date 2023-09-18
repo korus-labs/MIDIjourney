@@ -3,10 +3,11 @@ const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples 
 const { textToClip, constructPrompt} = require('./encoding/clipFormatter.js');
 const { max, errorToMax } = require('./maxUtils/max.js');
 const { getChatGptResponse, abort, API_KEY_MISSING_ERROR, QUOTA_EXCEEDED_ERROR } = require('./openai.js');
-const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
+const { checkMidi } = require('./encoding/checkMidi.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
 const { last } = require('ramda');
 const fs = require("fs");
+const { miniToAbleton, miniNotationDescription, miniNotationExamples } = require('./encoding/miniNotation.js');
 const notationEncoder = abletonToCSV;
 
 // const notationDecoder = miniToAbleton;
@@ -129,7 +130,7 @@ async function gptMidi(dict) {
 
     // Convert to ableton midi
     const abletonMidi = NOTATION_DECODER(notation, finalDuration);
-    const midiError = checkIfMidiCorrect(abletonMidi);
+    const midiError = checkMidi(abletonMidi);
 
     if (midiError) 
         throw new Error(midiError);
