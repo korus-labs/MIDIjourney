@@ -80,7 +80,7 @@ const responseFormat = clipToText({
 	key: "musical key - optional",
 	notation: 
 `${CSV_HEADER}
-...`
+`
 });
 
 
@@ -110,7 +110,7 @@ const example2Input = clipToText({
 67,0,2.33,92
 71,0.45,1.8,110
 62,2,2.5,127
-...`});
+`});
 
 const example2Prompt = "Transform this into a chirpy arpeggio"
 
@@ -126,7 +126,7 @@ const example2 = clipToText({
 67,1.33,0.66,120
 71,2,1.75,127
 62,4,0.66,55
-...`});
+`});
 
 const example1Prompt = "Make a boards of canada style chord progression in 4 bars."
 
@@ -145,7 +145,7 @@ const example1 = clipToText({
 78,4.5,3.44,90
 81,4.85,3.33,100
 84,4.75,2.25,55
-...`});
+`});
 
 
 const csvNotationExamples = 
