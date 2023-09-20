@@ -86,15 +86,21 @@ const responseFormat = clipToText({
 
 
 const csvNotationDescription = `
-- The response is in YAML format. 
-- The notation is in CSV format.
-- Start times and durations are in beats. 
-- Time signature is 4/4. 
-- First downbeat at beat 0,  second at beat 4.
-- Drums use GM midi pitches. (e.g. 38 is a snare drum)
-- Velocity is between 0-127
+# Formats
+Response: YAML
+Notation: CSV
 
-# Response format
+# Time and Rhythm
+Start times and durations: Beats
+Time signature: 4/4
+First downbeat: Beat 0
+Second downbeat: Beat 4
+Velocity: 0-127
+
+# Instrumentation
+Drums: GM MIDI Pitches (e.g., 38=Snare Drum)
+
+# Output format
 ${responseFormat}`;
 
 

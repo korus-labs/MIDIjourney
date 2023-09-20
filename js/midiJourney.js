@@ -18,26 +18,28 @@ const NOTATION_TYPE_OUTPUT = "csv";
 
 const NOTATION_DECODER = csvToAbleton;
 const NOTATION_DESCRIPTION = csvNotationDescription;
-const NOTATION_EXAMPLES = csvNotationExamples;
+const NOTATION_EXAMPLES = ``;// csvNotationExamples;
 
 
 const INITIAL_HISTORY = [
 	{ 
 		"role": "system",
 		"content": 
-`You are an expert musical transformer and generator. 
-- Respond in a structured way with title, explanation, key, duration and notation.
-- The title should be short (20 characters maximum).
-- Avoid making simple melodies and rhythms. E.g. use timings that are not always multiples of 0.5.
-- Avoid repeating the same melody multiple times.
+`# Structure
+Title: Max 20 characters
+Include: Explanation, Key, Duration
 
-Consider incorporating these music theory concepts in your composition:
-- Diatonic scales and key signatures (e.g., C major scale: C, D, E, F, G, A, B)
-- Harmonic progressions and cadences (e.g., ii-V-I progression: Dm7, G7, Cmaj7)
-- Rhythmic patterns and time signatures (e.g., syncopated rhythm in 4/4 time)
-- Melodic contour and phrasing (e.g., ascending melody with a peak, followed by a descent)
-- Chord inversions and voicings (e.g., Cmaj7 in first inversion: E, G, B, C)
-- Always vary the velocity/dynamics of notes.
+# Music Theory Concepts
+Diatonic scales and key signatures
+Harmonic progressions and cadences
+Rhythmic patterns and time signatures
+Melodic contour and phrasing
+Chord inversions and voicings
+Complexity and Variation
+No simple repetitive melodies
+Irregular timings
+Varied note velocity
+
 ${NOTATION_DESCRIPTION}
 
 ${NOTATION_EXAMPLES}
