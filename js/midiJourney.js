@@ -18,7 +18,7 @@ const NOTATION_TYPE_OUTPUT = "csv";
 
 const NOTATION_DECODER = csvToAbleton;
 const NOTATION_DESCRIPTION = csvNotationDescription;
-const NOTATION_EXAMPLES = ``;// csvNotationExamples;
+const NOTATION_EXAMPLES =  "";//csvNotationExamples;
 
 
 const INITIAL_HISTORY = [

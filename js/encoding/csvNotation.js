@@ -96,6 +96,7 @@ Time signature: 4/4
 First downbeat: Beat 0
 Second downbeat: Beat 4
 Velocity: 0-127
+Pitch: MIDI pitch number 
 
 # Instrumentation
 Drums: GM MIDI Pitches (e.g., 38=Snare Drum)
