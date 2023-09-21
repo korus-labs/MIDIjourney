@@ -48,6 +48,12 @@ const camelotChords = {
   12: ["db minor", "c# minor", "e major", "fb major"]
 };
 
+// augment the the object by adding all e.g. "f minor" -> "fm" mappings
+Object.values(camelotChords).forEach((chords) => {
+  const shortNames = chords.map(chord =>  chord.replace(" major", "").replace(" minor", "m"));
+  chords.push(...shortNames);
+});
+
 // Create a reverse lookup object from chords to Camelot colors.
 // I.e chords as keys and colors as values.
 const chordToCamelot = Object.fromEntries(

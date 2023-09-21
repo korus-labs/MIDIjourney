@@ -8,7 +8,10 @@ const { getColorCodeForScale } = require('./scaleColors.js');
 const { last } = require('ramda');
 const fs = require("fs");
 const { miniToAbleton, miniNotationDescription, miniNotationExamples } = require('./encoding/miniNotation.js');
+const { abcToAbleton, abcNotationDescription, parseAbc, constructAbcPrompt } = require('./encoding/abcNotations.js');
+
 const notationEncoder = abletonToCSV;
+const promptConstructor = constructAbcPrompt;
 
 // const notationDecoder = miniToAbleton;
 // const notationDescription = miniNotationDescription;
@@ -16,18 +19,18 @@ const notationEncoder = abletonToCSV;
 
 const NOTATION_TYPE_OUTPUT = "csv";
 
-const NOTATION_DECODER = csvToAbleton;
-const NOTATION_DESCRIPTION = csvNotationDescription;
+const NOTATION_DECODER = abcToAbleton;
+const NOTATION_DESCRIPTION = abcNotationDescription;
 const NOTATION_EXAMPLES =  "";//csvNotationExamples;
 
 
-const INITIAL_HISTORY = [
+const INITIAL_HISTORY =[ {role:"system", content:NOTATION_DESCRIPTION}];
+ [
 	{ 
 		"role": "system",
 		"content": 
 `# Structure
 Title: Max 20 characters
-Include: Explanation, Key, Duration
 
 # Music Theory Concepts
 Diatonic scales and key signatures
@@ -56,6 +59,7 @@ ${NOTATION_EXAMPLES}
  */
 async function prompt(inputDict){
     max.post("Got the following data", Object.keys(inputDict));
+	max.post("Got prompt text", inputDict.promptText);
 	max.post("detailClip", inputDict.detailClip)
 	max.post("apiKey", inputDict.apiKey);
     try {
@@ -75,7 +79,7 @@ async function prompt(inputDict){
 		const notes = inputDict.notes;
 		// construct csv notation
 		const notesCSV = notes && notes.length > 0 ? notationEncoder(notes) : null;
-        const promptMessage = constructPrompt(inputDict, notesCSV);
+        const promptMessage = promptConstructor(inputDict, notesCSV);
 
 		// add prompt to history
 		inputDict = { 
@@ -85,7 +89,7 @@ async function prompt(inputDict){
 
         for (let tries = 0; tries < 3; tries++) {
             try {
-                inputDict = await gptMidi(inputDict);
+                inputDict = await gptMidi(inputDict, promptMessage.content);
 				return inputDict;
             } catch (error) {
 				// handle error will just output the error to max if it is not canceled
@@ -108,7 +112,7 @@ async function prompt(inputDict){
  * @param {Object} dict - The dictionary containing input parameters.
  * @returns {Promise<Object>} The dictionary with added or modified values.
  */
-async function gptMidi(dict) {
+async function gptMidi(dict, prependText="") {
     const { duration, history, historyStatus } = dict;
    
 
@@ -123,8 +127,9 @@ async function gptMidi(dict) {
     const newHistory = [...history, midiMessage];
     const response = midiMessage.content;
 	max.post(`got response\n-------\n${response}`);
+	const abcString = prependText + response;
     // Extracting data from response
-    const { notation, title, explanation, key, duration: durationNew } = textToClip(response);
+    const { notation, title, explanation, key, duration: durationNew } = parseAbc(abcString);
 
 	// if a duration was returned use that else use the input duration
 	const finalDuration = durationNew || duration;

@@ -49,7 +49,10 @@ async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-t
       model: gptModel,
       prompt,
       temperature,
-      max_tokens: 2500,
+      max_tokens: 512,
+      stop: ["---"],
+      frequency_penalty: 1.5,
+      presence_penalty: 1.5,
 	  }, { signal: abortController.signal });
     max.post("GPT response", chat.data.choices[0].text);
 	  const message = chat.data.choices[0].text;
