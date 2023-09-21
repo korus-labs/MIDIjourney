@@ -52,7 +52,7 @@ async function prompt(inputDict){
 		// set default values
 		inputDict = {
 			temperature: 0.7,
-			gptModel: "gpt-3.5-turbo-0613",
+			gptModel: "gpt-3.5-turbo",
 			key: "unknown",
 			title: "unknown",
 			explanation: "n/a",

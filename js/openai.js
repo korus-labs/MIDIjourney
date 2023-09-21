@@ -29,35 +29,35 @@ You probably need to fix your OpenAI billing information at https://platform.ope
  * @param {Array} messages - An array of message objects to send to the GPT model.
  * @param {Object} options - Configuration options for the chat.
  * @param {number} options.temperature - Determines the randomness of the output.
- * @param {string} [options.gptModel="gpt-3.5-turbo-instruct"] - The GPT model to use.
+ * @param {string} [options.gptModel="gpt-3.5-turbo-0613"] - The GPT model to use.
  * @param {string} options.apiKey - The API key for OpenAI.
  * @returns {Promise<string>} The generated message from the GPT model.
  * @throws Will throw an error if an invalid API key is provided.
  */
-async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-turbo-instruct", apiKey }) {
+async function getChatGptResponse(messages, { temperature, gptModel = "gpt-3.5-turbo-0613", apiKey }) {
 	messages = [...messages];
 	printMessages(messages);
   
 	max.post("Getting GPT response. Temperature:", temperature, "Model:", gptModel, "Num messages:", messages.length);
-
+  
+  max.post("creating new abort controller")
 	abort();
   abortController = new AbortController();
   
-  const prompt = messages.map((m) => m.content).join("\n");
 	try {
-	  const chat = await openAIApi(apiKey).createCompletion({  
-      model: gptModel,
-      prompt,
-      temperature,
-      max_tokens: 512,
-      stop: ["---"],
-      frequency_penalty: 1.5,
-      presence_penalty: 1.5,
+	  const chat = await openAIApi(apiKey).createChatCompletion({
+		model: gptModel,
+		messages,
+		temperature,
+		max_tokens: MAX_TOKENS,
+    frequency_penalty: 1.5,
+    presence_penalty: 1.5,
+    stop: ["---"]
 	  }, { signal: abortController.signal });
-    max.post("GPT response", chat.data.choices[0].text);
-	  const message = chat.data.choices[0].text;
+  
+	  const message = chat.data.choices[0].message;
 	  abortController = null;
-	  return {content: message };
+	  return message;
 
 	} catch (error) {
 	  max.post("OpenAI error", error.response.data);

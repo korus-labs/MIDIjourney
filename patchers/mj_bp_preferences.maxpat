@@ -2732,7 +2732,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 90.748598523140117, 320.0, 120.0, 22.0 ],
-									"text" : "gpt-3.5-turbo-instruct"
+									"text" : "gpt-3.5-turbo"
 								}
 
 							}

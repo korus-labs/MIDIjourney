@@ -39,14 +39,12 @@ const abcDrums = "X:1\n" +
 // format an ABC notation string to be used as a prompt
 // duration is in beats
 const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptText = null }) => {
-	let abcString = "X:1\nL:1/16\n";
+	let abcString = "X:1\nL:1/16\nM:4/4\n";
 
-	if (overrideTitle)
-		abcString += `T:${overrideTitle}\n`;
     
 
-	if (promptText || explanation)
-		abcString += `N:${promptText || explanation}\n`;
+	if (promptText)
+		abcString += `N:${promptText}\n`;
 
 	// if (duration)
 	// 	abcString += `U: duration=${duration}\n`;
@@ -56,8 +54,11 @@ const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptTe
 
 	if (notation)
 		abcString += `|${notation}|`;
-    if (!overrideTitle)
-        abcString += `T:`;
+
+    if (explanation)
+		abcString += `N:${explanation}\n`;
+    else
+        abcString += "N:";
     // else
     //     abcString += "|";
 
@@ -68,14 +69,26 @@ const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptTe
 // parse an ABC notation string and extract title, explanation, duration, key, notation
 const parseAbc = (abcString) => {
 	const title = abcString.match(/T:(.*)/);
-	const explanation = abcString.match(/N:(.*)/);
+    // prompt text is the first N: line
+    // explanation the second
+
+    // first get all N: lines
+    const descriptionMatches = abcString.match(/^N: .*/gm);
+
+    const promptText = (descriptionMatches && descriptionMatches[0]) ? descriptionMatches[0].slice(3).trim() : '';
+    const explanation = (descriptionMatches && descriptionMatches[1]) ? descriptionMatches[1].slice(3).trim() : '';
+
+    console.log('Prompt:', promptText);
+    console.log('Explanation:', explanation);
+
 	const duration = abcString.match(/L:(.*)/);
 	const key = abcString.match(/K:(.*)/);
 	// const notation = abcString.match(/\|(.*)\|/);
 
 	return {
 		title: title ? title[1] : null,
-		explanation: explanation ? explanation[1] : null,
+		explanation,
+        promptText,
 		duration: duration ? duration[1] : null,
 		key: key ? key[1] : null,
 		notation: abcString,
@@ -142,21 +155,21 @@ const abcNotationExample1 = formatAsAbc({
 
 const abcNotationExample2 = `X:1
 L:1/8
-T:Jericho (tenor sax)
+M:4/4
 N:create the tenor sax part for Jericho
-M:C
+N:I will play the tenor sax part for Jericho using a melody in Dminor over 4 bars
+T:Jericho (tenor sax)
 K:Dm
 D^CDE FF G2|A A2 A-A4|G G2 G-G4|A A2 A-A4|`;
 
 const abcNotationExample3 = `X:1
-L: 1/8
-T:Popcorn Arpeggio
-N: Create an arpeggio that sounds like popcorn in minor
-M: 4/4
-K: Bmin
-|:B2GB EBGB|EBGB =cAFA|B2GB EBGB|B=cef gfe=c:|
-Bege bege|bege aff=c|Bege bege|B=cef gfe=c|
-Bege bege|bege aff=c|gbgf e2e=c|B=cef gfe=c|`
+L:1/8
+M:4/4
+N:Create an arpeggio that sounds like popcorn
+N:I will play an arpeggio that sounds like popcorn over 4 bars consisting of up and down movements
+T:Popcorn Arpeggio (Am)
+K:Bmin
+|:B2GB EBGB|EBGB =cAFA|B2GB EBGB|B=cef gfe=c:|`
 
 
 const abcNotationDescription = `
@@ -169,7 +182,8 @@ ${abcNotationExample3}
 ---
 `;
 
-const constructAbcPrompt = (metadata) => {
+// remove key for now
+const constructAbcPrompt = ({key, explanation, ...metadata}) => {
     return {role: "user", content: formatAsAbc(metadata)};
 }
 
