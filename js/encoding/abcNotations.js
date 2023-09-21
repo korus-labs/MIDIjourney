@@ -39,7 +39,7 @@ const abcDrums = "X:1\n" +
 // format an ABC notation string to be used as a prompt
 // duration is in beats
 const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptText = null }) => {
-	let abcString = "X:1\nL:1/16\nM:4/4\n";
+	let abcString = "X:1\nL:1/8\nM:4/4\n";
 
     
 
@@ -169,14 +169,24 @@ N:Create an arpeggio that sounds like popcorn
 N:I will play an arpeggio that sounds like popcorn over 4 bars consisting of up and down movements
 T:Popcorn Arpeggio (Am)
 K:Bmin
-|:B2GB EBGB|EBGB =cAFA|B2GB EBGB|B=cef gfe=c:|`
+|:B2GB/2 EB/2EB/2EB/2GB|EBGB =cAFA|B2GB2 EGB|B=cef gfe=c:|`;
+
+const abcNotationExample4 = `X:1
+L:1/8
+M:4/4
+N:create a lofi hiphop chord progression
+N:I will create a melancholic chord progression in C minor using complex harmonies such as 7th chords.
+T:Melancholic Lofi Hip Hop Chord Progression
+K:Cm
+|[CFAc]4 | [DGBd]4 | [AECe']4 | [BDFa']4:|`;
+
 
 
 const abcNotationDescription = `
 
 ${abcNotationExample1}
 ---
-${abcNotationExample2}
+${abcNotationExample4}
 ---
 ${abcNotationExample3}
 ---

@@ -24,14 +24,25 @@ const NOTATION_DESCRIPTION = abcNotationDescription;
 const NOTATION_EXAMPLES =  "";//csvNotationExamples;
 
 
-const INITIAL_HISTORY =[ {role:"system", content:NOTATION_DESCRIPTION}];
- [
+const INITIAL_HISTORY = [ 
 	{ 
 		"role": "system",
 		"content": 
-`${NOTATION_DESCRIPTION}
+`
+# Structure
+Title: Max 20 characters
+Include: Explanation, Key, Duration
+Chords: should be written as individual notes using []'s. If the user asks for a chord progression always use this notation.
 
-${NOTATION_EXAMPLES}
+# Music Theory Concepts
+Diatonic scales and key signatures, Harmonic progressions and cadences
+Rhythmic patterns, Melodic contour and phrasing
+Chord inversions and voicings
+Complexity and Variation, No simple repetitive melodies
+Irregular timings
+Varied note velocity
+
+${NOTATION_DESCRIPTION}
 `}
 ];
 
