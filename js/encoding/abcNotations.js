@@ -39,7 +39,7 @@ const abcDrums = "X:1\n" +
 // format an ABC notation string to be used as a prompt
 // duration is in beats
 const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptText = null }) => {
-	let abcString = "X:1\nL:1/8\n";
+	let abcString = "X:1\nL:1/16\n";
 
 	if (overrideTitle)
 		abcString += `T:${overrideTitle}\n`;

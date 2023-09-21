@@ -29,21 +29,7 @@ const INITIAL_HISTORY =[ {role:"system", content:NOTATION_DESCRIPTION}];
 	{ 
 		"role": "system",
 		"content": 
-`# Structure
-Title: Max 20 characters
-
-# Music Theory Concepts
-Diatonic scales and key signatures
-Harmonic progressions and cadences
-Rhythmic patterns and time signatures
-Melodic contour and phrasing
-Chord inversions and voicings
-Complexity and Variation
-No simple repetitive melodies
-Irregular timings
-Varied note velocity
-
-${NOTATION_DESCRIPTION}
+`${NOTATION_DESCRIPTION}
 
 ${NOTATION_EXAMPLES}
 `}
