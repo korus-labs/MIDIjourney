@@ -97,6 +97,8 @@ const parseAbc = (abcString) => {
 
 
 function abcToAbleton(abcMidi) {
+    // replace L:1/8 with L:1/16 because somehow the timing of the resulting midi file is off
+    abcMidi = abcMidi.replace(/L:1\/8/g, "L:1/16");
     const [midiUint8Array] = abcjs.synth.getMidiFile(abcMidi, { midiOutputType: "binary", pan: [-0.5, 0.5] });
 
     max.post("abcMidi", abcMidi);
