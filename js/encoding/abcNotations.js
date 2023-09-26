@@ -3,45 +3,11 @@ const { max } = require("../maxUtils/max");
 const MidiFile = require('midi-file');
 const { over } = require("ramda");
 
-var abcMidi = "X:1\n" +
-'%%MIDI program 4\n' +
-'%%MIDI channel 4\n' +
-'%%MIDI transpose -2\n' +
-'T: midi options\n' +
-'%score {RH LH}\n' +
-'L:1/4\n' +
-'Q:1/4=89\n' +
-'K:A\n' +
-'V:RH name="Right Hand"\n' +
-'A[Bd]c2|\n' +
-'V:LH clef=bass name="Left Hand"\n' +
-'A,B,A,2|\n';
-
-const abcStaccato = "X:1\n" +
-    'T: staccato\n' +
-    'L:1/4\n' +
-    'Q:1/4=59\n' +
-    'K:cm\n' +
-    '.A.Bcd(ef)|\n';
-
-const abcDrums = "X:1\n" +
-    "T:percmap\n" +
-    "%%MIDI drummap F 36 %bass drum 1\n" +
-    "%%MIDI drummap c 38 %acoustic snare\n" +
-    "%%MIDI drummap g 42 %closed hi hat\n" +
-    "Q:1/4=50\n" +
-    "K:C perc\n" +
-    "[gF] g [gc] g [gF] g [gc] g | c c c c\n"	
-
-
-
 
 // format an ABC notation string to be used as a prompt
 // duration is in beats
 const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptText = null }) => {
 	let abcString = "X:1\nL:1/8\nM:4/4\n";
-
-    
 
 	if (promptText)
 		abcString += `N:${promptText}\n`;
