@@ -1,41 +1,5 @@
 const { clipToText } = require('./clipFormatter.js');
 
-const MAX_NOTES_FOR_INPUT = 24;
-
-const CSV_HEADER = "pitch,time,duration,velocity";
-
-
-/**
- * Converts Ableton note data to a CSV formatted string.
- * 
- * @param {Array} notes - An array containing Ableton Midi note data.
- * @returns {string} A CSV-formatted string.
- */
-const abletonToCSV = (notes) => {
-	// if there are more than 24 notes, only use the first 24 but append \n... to the end
-
-	const notesExceeded = notes.length > MAX_NOTES_FOR_INPUT;
-	
-	notes = notes.slice(0, MAX_NOTES_FOR_INPUT);
-
-	let lastStartTime = 0;
-
-	// order by start time
-	notes.sort((a, b) => a.start_time - b.start_time);
-
-	let csvString = `${CSV_HEADER}\n`; 
-
-	notes.forEach((note) => {
-		const _offset = note.start_time - lastStartTime;
-		lastStartTime = note.start_time;
-		csvString += `${floatPrint(note.pitch)},${floatPrint(note.start_time)},${floatPrint(note.duration)},${floatPrint(note.velocity)}\n`;
-	});
-
-	if (notesExceeded)
-		csvString += "...\n";
-	return csvString;
-};
-
 
 /**
  * Converts a CSV-formatted string to Ableton note data.

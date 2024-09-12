@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 731.0, -985.0, 749.0, 959.0 ],
+		"rect" : [ 729.0, 100.0, 749.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 511.875, 409.0, 204.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "remove_notes_extended 0 127 0. $1"
 				}
 
@@ -375,13 +374,12 @@
 			}
 , 			{
 				"box" : 				{
-					"color" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"id" : "obj-17",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 212.875, 682.0, 54.0, 22.0 ],
+					"patching_rect" : [ 360.875, 639.0, 54.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -416,7 +414,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"outlettype" : [ "dictionary", "" ],
 					"patching_rect" : [ 18.625, 120.0, 102.0, 22.0 ],
 					"text" : "mj_routeDict"
 				}
@@ -465,7 +463,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 212.875, 644.0, 50.5, 22.0 ],
+					"patching_rect" : [ 212.875, 678.0, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -593,7 +591,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 1 ],
+					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -663,7 +661,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
+					"destination" : [ "obj-1", 1 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -677,14 +675,14 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-17", 0 ],
 					"source" : [ "obj-54", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-17", 0 ],
 					"source" : [ "obj-54", 0 ]
 				}
 

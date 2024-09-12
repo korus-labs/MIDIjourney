@@ -1,12 +1,13 @@
-const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./encoding/miniNotation.js');
+// const { miniNotationDescription, miniToAbleton, miniNotationExamples } = require('./encoding/miniNotation.js');
 const { abletonToCSV, csvToAbleton, csvNotationDescription, csvNotationExamples } = require('./encoding/csvNotation.js');
 const { textToClip, constructPrompt} = require('./encoding/clipFormatter.js');
 const { max, errorToMax } = require('./maxUtils/max.js');
-const { getChatGptResponse, abort, API_KEY_MISSING_ERROR } = require('./openai.js');
-const { checkIfMidiCorrect } = require('./checkIfMidiCorrect.js');
+const { getChatGptResponse, abort, API_KEY_MISSING_ERROR, QUOTA_EXCEEDED_ERROR } = require('./openai.js');
+const { checkMidi } = require('./encoding/checkMidi.js');
 const { getColorCodeForScale } = require('./scaleColors.js');
 const { last } = require('ramda');
-
+const fs = require("fs");
+const { miniToAbleton, miniNotationDescription, miniNotationExamples } = require('./encoding/miniNotation.js');
 const notationEncoder = abletonToCSV;
 
 // const notationDecoder = miniToAbleton;
@@ -36,7 +37,7 @@ Consider incorporating these music theory concepts in your composition:
 - Rhythmic patterns and time signatures (e.g., syncopated rhythm in 4/4 time)
 - Melodic contour and phrasing (e.g., ascending melody with a peak, followed by a descent)
 - Chord inversions and voicings (e.g., Cmaj7 in first inversion: E, G, B, C)
-
+- Always vary the velocity/dynamics of notes.
 ${NOTATION_DESCRIPTION}
 
 ${NOTATION_EXAMPLES}
@@ -83,8 +84,6 @@ async function prompt(inputDict){
         for (let tries = 0; tries < 3; tries++) {
             try {
                 inputDict = await gptMidi(inputDict);
-				max.post("output keys", Object.keys(inputDict));
-                max.outlet("result", inputDict);
 				return inputDict;
             } catch (error) {
 				// handle error will just output the error to max if it is not canceled
@@ -131,7 +130,7 @@ async function gptMidi(dict) {
 
     // Convert to ableton midi
     const abletonMidi = NOTATION_DECODER(notation, finalDuration);
-    const midiError = checkIfMidiCorrect(abletonMidi);
+    const midiError = checkMidi(abletonMidi);
 
     if (midiError) 
         throw new Error(midiError);
@@ -156,6 +155,12 @@ async function gptMidi(dict) {
         delete dict.duration;
     }
 
+	try {
+		fs.writeFileSync("/tmp/midijourney_last_dict.json", JSON.stringify(dict, null, 2));
+	} catch (e) {
+		console.error("could not write debug file but no problem");
+	}
+
     return dict;
 }
 
@@ -172,7 +177,12 @@ function handleError(error) {
 	}
 	
 	if (error.message === API_KEY_MISSING_ERROR) {
-		max.post("error", error.message);
+		max.post("apikeyerror", error.message);
+		throw new Error(error.message);
+	}
+
+	if (error.message === QUOTA_EXCEEDED_ERROR) {
+		max.post("quotaexceedederror", error.message);
 		throw new Error(error.message);
 	}
 
@@ -193,10 +203,16 @@ function handleError(error) {
  * @type {Object}
  */
 max.addHandlers({
-	'prompt' : (p) => {
+	'prompt' : async (p) => {
 		// if prompt is an array join into one string
 		p = Array.isArray(p) ? p.join(" ") : p;
-		prompt(p);
+		const outputDict = await prompt(p);
+
+		if (!outputDict)
+			return;
+		
+		max.post("output keys", Object.keys(outputDict));
+		max.outlet("result", outputDict);
 	},
 	'cancel': () => {
 		max.post("received cancel request");

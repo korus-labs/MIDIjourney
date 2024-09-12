@@ -3,7 +3,7 @@
  * @param {Array} abletonMidi - The array containing Ableton Midi note data.
  * @returns {null|string} Returns null if midi data is correct or an error message string.
  */
-function checkIfMidiCorrect(abletonMidi) {
+function checkMidi(abletonMidi) {
 	let midiError = null;
 	if (abletonMidi.length === 0) {
 		midiError = "No notes found in midi";
@@ -23,4 +23,4 @@ function checkIfMidiCorrect(abletonMidi) {
 	return midiError;
 }
 
-exports.checkIfMidiCorrect = checkIfMidiCorrect;
+exports.checkMidi = checkMidi;

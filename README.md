@@ -1,6 +1,6 @@
 # MIDIjourney: Your GPS for Groove and Pitch
 
-<img width="871" alt="Screenshot 2023-09-11 at 23 31 07" src="https://github.com/ElliotEtag/MIDIjourney/assets/36901823/05fa8fb6-a48f-467d-b553-ef41062d1427">
+<img width="600" alt="image" src="https://github.com/korus-labs/MIDIjourney/assets/5099901/836ee586-ee14-4397-b60e-a0443c57c46f">
 
 ## Developed by Pixelynx's KORUS Labs ([pixelynx.io](https://pixelynx.io))
 
@@ -10,30 +10,31 @@ Welcome to MIDIjourney. Brought to you by the team at Pixelynx's KORUS Labs, and
 
 MIDIjourney is not just another plugin; it's a co-creative adventure between you and artificial intelligence. Whether you're composing a killer hook, building up beats, or exploring new sonic landscapes, MIDIjourney serves as a springboard for unexplored creative depths.
 
-Designed for ease of use, MIDIjourney seamlessly integrates with Ableton Live. You don't need to be an AI or music expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
+Designed for ease of use, MIDIjourney seamlessly integrates with Ableton Live 10 and 11. You don't need to be an AI or music expert to make the most out of it. The code is open-source and documented, providing you with all the resources you need.
 
 Plus, it's an extension of our KORUS ecosystem, providing unprecedented avenues for creativity and monetization that will help artists grow exponentially.
 
 ## Features
 
-- **Seamless Symbiosis with Ableton Live:** Our plugin melds naturally with Ableton, so you can keep your creative flow state uninterrupted.
+- **Seamless Symbiosis with Ableton Live (v10 and v11):** Our plugin melds naturally with Ableton, so you can keep your creative flow state uninterrupted.
 - **Describe Your Music Idea in Words:** Simply tell the AI what you're imagining, and watch it turn your idea into music.
 - **Learn as You Create:** The plugin doesn't just make music; it educates you along the way. Get insights into both the AI algorithms and the music theory at play as you compose. 
 - **Multiple Layers of Complexity:** Generate everything from simple clips to intricate compositions. MIDIjourney adapts to your creative needs.
 - **Color Your Creations:** Use visual cues from the Circle of Fifths to guide your musical choices, offering a smoother workflow and aesthetic harmony.
 - **Musical Memory:** Review your previous interactions with the plugin to ensure your compositions are cohesive and evolving.
-- **Temperature Control;** Dial up the creativity or chaos with an adjustable "temperature" setting.
+- **Temperature Control:** Dial up the creativity or chaos with an adjustable "temperature" setting.
+- **History Feature:** Activate the "History" function to retain a record of previous prompts and interactions, influencing subsequent MIDI clip creations. Clear this history at any time by utilizing the "clear" button.
 
 ## Starting Points and Destinations
 
 To use MIDIjourney in Ableton Live:
 
-1. Drag the device/MIDIjourney.amxd file onto the master track of your Live project. 
-2.Configure your OpenAI API key following our simple setup guide.
-3. Click on an empty MIDI clip slot. 
-4. Type a text prompt describing the musical idea you want generated.
-5.Open a MIDI clip, describe your vision in text, and click "Generate".
-6. You can select an existing MIDI clip  to have MIDIjourney generate variations or continuations.
+1. Download the latest release (MIDIjourney_v1.0.0-**.amxd) from the [Releases](https://github.com/korus-labs/MIDIjourney/releases) section.
+2. Drag the device/MIDIjourney.amxd file onto the master track of your Live project.
+3. Configure your OpenAI API key (see below for details).
+4. Click on a MIDI clip slot (empty or not, if the selected MIDI slot contains a clip with notes they will be added to the input text prompt). 
+5. Open a MIDI clip, describe your vision in text, and click "Generate".
+6. You can select an existing MIDI clip to have MIDIjourney generate variations or continuations.
 
 ## What's Inside?
 
@@ -63,5 +64,6 @@ Developed by Elliot Fouchy and Thomas Haferlach, this project is under the MIT L
 - [Ableton Live](https://www.ableton.com/)
 - [Max MSP / Max for Live](https://cycling74.com/products/max)
 - [Pollinations.AI](https://pollinations.ai)
-
+- [Nobody and the Computer](https://www.youtube.com/@nobodyandthecomputer/videos)
+  
 Join us on this journey to redefine the boundaries of music creation!

@@ -6,7 +6,7 @@
  * @returns {number} The color code associated with the given chord name. Returns default color if chord name is not found.
  */
 const getColorCodeForScale = (chordName) => {
-  const normalizedChord = chordName?.toLowerCase();
+  const normalizedChord = chordName && chordName.toLowerCase();
   return chordToCamelot[normalizedChord] || defaultColor;
 };
 

@@ -4,6 +4,7 @@
 
 const { mini } = require('@strudel.cycles/mini');
 const { Chord, Note } = require("tonal");
+const { clipToText } = require('./clipFormatter');
 
 // TODO: handle inversion
 function expandChords(miniNotation) {
@@ -101,6 +102,17 @@ function getMidiFromNote(noteName) {
     return tonalNote.midi;
 }
 
+// construct a response with placeholder values to show as an example to chatgpt
+const responseFormat = clipToText({ 
+	title: "title",
+	explanation: "explanation - optional",
+	duration: "duration in beats - optional", 
+	key: "musical key - optional",
+	notation: 
+`...`
+});
+
+
 
 
 
@@ -110,9 +122,7 @@ const miniNotationDescription = `
 - The mini notation should contain no parentheses or other characters surrounding it.
 
 Response format:
-# [title]
-# [explanation]
-[mini notation]
+${responseFormat}
 
 ## Mini Notation Guide
 
@@ -150,24 +160,41 @@ Response format:
 - the function notation (e.g. e5.slow(2.75)) is not supported in the mini notation yet.
 `;
 
+const example1Response = clipToText({
+  title: "Boc chords (Am7 D7 Gmaj7 Cmaj7)",
+  explanation: "Boards of Canada often employ simple yet emotionally evocative chord progressions that are combined with vintage synth sounds and tape effects. Here is a simple chord progression: Am7 - D7 - Gmaj7 - Cmaj7",
+  notation: "<{Am7}@1 {D7}@2 {Gmaj7}@0.75 {Cmaj7}@0.25>",
+  duration: 4
+});
+
+
+const example2Response = clipToText({
+  title: "Tetris (Gm)",
+  explanation: "Sequence notes E5 to A4 with quick alternations (E5, B4-C5, D5, C5-B4; A4, A4-C5, E5, D5-C5; B4, pause, C5-D5-E5; C5, A4, A4, pause). Accompany with bass. Adjust tempo for Tetris pace.",
+  notation: "[[[d2 d3]*4] [[g2 g3]*4] [[f#2 f#3]*2 [d2 d3]*2] [g2 g3 g2 g3 g2 g3 a1 b1],[d5 [a4 b4] c5 [b4 a4]] [g4 [g4 b4] d5 [c5 b4]] [a4 [~ b4] c5 d5] [b4 g4 g4 ~]]/2",
+  duration: 4
+});
+
+const example3Response = clipToText({
+  title: "A Minor Arpeggio",
+  explanation: "The given note sequence will be transformed into an arpeggio in the key of A minor by reordering the notes of each chord.",
+  notation: "<[[a3 c4 e4 a4]*4] [[b3 d4 f4 b4]*4] [[d3 f4 a4 d4]*4] [[e3 g4 b4 e4]*4]>",
+  duration: 16
+});
+
 const miniNotationExamples = `
 examples:
 
 prompt: a boards of canada style chord progression
 
 response:
-# BoC chords (Am7 D7 Gmaj7 Cmaj7)
-# Boards of Canada often employ simple yet emotionally evocative chord progressions that are combined with vintage synth sounds and tape effects. Here is a simple chord progression: Am7 - D7 - Gmaj7 - Cmaj7
-<{Am7}@1 {D7}@2 {Gmaj7}@0.75 {Cmaj7}@0.25>
+${example1Response}
 
 
 prompt: the tetris melody in g minor
 
 response:
-# Tetris (Gm)
-# Sequence notes E5 to A4 with quick alternations (E5, B4-C5, D5, C5-B4; A4, A4-C5, E5, D5-C5; B4, pause, C5-D5-E5; C5, A4, A4, pause). Accompany with bass. Adjust tempo for Tetris pace.
-[[[d2 d3]*4] [[g2 g3]*4] [[f#2 f#3]*2 [d2 d3]*2] [g2 g3 g2 g3 g2 g3 a1 b1],[d5 [a4 b4] c5 [b4 a4]] [g4 [g4 b4] d5 [c5 b4]] [a4 [~ b4] c5 d5] [b4 g4 g4 ~]]/2
-
+${example2Response}
 
 request:
 duration_bars:1
@@ -184,9 +211,7 @@ pitch_semitones,start_time,duration_beats
 prompt:make this into an arpeggio in a minor
 
 response:
-# A Minor Arpeggio
-# The given note sequence will be transformed into an arpeggio in the key of A minor by reordering the notes of each chord.
-<[[a3 c4 e4 a4]*4] [[b3 d4 f4 b4]*4] [[d3 f4 a4 d4]*4] [[e3 g4 b4 e4]*4]>
+${example3Response}
 
 .
 `;

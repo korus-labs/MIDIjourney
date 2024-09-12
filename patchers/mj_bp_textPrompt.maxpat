@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 1534.0, 959.0 ],
+		"rect" : [ 34.0, 100.0, 922.0, 959.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 3,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -364,7 +364,9 @@
 								}
 
 							}
- ]
+ ],
+						"bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ],
+						"editing_bgcolor" : [ 0.309803921568627, 0.309803921568627, 0.309803921568627, 1.0 ]
 					}
 ,
 					"patching_rect" : [ -110.0, -260.0, 51.0, 22.0 ],
@@ -459,7 +461,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-75",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -512,13 +514,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 5.0, 80.0, 20.0 ],
 					"proportion" : 0.39,
-					"saved_attribute_attributes" : 					{
-						"bgfillcolor" : 						{
-							"expression" : ""
-						}
-
-					}
-,
 					"varname" : "requestBg"
 				}
 
@@ -531,6 +526,7 @@
 					"fontname" : "Shree Devanagari 714",
 					"fontsize" : 16.0,
 					"id" : "obj-3",
+					"linecount" : 3,
 					"maxclass" : "textedit",
 					"nosymquotes" : 1,
 					"numinlets" : 1,
@@ -539,12 +535,13 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 5.0, 403.0, 111.0 ],
 					"presentation" : 1,
+					"presentation_linecount" : 3,
 					"presentation_rect" : [ 25.0, 40.0, 410.0, 170.0 ],
 					"rounded" : 0.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_invisible" : 1,
-							"parameter_longname" : "textPrompt[4]",
+							"parameter_longname" : "textPrompt",
 							"parameter_shortname" : "textPrompt",
 							"parameter_type" : 3
 						}
@@ -552,7 +549,7 @@
 					}
 ,
 					"tabmode" : 0,
-					"text" : "Create a piano melody in B minor",
+					"text" : "Create an intricate arpeggio that sounds like a melancholic frog quacking with dynamic variations that show its enthusiasm to catch an insect. in minor",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "requestText"
 				}
@@ -573,13 +570,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 25.0, 450.0, 200.0 ],
 					"proportion" : 0.39,
-					"saved_attribute_attributes" : 					{
-						"bgfillcolor" : 						{
-							"expression" : ""
-						}
-
-					}
-,
 					"varname" : "requestFrame"
 				}
 
@@ -588,7 +578,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -645,7 +635,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 310.0, 245.0, 57.0, 22.0 ],
+					"patching_rect" : [ 280.0, 245.0, 57.0, 22.0 ],
 					"text" : "tosymbol"
 				}
 
@@ -678,13 +668,6 @@
 					"presentation_rect" : [ 5.0, 15.0, 80.0, 20.0 ],
 					"proportion" : 0.39,
 					"rounded" : 0,
-					"saved_attribute_attributes" : 					{
-						"bgfillcolor" : 						{
-							"expression" : ""
-						}
-
-					}
-,
 					"varname" : "requestBgHack"
 				}
 
@@ -831,13 +814,43 @@
 
 			}
  ],
-		"saved_attribute_attributes" : 		{
-			"default_plcolor" : 			{
-				"expression" : ""
+		"parameters" : 		{
+			"obj-3" : [ "textPrompt", "textPrompt", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
 			}
-
+,
+			"inherited_shortname" : 1
 		}
-
+,
+		"dependency_cache" : [ 			{
+				"name" : "mj_colorControl.maxpat",
+				"bootpath" : "~/Documents/GitHub/MidiJourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "mj_route.maxpat",
+				"bootpath" : "~/Documents/GitHub/MidiJourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "mj_routeDict.maxpat",
+				"bootpath" : "~/Documents/GitHub/MidiJourney/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }

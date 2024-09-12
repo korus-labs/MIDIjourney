@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
+			"minor" : 6,
 			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 440.0, 100.0, 568.0, 848.0 ],
+		"rect" : [ 440.0, 100.0, 1038.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -116,9 +116,10 @@
 						"valueof" : 						{
 							"parameter_enum" : [ "val1", "val2" ],
 							"parameter_initial" : [ 0 ],
-							"parameter_initial_enable" : 1,
+							"parameter_invisible" : 1,
 							"parameter_longname" : "apiKey",
 							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "apiKey",
 							"parameter_type" : 2
 						}
@@ -144,7 +145,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 6,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -244,11 +245,12 @@
 									"id" : "obj-32",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 4,
-									"outlettype" : [ "dictionary", "", "", "" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "dictionary", "", "", "", "" ],
 									"patching_rect" : [ 114.751401476859883, 315.42856776714325, 79.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
+										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -444,9 +446,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+						"editing_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+						"locked_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -465,7 +467,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 6,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -1093,9 +1095,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+						"editing_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+						"locked_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -1139,14 +1141,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 6,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 145.0, 327.0, 792.0, 402.0 ],
+						"rect" : [ 100.0, 100.0, 872.0, 314.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -1175,7 +1177,6 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"title" : "MIDIjourney - Api Key",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-6",
@@ -1199,7 +1200,7 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
+											"minor" : 6,
 											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
@@ -1359,9 +1360,9 @@
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
-										"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+										"editing_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
 										"globalpatchername" : "",
-										"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
+										"locked_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
 										"tags" : ""
 									}
 ,
@@ -1396,8 +1397,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 135.0, 105.0, 133.0, 22.0 ],
-									"text" : "mj_getFromDict apiKey"
+									"patching_rect" : [ 135.0, 105.0, 137.0, 22.0 ],
+									"text" : "mj_getFromDict apiKey:"
 								}
 
 							}
@@ -1473,6 +1474,7 @@
 											"parameter_invisible" : 2,
 											"parameter_longname" : "Validate",
 											"parameter_mmax" : 1,
+											"parameter_modmode" : 0,
 											"parameter_shortname" : "Validate",
 											"parameter_type" : 2
 										}
@@ -1594,11 +1596,12 @@
 									"id" : "obj-15",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 4,
-									"outlettype" : [ "dictionary", "", "", "" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "dictionary", "", "", "", "" ],
 									"patching_rect" : [ 90.0, 540.0, 50.5, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
+										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -1985,7 +1988,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 6,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -2632,8 +2635,10 @@
 							"parameter_enum" : [ "val1", "val2" ],
 							"parameter_initial" : [ 0 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "historyStatus[1]",
+							"parameter_invisible" : 1,
+							"parameter_longname" : "historyStatus",
 							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "historyStatus",
 							"parameter_type" : 2
 						}
@@ -2715,11 +2720,13 @@
 						}
 ,
 						"valueof" : 						{
-							"parameter_enum" : [ "GPT3.5", "GPT4" ],
+							"parameter_enum" : [ "GPT3.5", "GPT4o" ],
 							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
+							"parameter_invisible" : 1,
 							"parameter_longname" : "model",
 							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "model",
 							"parameter_type" : 2,
 							"parameter_unitstyle" : 9
@@ -2744,7 +2751,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 6,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -2786,8 +2793,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 203.248598523140117, 320.0, 67.0, 22.0 ],
-									"text" : "gpt-4-0613"
+									"patching_rect" : [ 203.248598523140117, 320.0, 43.0, 22.0 ],
+									"text" : "gpt-4o"
 								}
 
 							}
@@ -2807,11 +2814,11 @@
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
-									"numinlets" : 3,
-									"numoutlets" : 3,
-									"outlettype" : [ "bang", "bang", "" ],
-									"patching_rect" : [ 90.748598523140117, 275.0, 44.0, 22.0 ],
-									"text" : "sel 0 1"
+									"numinlets" : 4,
+									"numoutlets" : 4,
+									"outlettype" : [ "bang", "bang", "bang", "" ],
+									"patching_rect" : [ 90.748598523140117, 275.0, 54.0, 22.0 ],
+									"text" : "sel 0 1 3"
 								}
 
 							}
@@ -2844,11 +2851,12 @@
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 4,
-									"outlettype" : [ "dictionary", "", "", "" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "dictionary", "", "", "", "" ],
 									"patching_rect" : [ 29.0, 417.0, 50.5, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
+										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -3116,7 +3124,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 6,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -3180,11 +3188,12 @@
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 4,
-									"outlettype" : [ "dictionary", "", "", "" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "dictionary", "", "", "", "" ],
 									"patching_rect" : [ 29.0, 289.0, 50.5, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
+										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -3472,8 +3481,9 @@
 							"parameter_initial" : [ 0.5 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 1,
-							"parameter_longname" : "temperature[1]",
+							"parameter_longname" : "temperature",
 							"parameter_mmax" : 2.0,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "temperature",
 							"parameter_type" : 0,
 							"parameter_units" : "Bars",
