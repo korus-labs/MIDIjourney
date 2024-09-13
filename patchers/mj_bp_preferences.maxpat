@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 6,
-			"revision" : 3,
+			"minor" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 440.0, 100.0, 1038.0, 848.0 ],
+		"rect" : [ 440.0, 100.0, 638.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -119,7 +119,6 @@
 							"parameter_invisible" : 1,
 							"parameter_longname" : "apiKey",
 							"parameter_mmax" : 1,
-							"parameter_modmode" : 0,
 							"parameter_shortname" : "apiKey",
 							"parameter_type" : 2
 						}
@@ -145,8 +144,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 3,
+							"minor" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -245,12 +244,11 @@
 									"id" : "obj-32",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 5,
-									"outlettype" : [ "dictionary", "", "", "", "" ],
+									"numoutlets" : 4,
+									"outlettype" : [ "dictionary", "", "", "" ],
 									"patching_rect" : [ 114.751401476859883, 315.42856776714325, 79.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
-										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -446,9 +444,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
+						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
+						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -467,8 +465,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 3,
+							"minor" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1095,9 +1093,9 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"editing_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
+						"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"globalpatchername" : "",
-						"locked_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
+						"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 						"tags" : ""
 					}
 ,
@@ -1141,8 +1139,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 3,
+							"minor" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1200,8 +1198,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 6,
-											"revision" : 3,
+											"minor" : 5,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1360,9 +1358,9 @@
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
-										"editing_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
+										"editing_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 										"globalpatchername" : "",
-										"locked_bgcolor" : [ 0.211764705882353, 0.211764705882353, 0.211764705882353, 1.0 ],
+										"locked_bgcolor" : [ 0.215686274509804, 0.215686274509804, 0.215686274509804, 1.0 ],
 										"tags" : ""
 									}
 ,
@@ -1474,7 +1472,6 @@
 											"parameter_invisible" : 2,
 											"parameter_longname" : "Validate",
 											"parameter_mmax" : 1,
-											"parameter_modmode" : 0,
 											"parameter_shortname" : "Validate",
 											"parameter_type" : 2
 										}
@@ -1596,12 +1593,11 @@
 									"id" : "obj-15",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 5,
-									"outlettype" : [ "dictionary", "", "", "", "" ],
+									"numoutlets" : 4,
+									"outlettype" : [ "dictionary", "", "", "" ],
 									"patching_rect" : [ 90.0, 540.0, 50.5, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
-										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -1988,8 +1984,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 3,
+							"minor" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2638,7 +2634,6 @@
 							"parameter_invisible" : 1,
 							"parameter_longname" : "historyStatus",
 							"parameter_mmax" : 1,
-							"parameter_modmode" : 0,
 							"parameter_shortname" : "historyStatus",
 							"parameter_type" : 2
 						}
@@ -2674,7 +2669,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 259.845361113548279, 150.0, 100.0, 20.154638886451721 ],
+					"patching_rect" : [ 259.845361113548279, 160.0, 100.0, 20.154638886451721 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 10.0, 49.0, 150.0, 30.0 ],
 					"rounded" : 8.0,
@@ -2720,13 +2715,12 @@
 						}
 ,
 						"valueof" : 						{
-							"parameter_enum" : [ "GPT3.5", "GPT4o" ],
+							"parameter_enum" : [ "GPT4o", "O1-preview" ],
 							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 1,
 							"parameter_longname" : "model",
 							"parameter_mmax" : 1,
-							"parameter_modmode" : 0,
 							"parameter_shortname" : "model",
 							"parameter_type" : 2,
 							"parameter_unitstyle" : 9
@@ -2751,8 +2745,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 3,
+							"minor" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2793,8 +2787,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 203.248598523140117, 320.0, 43.0, 22.0 ],
-									"text" : "gpt-4o"
+									"patching_rect" : [ 203.248598523140117, 320.0, 67.0, 22.0 ],
+									"text" : "o1-preview"
 								}
 
 							}
@@ -2805,8 +2799,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 90.748598523140117, 320.0, 108.0, 22.0 ],
-									"text" : "gpt-3.5-turbo-0613"
+									"patching_rect" : [ 90.748598523140117, 320.0, 43.0, 22.0 ],
+									"text" : "gpt-4o"
 								}
 
 							}
@@ -2851,12 +2845,11 @@
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 5,
-									"outlettype" : [ "dictionary", "", "", "", "" ],
+									"numoutlets" : 4,
+									"outlettype" : [ "dictionary", "", "", "" ],
 									"patching_rect" : [ 29.0, 417.0, 50.5, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
-										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -3124,8 +3117,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 3,
+							"minor" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3188,12 +3181,11 @@
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 5,
-									"outlettype" : [ "dictionary", "", "", "", "" ],
+									"numoutlets" : 4,
+									"outlettype" : [ "dictionary", "", "", "" ],
 									"patching_rect" : [ 29.0, 289.0, 50.5, 22.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 0,
-										"legacy" : 1,
 										"parameter_enable" : 0,
 										"parameter_mappable" : 0
 									}
@@ -3483,7 +3475,6 @@
 							"parameter_invisible" : 1,
 							"parameter_longname" : "temperature",
 							"parameter_mmax" : 2.0,
-							"parameter_modmode" : 0,
 							"parameter_shortname" : "temperature",
 							"parameter_type" : 0,
 							"parameter_units" : "Bars",

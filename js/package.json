@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@strudel.cycles/mini": "https://gitpkg.now.sh/pollinations/strudel/packages/mini?main",
     "@tonaljs/tonal": "^4.10.0",
     "configstore": "^6.0.0",
     "dotenv": "^16.3.1",

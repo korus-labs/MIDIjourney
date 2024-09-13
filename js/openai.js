@@ -59,8 +59,8 @@ async function getChatGptResponse(
       {
         model: gptModel,
         messages,
-        temperature,
-        max_tokens: MAX_TOKENS,
+        // temperature,
+        // max_tokens: MAX_TOKENS,
       },
       { signal: abortController.signal }
     );
