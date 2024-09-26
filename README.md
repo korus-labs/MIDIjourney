@@ -31,10 +31,9 @@ To use MIDIjourney in Ableton Live:
 
 1. Download the latest release (MIDIjourney_v1.0.0-**.amxd) from the [Releases](https://github.com/korus-labs/MIDIjourney/releases) section.
 2. Drag the device/MIDIjourney.amxd file onto the master track of your Live project.
-3. Configure your OpenAI API key (see below for details).
-4. Click on a MIDI clip slot (empty or not, if the selected MIDI slot contains a clip with notes they will be added to the input text prompt). 
-5. Open a MIDI clip, describe your vision in text, and click "Generate".
-6. You can select an existing MIDI clip to have MIDIjourney generate variations or continuations.
+3. Click on a MIDI clip slot (empty or not, if the selected MIDI slot contains a clip with notes they will be added to the input text prompt). 
+4. Open a MIDI clip, describe your vision in text, and click "Generate".
+5. You can select an existing MIDI clip to have MIDIjourney generate variations or continuations.
 
 ## What's Inside?
 
@@ -63,7 +62,7 @@ Developed by Elliot Fouchy and Thomas Haferlach, this project is under the MIT L
 - [OpenAI GPT](https://openai.com/research/gpt-3/)
 - [Ableton Live](https://www.ableton.com/)
 - [Max MSP / Max for Live](https://cycling74.com/products/max)
-- [Pollinations.AI](https://pollinations.ai)
+- [Pollinations.AI](https://pollinations.ai) - Language model provided by Pollinations.AI
 - [Nobody and the Computer](https://www.youtube.com/@nobodyandthecomputer/videos)
   
 Join us on this journey to redefine the boundaries of music creation!
