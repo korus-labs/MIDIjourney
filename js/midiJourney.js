@@ -176,10 +176,6 @@ function handleError(error) {
 		throw new Error("canceled");
 	}
 
-	if (error.message === API_KEY_MISSING_ERROR) {
-		max.post("apikeyerror", error.message);
-		throw new Error(error.message);
-	}
 
 	if (error.message === QUOTA_EXCEEDED_ERROR) {
 		max.post("quotaexceedederror", error.message);
