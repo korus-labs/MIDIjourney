@@ -12,18 +12,12 @@ const CSV_HEADER = "pitch,time,duration,velocity";
  * @returns {string} A CSV-formatted string.
  */
 const abletonToCSV = (notes) => {
-	// if there are more than 24 notes, only use the first 24 but append \n... to the end
-
-	const notesExceeded = notes.length > MAX_NOTES_FOR_INPUT;
-	
-	notes = notes.slice(0, MAX_NOTES_FOR_INPUT);
-
 	let lastStartTime = 0;
 
 	// order by start time
 	notes.sort((a, b) => a.start_time - b.start_time);
 
-	let csvString = `${CSV_HEADER}\n`; 
+	let csvString = `${CSV_HEADER}\n`;
 
 	notes.forEach((note) => {
 		const _offset = note.start_time - lastStartTime;
@@ -31,8 +25,6 @@ const abletonToCSV = (notes) => {
 		csvString += `${floatPrint(note.pitch)},${floatPrint(note.start_time)},${floatPrint(note.duration)},${floatPrint(note.velocity)}\n`;
 	});
 
-	if (notesExceeded)
-		csvString += "...\n";
 	return csvString;
 };
 
@@ -51,12 +43,12 @@ const csvToAbleton = (csvString) => {
 	let lastStartTime = 0;
 	const notes = lines.map((line) => {
 		let [pitch, start_time, duration, velocity] = line.split(',').map(Number);
-		if (!pitch  || !duration)
+		if (!pitch || !duration)
 			return null;
 
 		if (!velocity)
 			velocity = 100;
-		
+
 		velocity = Math.min(Math.max(velocity, 1), 126);
 
 		lastStartTime = start_time;
@@ -73,13 +65,13 @@ const csvToAbleton = (csvString) => {
 };
 
 // construct a response with placeholder values to show as an example to chatgpt
-const responseFormat = clipToText({ 
+const responseFormat = clipToText({
 	title: "title",
 	explanation: "explanation - optional",
-	duration: "duration in beats - optional", 
+	duration: "duration in beats - optional",
 	key: "musical key - optional",
-	notation: 
-`${CSV_HEADER}
+	notation:
+		`${CSV_HEADER}
 ...`
 });
 
@@ -104,7 +96,7 @@ const example2Input = clipToText({
 	duration: 4,
 	key: "A minor",
 	notation:
-`${CSV_HEADER}
+		`${CSV_HEADER}
 60,0,1.75,63
 64,0,2.25,76
 67,0,2.33,92
@@ -120,7 +112,7 @@ const example2 = clipToText({
 	duration: 4,
 	key: "A minor",
 	notation:
-`${CSV_HEADER}
+		`${CSV_HEADER}
 60,0,0.5,80
 64,0.66,0.33,100
 67,1.33,0.66,120
@@ -135,8 +127,8 @@ const example1 = clipToText({
 	explanation: "Boards of Canada often employ simple yet emotionally evocative nostalgic chord progressions. E.g.: Am7 D7 G7 C7",
 	duration: 16,
 	key: "C major",
-	notation: 
-`${CSV_HEADER}
+	notation:
+		`${CSV_HEADER}
 69,0,4.25,50
 72,0.25,3.5,65
 76,0.66,3.66,95
@@ -148,8 +140,8 @@ const example1 = clipToText({
 ...`});
 
 
-const csvNotationExamples = 
-`
+const csvNotationExamples =
+	`
 # Request
 
 # Prompt
