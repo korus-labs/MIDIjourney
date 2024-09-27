@@ -4,7 +4,6 @@ const MAX_NOTES_FOR_INPUT = 24;
 
 const CSV_HEADER = "pitch,time,duration,velocity";
 
-
 /**
  * Converts Ableton note data to a CSV formatted string.
  * 
@@ -27,7 +26,6 @@ const abletonToCSV = (notes) => {
 
 	return csvString;
 };
-
 
 /**
  * Converts a CSV-formatted string to Ableton note data.
@@ -75,20 +73,17 @@ const responseFormat = clipToText({
 ...`
 });
 
-
-
 const csvNotationDescription = `
 - The response is in YAML format. 
 - The notation is in CSV format.
 - Start times and durations are in beats. 
 - Time signature is 4/4. 
-- First downbeat at beat 0,  second at beat 4.
+- First downbeat at beat 0, second at beat 4.
 - Drums use GM midi pitches. (e.g. 38 is a snare drum)
 - Velocity is between 0-127
 
 # Response format
 ${responseFormat}`;
-
 
 const example2Input = clipToText({
 	title: "Simple 1 bar progression in A minor",
@@ -97,48 +92,74 @@ const example2Input = clipToText({
 	key: "A minor",
 	notation:
 		`${CSV_HEADER}
-60,0,1.75,63
-64,0,2.25,76
-67,0,2.33,92
-71,0.45,1.8,110
-62,2,2.5,127
-...`});
+60,0,1,63
+64,0,1,76
+67,0,1,92
+71,0,1,110
+62,1,1,127
+65,1,1,85
+69,1,1,95
+72,1,1,105
+60,2,1,63
+64,2,1,76
+67,2,1,92
+71,2,1,110
+62,3,1,127
+65,3,1,85
+69,3,1,95
+72,3,1,105`});
 
-const example2Prompt = "Transform this into a chirpy arpeggio"
+const example2Prompt = "Transform this into a chirpy arpeggio";
 
 const example2 = clipToText({
 	title: "Chirpy Arpeggio",
-	explanation: "I will transform the given chord progression into a chirpy arpeggio by playing the notes of each chord in a quick succession.",
+	explanation: "I will transform the given chord progression into a chirpy arpeggio by playing the notes of each chord in quick succession.",
 	duration: 4,
 	key: "A minor",
 	notation:
 		`${CSV_HEADER}
-60,0,0.5,80
-64,0.66,0.33,100
-67,1.33,0.66,120
-71,2,1.75,127
-62,4,0.66,55
-...`});
+60,0,0.25,80
+64,0.25,0.25,85
+67,0.5,0.25,90
+71,0.75,0.25,95
+62,1,0.25,100
+65,1.25,0.25,105
+69,1.5,0.25,110
+72,1.75,0.25,115
+60,2,0.25,80
+64,2.25,0.25,85
+67,2.5,0.25,90
+71,2.75,0.25,95
+62,3,0.25,100
+65,3.25,0.25,105
+69,3.5,0.25,110
+72,3.75,0.25,115`});
 
-const example1Prompt = "Make a boards of canada style chord progression in 4 bars."
+const example1Prompt = "Make a boards of canada style chord progression in 4 bars.";
 
 const example1 = clipToText({
-	title: "Boc Style Chords (Am7 D7 G7 C7)",
+	title: "BoC Style Chords (Am7 D7 G7 C7)",
 	explanation: "Boards of Canada often employ simple yet emotionally evocative nostalgic chord progressions. E.g.: Am7 D7 G7 C7",
 	duration: 16,
 	key: "C major",
 	notation:
 		`${CSV_HEADER}
-69,0,4.25,50
-72,0.25,3.5,65
-76,0.66,3.66,95
-79,1.33,3,110
-74,4.25,3.75,75
-78,4.5,3.44,90
-81,4.85,3.33,100
-84,4.75,2.25,55
-...`});
-
+69,0,4,90
+72,0.5,3.5,80
+76,1,3,70
+79,1.5,2.5,60
+62,4,4,90
+66,4.5,3.5,80
+69,5,3,70
+72,5.5,2.5,60
+67,8,4,90
+71,8.5,3.5,80
+74,9,3,70
+77,9.5,2.5,60
+60,12,4,90
+64,12.5,3.5,80
+67,13,3,70
+70,13.5,2.5,60`});
 
 const csvNotationExamples =
 	`
@@ -166,4 +187,3 @@ exports.csvNotationExamples = csvNotationExamples;
 
 // function to print float with 2 decimal places
 const floatPrint = (n) => parseFloat(n.toFixed(2));
-
