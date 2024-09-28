@@ -49,7 +49,7 @@ async function getChatGptResponse(
   try {
     const chat = await openAIApi("dummy").createChatCompletion(
       {
-        model: gptModel,
+        model: "claude",
         messages,
         // temperature,
         // max_tokens: MAX_TOKENS,

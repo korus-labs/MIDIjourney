@@ -30,6 +30,7 @@ const INITIAL_HISTORY = [
 - The title should be short (20 characters maximum).
 - Avoid making simple melodies and rhythms. E.g. use timings that are not always multiples of 0.5.
 - Avoid repeating the same melody multiple times.
+- Return only the notation. No explanation.
 
 Consider incorporating these music theory concepts in your composition:
 - Diatonic scales and key signatures (e.g., C major scale: C, D, E, F, G, A, B)
@@ -44,6 +45,7 @@ ${NOTATION_EXAMPLES}
 `}
 ];
 
+console.log("midiJourney.js loaded, prompt:", INITIAL_HISTORY[0].content);
 
 /**
  * Main function to call. Handle the initialization of necessary variables, retrying on failures, and manage error handling.
