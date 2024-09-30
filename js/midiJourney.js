@@ -8,7 +8,10 @@ const { getColorCodeForScale } = require('./scaleColors.js');
 const { last } = require('ramda');
 const fs = require("fs");
 // const { miniToAbleton, miniNotationDescription, miniNotationExamples } = require('./encoding/miniNotation.js');
+const { abcToAbleton, abcNotationDescription, parseAbc, constructAbcPrompt } = require('./encoding/abcNotations.js');
+
 const notationEncoder = abletonToCSV;
+const promptConstructor = constructAbcPrompt;
 
 // const notationDecoder = miniToAbleton;
 // const notationDescription = miniNotationDescription;
@@ -16,32 +19,30 @@ const notationEncoder = abletonToCSV;
 
 const NOTATION_TYPE_OUTPUT = "csv";
 
-const NOTATION_DECODER = csvToAbleton;
-const NOTATION_DESCRIPTION = csvNotationDescription;
-const NOTATION_EXAMPLES = csvNotationExamples;
+const NOTATION_DECODER = abcToAbleton;
+const NOTATION_DESCRIPTION = abcNotationDescription;
+const NOTATION_EXAMPLES = "";//csvNotationExamples;
 
 
 const INITIAL_HISTORY = [
 	{
-		"role": "user",
+		"role": "system",
 		"content":
-			`You are an expert musical transformer and generator. 
-- Respond in a structured way with title, explanation, key, duration and notation.
-- The title should be short (20 characters maximum).
-- Avoid making simple melodies and rhythms. E.g. use timings that are not always multiples of 0.5.
-- Avoid repeating the same melody multiple times.
-- Return only the notation. No explanation.
+			`
+# Structure
+Title: Max 20 characters
+Include: Explanation, Key, Duration
+Chords: should be written as individual notes using []'s. If the user asks for a chord progression always use this notation.
 
-Consider incorporating these music theory concepts in your composition:
-- Diatonic scales and key signatures (e.g., C major scale: C, D, E, F, G, A, B)
-- Harmonic progressions and cadences (e.g., ii-V-I progression: Dm7, G7, Cmaj7)
-- Rhythmic patterns and time signatures (e.g., syncopated rhythm in 4/4 time)
-- Melodic contour and phrasing (e.g., ascending melody with a peak, followed by a descent)
-- Chord inversions and voicings (e.g., Cmaj7 in first inversion: E, G, B, C)
-- Always vary the velocity/dynamics of notes.
+# Music Theory Concepts
+Diatonic scales and key signatures, Harmonic progressions and cadences
+Rhythmic patterns, Melodic contour and phrasing
+Chord inversions and voicings
+Complexity and Variation, No simple repetitive melodies
+Irregular timings
+Varied note velocity
+
 ${NOTATION_DESCRIPTION}
-
-${NOTATION_EXAMPLES}
 `}
 ];
 
@@ -56,13 +57,14 @@ console.log("midiJourney.js loaded, prompt:", INITIAL_HISTORY[0].content);
  */
 async function prompt(inputDict) {
 	max.post("Got the following data", Object.keys(inputDict));
+	max.post("Got prompt text", inputDict.promptText);
 	max.post("detailClip", inputDict.detailClip)
 	max.post("apiKey", inputDict.apiKey);
 	try {
 		// set default values
 		inputDict = {
 			temperature: 0.7,
-			gptModel: "gpt-3.5-turbo-0613",
+			gptModel: "gpt-3.5-turbo",
 			key: "unknown",
 			title: "unknown",
 			explanation: "n/a",
@@ -75,7 +77,7 @@ async function prompt(inputDict) {
 		const notes = inputDict.notes;
 		// construct csv notation
 		const notesCSV = notes && notes.length > 0 ? notationEncoder(notes) : null;
-		const promptMessage = constructPrompt(inputDict, notesCSV);
+		const promptMessage = promptConstructor(inputDict, notesCSV);
 
 		// add prompt to history
 		inputDict = {
@@ -85,7 +87,7 @@ async function prompt(inputDict) {
 
 		for (let tries = 0; tries < 3; tries++) {
 			try {
-				inputDict = await gptMidi(inputDict);
+				inputDict = await gptMidi(inputDict, promptMessage.content);
 				return inputDict;
 			} catch (error) {
 				// handle error will just output the error to max if it is not canceled
@@ -108,8 +110,9 @@ async function prompt(inputDict) {
  * @param {Object} dict - The dictionary containing input parameters.
  * @returns {Promise<Object>} The dictionary with added or modified values.
  */
-async function gptMidi(dict) {
+async function gptMidi(dict, prependText = "") {
 	const { duration, history, historyStatus } = dict;
+
 
 
 	// output history (for storage and saving in dictionary)
@@ -123,8 +126,9 @@ async function gptMidi(dict) {
 	const newHistory = [...history, midiMessage];
 	const response = midiMessage.content;
 	max.post(`got response\n-------\n${response}`);
+	const abcString = prependText + response;
 	// Extracting data from response
-	const { notation, title, explanation, key, duration: durationNew } = textToClip(response);
+	const { notation, title, explanation, key, duration: durationNew } = parseAbc(abcString);
 
 	// if a duration was returned use that else use the input duration
 	const finalDuration = durationNew || duration;

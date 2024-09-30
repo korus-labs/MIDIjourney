@@ -116,12 +116,12 @@ function constructPrompt({ promptText, duration, title, key, explanation }, nota
 		notation
 	});
 
-	const prompt = `# Request
+	const prompt = `# Input
 ${inputPrompt}
-# Prompt
+# Transformation
 ${promptText}
 
-# Response`;
+# Output`;
 
 	const promptMessage = userMessage(prompt);
 	return promptMessage;
