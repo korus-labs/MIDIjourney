@@ -6,35 +6,35 @@ const { over } = require("ramda");
 
 // format an ABC notation string to be used as a prompt
 // duration is in beats
-const formatAsAbc = ({ overrideTitle, explanation,  key, notation=null, promptText = null }) => {
-	let abcString = "X:1\nL:1/8\nM:4/4\n";
+const formatAsAbc = ({ overrideTitle, explanation, key, notation = null, promptText = null }) => {
+    let abcString = "X:1\nL:1/8\nM:4/4\n";
 
-	if (promptText)
-		abcString += `N:${promptText}\n`;
+    if (promptText)
+        abcString += `N:${promptText}\n`;
 
-	// if (duration)
-	// 	abcString += `U: duration=${duration}\n`;
+    // if (duration)
+    // 	abcString += `U: duration=${duration}\n`;
 
-	if (key)
-		abcString += `K:${key}\n`;
+    if (key)
+        abcString += `K:${key}\n`;
 
-	if (notation)
-		abcString += `|${notation}|`;
+    if (notation)
+        abcString += `|${notation}|`;
 
     if (explanation)
-		abcString += `N:${explanation}\n`;
+        abcString += `N:${explanation}\n`;
     else
         abcString += "N:";
     // else
     //     abcString += "|";
 
-	return abcString;
+    return abcString;
 };
 
 
 // parse an ABC notation string and extract title, explanation, duration, key, notation
 const parseAbc = (abcString) => {
-	const title = abcString.match(/T:(.*)/);
+    const title = abcString.match(/T:(.*)/);
     // prompt text is the first N: line
     // explanation the second
 
@@ -47,18 +47,18 @@ const parseAbc = (abcString) => {
     console.log('Prompt:', promptText);
     console.log('Explanation:', explanation);
 
-	const duration = abcString.match(/L:(.*)/);
-	const key = abcString.match(/K:(.*)/);
-	// const notation = abcString.match(/\|(.*)\|/);
+    const duration = abcString.match(/L:(.*)/);
+    const key = abcString.match(/K:(.*)/);
+    // const notation = abcString.match(/\|(.*)\|/);
 
-	return {
-		title: title ? title[1] : null,
-		explanation,
+    return {
+        title: title ? title[1] : null,
+        explanation,
         promptText,
-		duration: duration ? duration[1] : null,
-		key: key ? key[1] : null,
-		notation: abcString,
-	};
+        duration: duration ? duration[1] : null,
+        key: key ? key[1] : null,
+        notation: abcString,
+    };
 }
 
 
@@ -87,7 +87,7 @@ function abcToAbleton(abcMidi) {
     const tracks = midiData.tracks.map((track) => {
         const { notes } = track.reduce(({ notes, currentTime }, event) => {
             currentTime += event.deltaTime * 4 / midiData.header.ticksPerBeat;
-            
+
             if (event.type === "noteOn") {
                 notes.push({
                     pitch: event.noteNumber,
@@ -108,6 +108,7 @@ function abcToAbleton(abcMidi) {
         }, { notes: [], currentTime: 0 });
         return notes;
     });
+    console.log("tracks", tracks);
     // limit to 64 notes for now
     return tracks[1].slice(0, 64);
 }
@@ -119,7 +120,7 @@ const abcNotationExample1 = formatAsAbc({
     // duration: 4,
     key: "cm",
     notation: ".A.Bcd(ef)|"
-});   
+});
 
 const abcNotationExample2 = `X:1
 L:1/8
@@ -161,8 +162,8 @@ ${abcNotationExample3}
 `;
 
 // remove key for now
-const constructAbcPrompt = ({key, explanation, ...metadata}) => {
-    return {role: "user", content: formatAsAbc(metadata)};
+const constructAbcPrompt = ({ key, explanation, ...metadata }) => {
+    return { role: "user", content: formatAsAbc(metadata) };
 }
 
 module.exports = {
