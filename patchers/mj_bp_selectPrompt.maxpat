@@ -58,8 +58,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 95.0, 585.0, 97.0, 22.0 ],
-					"text" : "mj_tttDictUpdate"
+					"patching_rect" : [ 95.0, 585.0, 169.0, 22.0 ],
+					"text" : "mj_tttDictUpdate fromReplace"
 				}
 
 			}
@@ -2258,7 +2258,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 179.724756479263306, 10.0, 70.0, 26.0 ],
 					"text" : "Clip",
-					"textcolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
+					"textcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "name-clip"
 				}
@@ -2276,7 +2276,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 10.0, 10.0, 70.0, 26.0 ],
 					"text" : "Scene",
-					"textcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
+					"textcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "name-scene"
 				}
@@ -2305,7 +2305,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.975652, 0.46087, 1.0, 0.0 ],
+					"bgcolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"border" : 4,
 					"bordercolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"id" : "obj-20",
@@ -2357,7 +2357,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
+					"bgcolor" : [ 0.252174, 0.811837, 1.0, 0.0 ],
 					"border" : 4,
 					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
 					"id" : "obj-17",
