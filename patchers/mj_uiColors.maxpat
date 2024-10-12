@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
+			"minor" : 6,
 			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 838.0, 326.0, 640.0, 480.0 ],
+		"rect" : [ 261.0, 322.0, 608.0, 500.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -64,18 +64,38 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgcolor2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.252174, 0.811837, 1.0, 1.0 ],
+					"bgfillcolor_color1" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_color2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_proportion" : 0.39,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
 					"id" : "obj-7",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 334.0, 346.0, 165.0, 22.0 ],
+					"patching_rect" : [ 337.0, 356.0, 165.0, 22.0 ],
 					"text" : "4 0.252174 0.811837 1. 1."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgcolor2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.975652, 0.46087, 1.0, 1.0 ],
+					"bgfillcolor_color1" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_color2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_proportion" : 0.39,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
 					"id" : "obj-6",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -88,6 +108,16 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 0.252174, 1.0, 0.522356 ],
+					"bgcolor2" : [ 1.0, 0.252174, 1.0, 0.522356 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.252174, 1.0, 0.522356, 1.0 ],
+					"bgfillcolor_color1" : [ 1.0, 0.252174, 1.0, 0.522356 ],
+					"bgfillcolor_color2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_proportion" : 0.39,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
 					"id" : "obj-5",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -100,18 +130,38 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgcolor2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.252174, 0.811837, 1.0, 1.0 ],
+					"bgfillcolor_color1" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_color2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_proportion" : 0.39,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
 					"id" : "obj-4",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.0, 259.0, 165.0, 22.0 ],
+					"patching_rect" : [ 214.399999999999977, 254.0, 165.0, 22.0 ],
 					"text" : "1 0.252174 0.811837 1. 1."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgcolor2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.008976, 0.0, 0.086957, 1.0 ],
+					"bgfillcolor_color1" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_color2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
+					"bgfillcolor_proportion" : 0.39,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
 					"id" : "obj-3",
 					"maxclass" : "message",
 					"numinlets" : 2,
