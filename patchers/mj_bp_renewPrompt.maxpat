@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 1444.0, 848.0 ],
+		"rect" : [ 34.0, 100.0, 988.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1047,10 +1047,10 @@
 
 					}
 ,
-					"text" : "Renew",
+					"text" : "Remix Prompt",
 					"textcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
 					"textoffcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
-					"texton" : "Renewing...",
+					"texton" : "Remix Prompt",
 					"varname" : "create"
 				}
 

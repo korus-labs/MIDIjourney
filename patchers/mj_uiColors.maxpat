@@ -68,7 +68,7 @@
 					"bgcolor2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
 					"bgfillcolor_autogradient" : 0.0,
-					"bgfillcolor_color" : [ 0.252174, 0.811837, 1.0, 1.0 ],
+					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgfillcolor_color1" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
 					"bgfillcolor_color2" : [ 0.163688058058427, 0.163688010157025, 0.163688022674427, 1.0 ],
 					"bgfillcolor_proportion" : 0.39,
@@ -79,8 +79,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 337.0, 356.0, 165.0, 22.0 ],
-					"text" : "4 0.252174 0.811837 1. 1."
+					"patching_rect" : [ 337.0, 356.0, 163.0, 22.0 ],
+					"text" : "4 1. 1. 1. 1."
 				}
 
 			}
@@ -228,7 +228,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "dictionary" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 46.0, 46.0, 30.0, 30.0 ]
 				}
 

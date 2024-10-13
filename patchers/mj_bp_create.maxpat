@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 1444.0, 848.0 ],
+		"rect" : [ 790.0, 100.0, 688.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -460,13 +460,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-44", 0 ],
-									"source" : [ "obj-30", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-46", 0 ],
 									"source" : [ "obj-31", 0 ]
 								}
@@ -648,8 +641,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 470.0, 175.0, 247.0, 26.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 9.0, 440.0, 26.0 ],
-					"text" : "Select a MIDI clip/slot",
+					"presentation_rect" : [ 5.0, 14.0, 180.0, 26.0 ],
+					"text" : "Select MIDI clip/slot",
 					"textcolor" : [ 0.252174, 1.0, 0.522356, 1.0 ],
 					"textjustification" : 1,
 					"varname" : "noMidiSlot"
@@ -820,7 +813,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 286.0, 319.0, 155.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 9.0, 450.0, 27.0 ],
+					"presentation_rect" : [ 10.0, 9.0, 170.0, 35.0 ],
 					"rounded" : 8.0,
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
@@ -876,10 +869,10 @@
 
 					}
 ,
-					"text" : "Create MIDI Clip",
+					"text" : "Remix MIDI",
 					"textcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
 					"textoffcolor" : [ 0.399227499961853, 0.490502297878265, 0.543794631958008, 1.0 ],
-					"texton" : "Creating MIDI Clip...",
+					"texton" : "Remix MIDI",
 					"varname" : "create"
 				}
 
@@ -930,7 +923,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.867558598518372, 0.873766899108887, 0.868103981018066, 0.0 ],
+					"bgcolor" : [ 0.009, 0.0, 0.087, 1.0 ],
 					"border" : 4,
 					"bordercolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-10",
@@ -940,7 +933,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 459.0, 426.0, 30.0, 31.030927777290344 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 5.0, 450.0, 35.0 ],
+					"presentation_rect" : [ 5.0, 5.0, 180.0, 43.0 ],
 					"proportion" : 0.39,
 					"saved_attribute_attributes" : 					{
 						"bgfillcolor" : 						{
