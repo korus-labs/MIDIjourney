@@ -57,12 +57,10 @@ console.log("midiJourney.js loaded, prompt:", INITIAL_HISTORY[0].content);
 async function prompt(inputDict) {
 	max.post("Got the following data", Object.keys(inputDict));
 	max.post("detailClip", inputDict.detailClip)
-	max.post("apiKey", inputDict.apiKey);
+	// max.post("apiKey", inputDict.apiKey);
 	try {
 		// set default values
 		inputDict = {
-			temperature: 0.7,
-			gptModel: "gpt-3.5-turbo-0613",
 			key: "unknown",
 			title: "unknown",
 			explanation: "n/a",
@@ -141,16 +139,14 @@ async function gptMidi(dict) {
 	dict = {
 		...dict,
 		history: newHistory,
-		explanation,
-		title,
-		key,
+		"clip-key": key,
 		duration: finalDuration,
-		color: getColorCodeForScale(key),
+		"clip-color": getColorCodeForScale(key),
 		notes: abletonMidi,
 	};
 
 
-	max.post("determined color", dict.color, "from key", key);
+	max.post("determined color", dict["clip-color"], "from key", key);
 
 	// if notation is csv we should delete the duration so it is estimated by ableton
 	if (NOTATION_TYPE_OUTPUT === "csv") {
@@ -218,5 +214,4 @@ max.addHandlers({
 	}
 
 });
-
 
