@@ -56,7 +56,7 @@ console.log("midiJourney.js loaded, prompt:", INITIAL_HISTORY[0].content);
  */
 async function prompt(inputDict) {
 	max.post("Got the following data", Object.keys(inputDict));
-	max.post("detailClip", inputDict.detailClip)
+	max.post("clip-id", inputDict['clip-id'])
 	// max.post("apiKey", inputDict.apiKey);
 	try {
 		// set default values
