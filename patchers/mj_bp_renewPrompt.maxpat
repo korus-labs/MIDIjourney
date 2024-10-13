@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 688.0, 848.0 ],
+		"rect" : [ 820.0, 100.0, 688.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 260.0, 185.0, 89.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"text" : "get isMidiTrack"
 				}
 
@@ -175,7 +174,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 161.0, 719.0, 68.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "TTT cancel"
 				}
 
@@ -1015,8 +1013,8 @@
 				"box" : 				{
 					"activebgcolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"activebgoncolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
-					"activetextcolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
-					"activetextoncolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
+					"activetextcolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
+					"activetextoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgcolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"bgoncolor" : [ 0.866666666666667, 0.874509803921569, 0.866666666666667, 0.0 ],
 					"bordercolor" : [ 0.266666666666667, 0.266666666666667, 0.266666666666667, 0.0 ],
@@ -1708,7 +1706,7 @@
 					"angle" : 270.0,
 					"bgcolor" : [ 0.008976, 0.0, 0.086957, 1.0 ],
 					"border" : 4,
-					"bordercolor" : [ 0.252174, 0.811837, 1.0, 1.0 ],
+					"bordercolor" : [ 0.975652, 0.46087, 1.0, 1.0 ],
 					"id" : "obj-10",
 					"maxclass" : "panel",
 					"mode" : 0,
